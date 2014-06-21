@@ -2,7 +2,7 @@
 using System.Collections;
 using SPSUGameJam;
 
-public abstract class PeopleMovementScript : MonoBehaviour
+public abstract class PeopleMovementScript : SPSUGameJamScript
 {
 	// ==================================================
 	// Constants
@@ -18,8 +18,10 @@ public abstract class PeopleMovementScript : MonoBehaviour
 	// Variables
 	// ==================================================
 
-	public Direction currentDirection;
+	public Animator anim;
 
+	public Direction currentDirection;
+	
 	public Vector2 mAcceleration = new Vector2 (0, 0);
 	public Vector2 mVelocity = new Vector2 (0, 0);
 	
@@ -43,6 +45,14 @@ public abstract class PeopleMovementScript : MonoBehaviour
 		}
 	}
 
+	private void determineAnimation ()
+	{
+		if (rigidbody2D.velocity.x != 0) {
+			anim.SetBool ("walking", true);
+		} else {
+			anim.SetBool ("walking", false);
+		}
+	}
 	// =========================
 	// Lifecycle Methods
 	// =========================
@@ -52,6 +62,7 @@ public abstract class PeopleMovementScript : MonoBehaviour
 		handleMovement ();
 		handleJump ();
 		assignDirection ();
+		determineAnimation ();
 	}
 
 	// =========================
