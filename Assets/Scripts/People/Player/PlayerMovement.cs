@@ -4,10 +4,22 @@ using SPSUGameJam;
 
 public class PlayerMovement : PeopleMovementScript
 {
+
+	public Sprite boyClothes;
+	public Sprite girlClothes;
+	public static bool isBoy = true;
 	private bool canJump;
 	private bool jumping = false;
 	private float jumpMultiplier;
 	public Animator anim;
+
+	public void Start(){
+		if(isBoy){
+			GameObject.Find("clothes").GetComponent<SpriteRenderer>().sprite = boyClothes;
+		}else{
+			GameObject.Find("clothes").GetComponent<SpriteRenderer>().sprite = girlClothes;
+		}
+	}
 
 	override public void handleJump ()
 	{
