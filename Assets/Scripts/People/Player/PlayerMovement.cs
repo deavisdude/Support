@@ -7,7 +7,7 @@ public class PlayerMovement : PeopleMovementScript
 
 	override public void handleJump ()
 	{
-		if (Input.GetButtonDown ("Jump") && canJump) {
+		if (Input.GetButton ("Jump") && canJump) {
 			gameObject.rigidbody2D.AddForce (new Vector2 (0f, JUMP_POWER));
 			canJump = false;
 		}
@@ -18,7 +18,10 @@ public class PlayerMovement : PeopleMovementScript
 		if (Input.GetAxis ("Horizontal") != 0) {
 			mAcceleration.x += Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.deltaTime;
 
-			if ((mAcceleration.x < 0 && mVelocity.x > 0) ||
+
+			if(!canJump){
+				mAcceleration.x=0;
+			}else if ((mAcceleration.x < 0 && mVelocity.x > 0) ||
 				(mAcceleration.x > 0 && mVelocity.x < 0)) {
 				mVelocity.x = 0;
 			}
