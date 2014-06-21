@@ -45,6 +45,8 @@ public class PlayerMovement : PeopleMovementScript
 
 	protected void OnCollisionEnter2D (Collision2D other)
 	{
-		canJump = true;
+		if (other.gameObject.layer == LayerMask.NameToLayer ("platform")) {
+			canJump = true;
+		}
 	}
 }
