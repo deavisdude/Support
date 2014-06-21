@@ -30,7 +30,7 @@ public class FollowerManager : MonoBehaviour
 		PlayerMovement movementScript = mPlayer.GetComponent<PlayerMovement> ();
 		Direction directionOfPlayer = movementScript.currentDirection;
 		float xDisplacement = 2.5f * (i + 1) * ((directionOfPlayer == Direction.RIGHT) ? -1f : 1f);
-		Vector3 targetPosition = new Vector3 (xDisplacement, 0, 0);
+		Vector3 targetPosition = new Vector3 (mPlayer.transform.position.x + xDisplacement, 0, 0);
 		return targetPosition;
 	}
 
