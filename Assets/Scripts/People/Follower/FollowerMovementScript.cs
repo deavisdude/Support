@@ -27,7 +27,12 @@ public class FollowerMovementScript : PeopleMovementScript
 	{
 		if (mFollowPlayer) {
 			Vector3 playerPosition = mPlayer.transform.position;
-			transform.position = playerPosition;
+
+			if (playerPosition.x > transform.position.x) {
+
+			} else if (playerPosition.x < transform.position.x) {
+			
+			}
 		}
 	}
 
