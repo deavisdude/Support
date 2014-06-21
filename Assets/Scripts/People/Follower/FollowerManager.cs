@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FollowerManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class FollowerManager : MonoBehaviour
 
 	public GameObject mPlayer;
 
-	ArrayList mFollowers = new ArrayList ();
+	public List<GameObject> mFollowers;
 
 	// ==================================================
 	// Methods
@@ -17,22 +18,21 @@ public class FollowerManager : MonoBehaviour
 
 	public void addFollower (GameObject followerObject)
 	{
-		if (!mFollowers.Contains (followerObject)) {
-			Debug.Log ("Follower has been added!");
-			mFollowers.Add (followerObject);
-		}
+		
 	}
 
 	// ====================
 	// Lifecycle Methods
 	// ====================
 
-	void Update ()
+	protected void Start ()
 	{
-		for (int i = 0; i < mFollowers.Count; i ++) {
-			GameObject follower = (GameObject)mFollowers [i];
-			FollowerMovementScript movementScript = follower.GetComponent<FollowerMovementScript> ();
-			movementScript.mTargetPosition = mPlayer.transform.position;
-		}
+		mFollowers = new List<GameObject> ();
+		Debug.Log (mFollowers.Count);
+	}
+
+	protected void Update ()
+	{
+
 	}
 }

@@ -26,7 +26,24 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	override public void handleMovement ()
 	{
+		Vector3 currentPosition = transform.position;
 
+		if (mTargetPosition.x > currentPosition.x) {
+			mAcceleration.x += ACCELERATION_FACTOR * Time.deltaTime;
+		} else if (mTargetPosition.x < currentPosition.x) {
+			mAcceleration.x -= ACCELERATION_FACTOR * Time.deltaTime;
+		}
+
+		rigidbody2D.AddForce (mVelocity);
+		mVelocity += mAcceleration * Time.deltaTime;
+
+		if (mVelocity.x > MAX_SPEED) {
+			mVelocity.x = MAX_SPEED;
+		} else if (mVelocity.x < -MAX_SPEED) {
+			mVelocity.x = -MAX_SPEED;
+		}
+		
+		mAcceleration.x = 0;
 	}
 
 	// =========================
@@ -45,10 +62,10 @@ public class FollowerMovementScript : PeopleMovementScript
 	protected void OnTriggerEnter2D (Collider2D other)
 	{
 		if (other.gameObject.tag.Equals ("player")) {
+			mFollowerManagerScript.addFollower (gameObject);
 			gameObject.layer = LayerMask.NameToLayer ("followingPeople");
 			gameObject.rigidbody2D.isKinematic = false;
 			gameObject.collider2D.isTrigger = false;
-			mFollowerManagerScript.addFollower (gameObject);
 		}
 	}
 }

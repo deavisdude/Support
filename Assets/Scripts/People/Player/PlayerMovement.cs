@@ -19,18 +19,17 @@ public class PlayerMovement : PeopleMovementScript
 			mAcceleration.x += Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.deltaTime;
 
 
-			if(!canJump){
-				mAcceleration.x=0;
-			}else if ((mAcceleration.x < 0 && mVelocity.x > 0) ||
+			if (!canJump) {
+				mAcceleration.x = 0;
+			} else if ((mAcceleration.x < 0 && mVelocity.x > 0) ||
 				(mAcceleration.x > 0 && mVelocity.x < 0)) {
 				mVelocity.x = 0;
 			}
 		} else {
 			mVelocity /= 1.2f;
 		}
-		
-		Vector3 displacement = mVelocity * Time.deltaTime;
-		rigidbody2D.AddForce(mVelocity);
+
+		rigidbody2D.AddForce (mVelocity);
 		mVelocity += mAcceleration * Time.deltaTime;
 		
 		if (mVelocity.x > MAX_SPEED) {
