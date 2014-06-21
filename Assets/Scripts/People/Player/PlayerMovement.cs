@@ -20,9 +20,9 @@ public class PlayerMovement : PeopleMovementScript
 			mAcceleration.x += Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.deltaTime;
 
 
-			if(!canJump){
-				mAcceleration.x=0;
-			}else if ((mAcceleration.x < 0 && mVelocity.x > 0) ||
+			if (!canJump) {
+				mAcceleration.x = 0;
+			} else if ((mAcceleration.x < 0 && mVelocity.x > 0) ||
 				(mAcceleration.x > 0 && mVelocity.x < 0)) {
 				mVelocity.x = 0;
 			}
@@ -31,12 +31,11 @@ public class PlayerMovement : PeopleMovementScript
 		}
 
 		rigidbody2D.velocity += mAcceleration * Time.deltaTime;
-		//rigidbody2D.velocity = mVelocity;
 		
 		if (rigidbody2D.velocity.x > MAX_SPEED.x) {
-			rigidbody2D.velocity = new Vector2(MAX_SPEED.x, rigidbody2D.velocity.y);
+			rigidbody2D.velocity = new Vector2 (MAX_SPEED.x, rigidbody2D.velocity.y);
 		} else if (rigidbody2D.velocity.x < -MAX_SPEED.x) {
-			rigidbody2D.velocity = new Vector2(-MAX_SPEED.x, rigidbody2D.velocity.y);
+			rigidbody2D.velocity = new Vector2 (-MAX_SPEED.x, rigidbody2D.velocity.y);
 		}
 		
 		mAcceleration.x = 0;
