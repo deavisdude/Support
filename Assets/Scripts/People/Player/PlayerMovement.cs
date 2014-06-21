@@ -40,6 +40,8 @@ public class PlayerMovement : PeopleMovementScript
 		} else if (rigidbody2D.velocity.x < -MAX_SPEED.x) {
 			rigidbody2D.velocity = new Vector2 (-MAX_SPEED.x, rigidbody2D.velocity.y);
 		}
+		
+		mAcceleration.x = 0;
 	}
 
 	protected void OnCollisionEnter2D (Collision2D other)

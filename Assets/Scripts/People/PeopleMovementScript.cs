@@ -13,11 +13,14 @@ public abstract class PeopleMovementScript : MonoBehaviour
 
 	public const float JUMP_POWER = 5f;
 
+	public Direction currentDirection;
+	
 	// ==================================================
 	// Variables
 	// ==================================================
-
-	public Direction currentDirection;
+	
+	public Vector2 mAcceleration = new Vector2 (0, 0);
+	public Vector2 mVelocity = new Vector2 (0, 0);
 	
 	// ==================================================
 	// Methods
