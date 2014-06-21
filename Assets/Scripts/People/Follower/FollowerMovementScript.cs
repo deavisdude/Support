@@ -14,6 +14,7 @@ public class FollowerMovementScript : PeopleMovementScript
 	// Variables
 	// ==================================================
 
+	public bool shouldFollow = false;
 	public GameObject mFollowerManager;
 	public FollowerManager mFollowerManagerScript;
 	public Vector3 mTargetPosition;
@@ -29,22 +30,24 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	override public void handleMovement ()
 	{
-		float velocityX = 0;
+		if (shouldFollow) {
+			float velocityX = 0;
 
-		if (!onTarget ()) {
-			if (isFarFromTargetPosition ()) {
-				velocityX = MAX_SPEED.x;
-			} else if (isNearTargetPosition ()) {
-				velocityX = MAX_SPEED.x / 2f;
+			if (!onTarget ()) {
+				if (isFarFromTargetPosition ()) {
+					velocityX = MAX_SPEED.x;
+				} else if (isNearTargetPosition ()) {
+					velocityX = MAX_SPEED.x / 2f;
+				}
+
+				if (!(mTargetPosition.x > transform.position.x)) {
+					velocityX *= -1;
+				}
 			}
 
-			if (!(mTargetPosition.x > transform.position.x)) {
-				velocityX *= -1;
-			}
+			Vector2 newVelocity = new Vector2 (velocityX, rigidbody2D.velocity.y);
+			rigidbody2D.velocity = newVelocity;
 		}
-
-		Vector2 newVelocity = new Vector2 (velocityX, rigidbody2D.velocity.y);
-		rigidbody2D.velocity = newVelocity;
 	}
 
 	private bool isFarFromTargetPosition ()
