@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Holoville.HOTween;
 
 public class PressurePlate : MonoBehaviour {
 
@@ -22,11 +23,11 @@ public class PressurePlate : MonoBehaviour {
 
 	void OnTriggerExit2D (Collider2D collider)
 	{
-		activated = false;
-		spriteRender.color = Color.white;
+		if(!PressurePlateManager.allPlatesActive)
+			DeactivateNow();
 	}
 
-	public void Deactivate(float waitTime, float deactivateTimeLength)
+	public void DeactivateTimed(float waitTime, float deactivateTimeLength)
 	{
 		StartCoroutine(WaitAndDeactivate(waitTime, deactivateTimeLength));
 	}
@@ -35,6 +36,13 @@ public class PressurePlate : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(waitTime);
 
-		// start deactivation
+		TweenParms tween = new TweenParms().Prop("color", Color.white).OnComplete(DeactivateNow);
+		HOTween.To(spriteRender, deactivateTimeLength, tween);
+	}
+
+	private void DeactivateNow()
+	{
+		activated = false;
+		spriteRender.color = Color.white;
 	}
 }
