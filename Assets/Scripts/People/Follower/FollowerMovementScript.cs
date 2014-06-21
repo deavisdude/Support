@@ -6,7 +6,10 @@ public class FollowerMovementScript : PeopleMovementScript
 	// ==================================================
 	// Constants
 	// ==================================================
-	
+
+	private const float TARGET_POSITION_NEAR_MARKER = 2f;
+	private const float TARGET_POSITION_VALID_OFFSET = .25f;
+
 	// ==================================================
 	// Variables
 	// ==================================================
@@ -26,25 +29,47 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	override public void handleMovement ()
 	{
-		Vector3 currentPosition = transform.position;
+		float velocityX = 0;
 
-		if (mTargetPosition.x > currentPosition.x) {
-			mAcceleration.x += ACCELERATION_FACTOR * Time.deltaTime;
-		} else if (mTargetPosition.x < currentPosition.x) {
-			mAcceleration.x -= ACCELERATION_FACTOR * Time.deltaTime;
+		if (!onTarget ()) {
+			if (isFarFromTargetPosition ()) {
+				velocityX = MAX_SPEED.x;
+			} else if (isNearTargetPosition ()) {
+				velocityX = MAX_SPEED.x / 2f;
+			}
+
+			if (!(mTargetPosition.x > transform.position.x)) {
+				velocityX *= -1;
+			}
 		}
 
-//		Debug.Log ("current velocity: " + mVelocity);
-		rigidbody2D.AddForce (mVelocity);
-		mVelocity += mAcceleration * Time.deltaTime;
+		Vector2 newVelocity = new Vector2 (velocityX, rigidbody2D.velocity.y);
+		rigidbody2D.velocity = newVelocity;
+	}
 
-		if (mVelocity.x > MAX_SPEED.x) {
-			mVelocity.x = MAX_SPEED.x;
-		} else if (mVelocity.x < -MAX_SPEED.x) {
-			mVelocity.x = -MAX_SPEED.x;
+	private bool isFarFromTargetPosition ()
+	{
+		return !isNearTargetPosition ();
+	}
+
+	private bool isNearTargetPosition ()
+	{
+		if (transform.position.x > mTargetPosition.x - TARGET_POSITION_NEAR_MARKER 
+			&& transform.position.x < mTargetPosition.x + TARGET_POSITION_NEAR_MARKER) {
+			return true;
+		}
+
+		return false;
+	}
+
+	private bool onTarget ()
+	{
+		if (transform.position.x > mTargetPosition.x - TARGET_POSITION_VALID_OFFSET 
+			&& transform.position.x < mTargetPosition.x + TARGET_POSITION_VALID_OFFSET) {
+			return true;
 		}
 		
-		mAcceleration.x = 0;
+		return false;
 	}
 
 	// =========================
