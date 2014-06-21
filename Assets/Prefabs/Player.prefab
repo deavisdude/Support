@@ -140,6 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc98f649c951dd42a4091401e40cad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDirection: 0
+  mAcceleration: {x: 0, y: 0}
+  mVelocity: {x: 0, y: 0}
   anim: {fileID: 9500000}
 --- !u!212 &21200000
 SpriteRenderer:
@@ -160,7 +163,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: d69d69f860fda4783938300886986a6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21200002
@@ -182,7 +185,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 19ca6e87c8c29a042ae84a19ff678fc8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000

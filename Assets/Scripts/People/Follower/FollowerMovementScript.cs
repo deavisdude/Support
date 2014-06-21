@@ -34,7 +34,7 @@ public class FollowerMovementScript : PeopleMovementScript
 			mAcceleration.x -= ACCELERATION_FACTOR * Time.deltaTime;
 		}
 
-		Debug.Log ("current velocity: " + mVelocity);
+//		Debug.Log ("current velocity: " + mVelocity);
 		rigidbody2D.AddForce (mVelocity);
 		mVelocity += mAcceleration * Time.deltaTime;
 

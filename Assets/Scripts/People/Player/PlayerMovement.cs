@@ -10,18 +10,17 @@ public class PlayerMovement : PeopleMovementScript
 	override public void handleJump ()
 	{
 		if (Input.GetButton ("Jump") && canJump) {
-			gameObject.rigidbody2D.velocity += new Vector2 (0f, JUMP_POWER);
-			//mVelocity = rigidbody2D.velocity;
+			rigidbody2D.velocity += new Vector2 (0f, JUMP_POWER);
 			canJump = false;
 		}
 	}
 
 	override public void handleMovement ()
 	{
-		if (Input.GetAxis ("Horizontal") != 0) {
+		if (Input.GetAxisRaw ("Horizontal") != 0) {
 			anim.SetBool("walking", true);
-			mAcceleration.x += Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.deltaTime;
 
+			mAcceleration.x = Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.deltaTime;
 
 			if (!canJump) {
 				mAcceleration.x = 0;
@@ -29,24 +28,25 @@ public class PlayerMovement : PeopleMovementScript
 				(mAcceleration.x > 0 && mVelocity.x < 0)) {
 				mVelocity.x = 0;
 			}
+
+			rigidbody2D.velocity += mAcceleration * Time.deltaTime;
+
 		} else {
-			mVelocity /= 1.2f;
+			if(canJump)
+				rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x * 0.8f, rigidbody2D.velocity.y);
 			anim.SetBool("walking", false);
 		}
-
-		rigidbody2D.velocity += mAcceleration * Time.deltaTime;
 		
 		if (rigidbody2D.velocity.x > MAX_SPEED.x) {
 			rigidbody2D.velocity = new Vector2 (MAX_SPEED.x, rigidbody2D.velocity.y);
 		} else if (rigidbody2D.velocity.x < -MAX_SPEED.x) {
 			rigidbody2D.velocity = new Vector2 (-MAX_SPEED.x, rigidbody2D.velocity.y);
 		}
-		
-		mAcceleration.x = 0;
 	}
 
 	protected void OnCollisionEnter2D (Collision2D other)
 	{
-		canJump = true;
+		if(other.gameObject.layer == LayerMask.NameToLayer("platform"))
+			canJump = true;
 	}
 }
