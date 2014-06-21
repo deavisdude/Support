@@ -499,6 +499,10 @@ Prefab:
       propertyPath: m_Name
       value: Plate2
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 53576278e797dbf409085a18d8ac067c, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7437824669e302d45b1a0c1fc71b4d28, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53576278e797dbf409085a18d8ac067c, type: 2}
   m_RootGameObject: {fileID: 827977421}
@@ -536,7 +540,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7437824669e302d45b1a0c1fc71b4d28, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -773,7 +777,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7437824669e302d45b1a0c1fc71b4d28, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1103,6 +1107,10 @@ Prefab:
       propertyPath: m_Name
       value: Plate1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 53576278e797dbf409085a18d8ac067c, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7437824669e302d45b1a0c1fc71b4d28, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53576278e797dbf409085a18d8ac067c, type: 2}
   m_RootGameObject: {fileID: 1001999750}
