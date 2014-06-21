@@ -27,7 +27,7 @@ public class PlayerMovement : PeopleMovementScript
 				mVelocity.x = 0;
 			}
 		} else {
-			mVelocity /= 1.2f;
+			mVelocity /= 2f;
 		}
 
 		rigidbody2D.velocity += mAcceleration * Time.deltaTime;
