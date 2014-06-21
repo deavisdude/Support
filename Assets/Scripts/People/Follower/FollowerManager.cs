@@ -1,26 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FollowerManager : MonoBehaviour
 {
+	// ==================================================
+	// Variables
+	// ==================================================
 
-	ArrayList mFollowers = new ArrayList ();
+	public GameObject mPlayer;
 
-	public void testMethod (GameObject followerObject)
+	public List<GameObject> mFollowers;
+
+	// ==================================================
+	// Methods
+	// ==================================================
+
+	public void addFollower (GameObject followerObject)
 	{
-		if (!mFollowers.Contains (followerObject)) {
-			mFollowers.Add (followerObject);
-		}
+		Debug.Log (mFollowers.Count);
+		followerObject.GetComponent<FollowerMovementScript> ().mTargetPosition = mPlayer.transform.position;
+		mFollowers.Add (followerObject);
+		Debug.Log (mFollowers.Count);
 	}
 
-	// Use this for initialization
-	void Start ()
-	{
+	// ====================
+	// Lifecycle Methods
+	// ====================
 
+	protected void Start ()
+	{
+		mFollowers = new List<GameObject> ();
+		Debug.Log (mFollowers.Count);
 	}
 
-	void Update ()
+	protected void Update ()
 	{
-	
+
 	}
 }

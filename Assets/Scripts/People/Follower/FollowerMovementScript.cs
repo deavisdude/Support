@@ -13,6 +13,7 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	public GameObject mFollowerManager;
 	public FollowerManager mFollowerManagerScript;
+	public Vector3 mTargetPosition;
 
 	// ==================================================
 	// Methods
@@ -25,7 +26,24 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	override public void handleMovement ()
 	{
+		Vector3 currentPosition = transform.position;
 
+		if (mTargetPosition.x > currentPosition.x) {
+			mAcceleration.x += ACCELERATION_FACTOR * Time.deltaTime;
+		} else if (mTargetPosition.x < currentPosition.x) {
+			mAcceleration.x -= ACCELERATION_FACTOR * Time.deltaTime;
+		}
+
+		rigidbody2D.AddForce (mVelocity);
+		mVelocity += mAcceleration * Time.deltaTime;
+
+		if (mVelocity.x > MAX_SPEED.x) {
+			mVelocity.x = MAX_SPEED.x;
+		} else if (mVelocity.x < -MAX_SPEED.x) {
+			mVelocity.x = -MAX_SPEED.x;
+		}
+		
+		mAcceleration.x = 0;
 	}
 
 	// =========================
@@ -35,7 +53,6 @@ public class FollowerMovementScript : PeopleMovementScript
 	protected void Start ()
 	{
 		mFollowerManagerScript = mFollowerManager.GetComponent<FollowerManager> ();
-		mFollowerManagerScript.testMethod (gameObject);
 	}
 
 	// =========================
@@ -44,9 +61,9 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	protected void OnTriggerEnter2D (Collider2D other)
 	{
-		Debug.Log ("onTriggerEnter");
-
 		if (other.gameObject.tag.Equals ("player")) {
+			Debug.Log ("Player collided with follower!");
+			mFollowerManagerScript.addFollower (gameObject);
 			gameObject.layer = LayerMask.NameToLayer ("followingPeople");
 			gameObject.rigidbody2D.isKinematic = false;
 			gameObject.collider2D.isTrigger = false;

@@ -9,7 +9,8 @@ public class PlayerMovement : PeopleMovementScript
 	override public void handleJump ()
 	{
 		if (Input.GetButton ("Jump") && canJump) {
-			gameObject.rigidbody2D.AddForce (new Vector2 (0f, JUMP_POWER));
+			gameObject.rigidbody2D.velocity += new Vector2 (0f, JUMP_POWER);
+			//mVelocity = rigidbody2D.velocity;
 			canJump = false;
 		}
 	}
@@ -21,9 +22,9 @@ public class PlayerMovement : PeopleMovementScript
 			mAcceleration.x += Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.deltaTime;
 
 
-			if(!canJump){
-				mAcceleration.x=0;
-			}else if ((mAcceleration.x < 0 && mVelocity.x > 0) ||
+			if (!canJump) {
+				mAcceleration.x = 0;
+			} else if ((mAcceleration.x < 0 && mVelocity.x > 0) ||
 				(mAcceleration.x > 0 && mVelocity.x < 0)) {
 				mVelocity.x = 0;
 			}
@@ -31,15 +32,13 @@ public class PlayerMovement : PeopleMovementScript
 			mVelocity /= 1.2f;
 			anim.SetBool("walking", false);
 		}
+
+		rigidbody2D.velocity += mAcceleration * Time.deltaTime;
 		
-		Vector3 displacement = mVelocity * Time.deltaTime;
-		rigidbody2D.AddForce(mVelocity);
-		mVelocity += mAcceleration * Time.deltaTime;
-		
-		if (mVelocity.x > MAX_SPEED) {
-			mVelocity.x = MAX_SPEED;
-		} else if (mVelocity.x < -MAX_SPEED) {
-			mVelocity.x = -MAX_SPEED;
+		if (rigidbody2D.velocity.x > MAX_SPEED.x) {
+			rigidbody2D.velocity = new Vector2 (MAX_SPEED.x, rigidbody2D.velocity.y);
+		} else if (rigidbody2D.velocity.x < -MAX_SPEED.x) {
+			rigidbody2D.velocity = new Vector2 (-MAX_SPEED.x, rigidbody2D.velocity.y);
 		}
 		
 		mAcceleration.x = 0;

@@ -8,15 +8,16 @@ public abstract class PeopleMovementScript : MonoBehaviour
 	// ==================================================
 	
 	public const float ACCELERATION_FACTOR = 1000;
-	public const float MAX_SPEED = 6f;
-	public const float JUMP_POWER = 250f;
+	public Vector2 MAX_SPEED = new Vector2 (5, 5);
+
+	public const float JUMP_POWER = 5f;
 	
 	// ==================================================
 	// Variables
 	// ==================================================
 	
-	protected Vector3 mAcceleration = new Vector3 (0, 0, 0);
-	protected Vector3 mVelocity = new Vector3 (0, 0, 0);
+	protected Vector2 mAcceleration = new Vector2 (0, 0);
+	protected Vector2 mVelocity = new Vector2 (0, 0);
 	
 	// ==================================================
 	// Methods
@@ -32,7 +33,7 @@ public abstract class PeopleMovementScript : MonoBehaviour
 	
 	protected void Update ()
 	{
-		handleJump ();
 		handleMovement ();
+		handleJump ();
 	}
 }
