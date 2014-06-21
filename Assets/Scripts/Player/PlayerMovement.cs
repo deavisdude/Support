@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	// Variables
 	// ==================================================
 
+	public float speed = 100;
 	public Vector3 mAcceleration = new Vector3 (0, 0, 0);
 	private Vector3 mVelocity = new Vector3 (0, 0, 0);
 
@@ -27,19 +28,23 @@ public class PlayerMovement : MonoBehaviour
 	}
 
 	private void adjustAcceleration ()
-	{
-		if (Input.GetKey (KeyCode.RightArrow)) {
-			mAcceleration += mHorizontalAccelerationChange * Time.deltaTime;
-		} else if (Input.GetKey (KeyCode.LeftArrow)) {
-			mAcceleration -= mHorizontalAccelerationChange * Time.deltaTime;
-		} else {
-			mAcceleration *= 0;
-			mVelocity /= 2f * Time.deltaTime;
-		}
 
+	{
+		if(Input.GetAxis("Horizontal") != 0){
+			mAcceleration.x += Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+		} else{
+			mVelocity /= 1.2f;
+			mAcceleration.x=0;
+		}
 		Vector3 displacement = mVelocity * Time.deltaTime;
 		transform.position += displacement;
 		mVelocity += mAcceleration * Time.deltaTime;
+		if(mVelocity.x > 3.5f){
+			mVelocity.x=3.5f;
+		}else if(mVelocity.x <-3.5f){
+			mVelocity.x=-3.5f;
+		}
+		mAcceleration.x=0;
 	}
 
 	// =========================
