@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using SPSUGameJam;
 
 public abstract class PeopleMovementScript : MonoBehaviour
 {
@@ -8,16 +9,18 @@ public abstract class PeopleMovementScript : MonoBehaviour
 	// ==================================================
 	
 	public const float ACCELERATION_FACTOR = 1000;
-	public Vector2 MAX_SPEED = new Vector2 (5, 5);
+	protected Vector2 MAX_SPEED = new Vector2 (5, 5);
 
 	public const float JUMP_POWER = 5f;
+
+	public Direction currentDirection;
 	
 	// ==================================================
 	// Variables
 	// ==================================================
 	
-	protected Vector2 mAcceleration = new Vector2 (0, 0);
-	protected Vector2 mVelocity = new Vector2 (0, 0);
+	public Vector2 mAcceleration = new Vector2 (0, 0);
+	public Vector2 mVelocity = new Vector2 (0, 0);
 	
 	// ==================================================
 	// Methods
@@ -26,7 +29,16 @@ public abstract class PeopleMovementScript : MonoBehaviour
 	public abstract void handleJump ();
 	
 	public abstract void handleMovement ();
-	
+
+	private void assignDirection ()
+	{
+		if (mVelocity.x > 0) {
+			currentDirection = Direction.RIGHT;
+		} else if (mVelocity.x < 0) {
+			currentDirection = Direction.LEFT;
+		}
+	}
+
 	// =========================
 	// Lifecycle Methods
 	// =========================
@@ -35,5 +47,6 @@ public abstract class PeopleMovementScript : MonoBehaviour
 	{
 		handleMovement ();
 		handleJump ();
+		assignDirection ();
 	}
 }
