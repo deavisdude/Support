@@ -9,7 +9,7 @@ public class Obstacle : MonoBehaviour {
 	public void Shrink()
 	{
 		// shrink the obstacle
-
+		//animation.Play("Shrink");
 		if(timed)
 			StartCoroutine(GrowBack());
 	}
