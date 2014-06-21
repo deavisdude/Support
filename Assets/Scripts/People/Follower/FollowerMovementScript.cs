@@ -25,7 +25,6 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	override public void handleMovement ()
 	{
-		Debug.Log ("handleMovement");
 		if (mFollowPlayer) {
 			Vector3 playerPosition = mPlayer.transform.position;
 			transform.position = playerPosition;
