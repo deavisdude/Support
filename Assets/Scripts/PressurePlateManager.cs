@@ -4,33 +4,37 @@ using System.Collections;
 public class PressurePlateManager : MonoBehaviour {
 
 	public PressurePlate[] pressurePlates;
-	private bool allPlatesActive = false;
+	private static bool _allPlatesActive = false;
+	public static bool allPlatesActive
+	{
+		get { return _allPlatesActive; }
+	}
 	public Obstacle obstacle;
 
 	// Update is called once per frame
 	void Update () {
 
-		allPlatesActive = true;
+		_allPlatesActive = true;
 		foreach(PressurePlate plate in pressurePlates)
 		{
 			if(!plate.activated)
 			{
-				allPlatesActive = false;
+				_allPlatesActive = false;
 				break;
 			}
 		}
 
-		if(allPlatesActive)
+		if(_allPlatesActive)
 		{
 			// tell obstacle to shrink and start timer
 			obstacle.Shrink();
 
 			if(obstacle.timed)
 			{
-				for (int i = 0; i < pressurePlates.Length; i++)
+				for (int i = (pressurePlates.Length - 1); i >= 0; i--)
 				{
 					float plateDeactivationTime = obstacle.growBackWaitTime / pressurePlates.Length;
-					pressurePlates[i].Deactivate(plateDeactivationTime * i, plateDeactivationTime);
+					pressurePlates[i].DeactivateTimed(plateDeactivationTime * (pressurePlates.Length - i), plateDeactivationTime);
 				}
 			}
 		}
