@@ -43,5 +43,6 @@ public class FollowerMovementScript : PeopleMovementScript
 	protected void Start ()
 	{
 		mPlayer = GameObject.FindGameObjectWithTag ("Player");
+		Physics.IgnoreCollision (mPlayer.collider, collider);
 	}
 }
