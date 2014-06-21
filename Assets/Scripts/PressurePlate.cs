@@ -2,7 +2,7 @@
 using System.Collections;
 using Holoville.HOTween;
 
-public class PressurePlate : MonoBehaviour {
+public class PressurePlate : SPSUGameJamScript {
 
 	public bool activated = false;
 	public SpriteRenderer spriteRender;
@@ -19,6 +19,7 @@ public class PressurePlate : MonoBehaviour {
 		if(collider.gameObject.layer == LayerMask.NameToLayer("player") || collider.gameObject.layer == LayerMask.NameToLayer("followingPeople"))
 		{
 			activated = true;
+			audioManager.playPressurePlateActivatedSound();
 			spriteRender.color = Color.green;
 			StopAllCoroutines();
 		}
@@ -28,6 +29,7 @@ public class PressurePlate : MonoBehaviour {
 	{
 		if(!PressurePlateManager.allPlatesActive)
 			DeactivateNow();
+			audioManager.playPressurePlateDeactivedSound();
 	}
 
 	public void DeactivateTimed(float waitTime, float deactivateTimeLength)
