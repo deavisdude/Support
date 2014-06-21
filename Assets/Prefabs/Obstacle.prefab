@@ -28,7 +28,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 212: {fileID: 21200000}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: clothes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,8 +43,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 212: {fileID: 21200002}
+  - 95: {fileID: 9500000}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,6 +115,20 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 1.66999996, y: 2.31999993}
   m_Center: {x: -.0500000007, y: -.119999997}
+--- !u!95 &9500000
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ddc5314f8d224957815c986fcb9710e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
