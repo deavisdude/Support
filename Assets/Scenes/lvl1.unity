@@ -331,7 +331,7 @@ GameObject:
   - 23: {fileID: 386108483}
   - 61: {fileID: 386108487}
   - 50: {fileID: 386108484}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,7 +507,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 488693257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -.188444614, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1001999754}
@@ -791,7 +791,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc98f649c951dd42a4091401e40cad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 300
 --- !u!50 &964807824
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -803,7 +802,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
