@@ -7,7 +7,7 @@ public abstract class PeopleMovementScript : MonoBehaviour
 	// Constants
 	// ==================================================
 	
-	public const float accelerationFactor = 1000;
+	public const float ACCELERATION_FACTOR = 1000;
 	public const float MAX_SPEED = 10f;
 	
 	// ==================================================
