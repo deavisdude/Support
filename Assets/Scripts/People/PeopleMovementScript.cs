@@ -13,31 +13,32 @@ public abstract class PeopleMovementScript : MonoBehaviour
 
 	public const float JUMP_POWER = 5f;
 
-	public Direction currentDirection;
-	
 	// ==================================================
 	// Variables
 	// ==================================================
-	
+
+	public Direction currentDirection;
+
 	public Vector2 mAcceleration = new Vector2 (0, 0);
 	public Vector2 mVelocity = new Vector2 (0, 0);
 	
 	// ==================================================
 	// Methods
 	// ==================================================
-	
-	public abstract void handleJump ();
-	
-	public abstract void handleMovement ();
+
+	public void jump ()
+	{
+
+	}
 
 	private void assignDirection ()
 	{
 		if (rigidbody2D.velocity.x > 0) {
 			currentDirection = Direction.RIGHT;
-			transform.localScale = new Vector3(-1,1,1);
+			transform.localScale = new Vector3 (-1, 1, 1);
 		} else if (rigidbody2D.velocity.x < 0) {
 			currentDirection = Direction.LEFT;
-			transform.localScale = new Vector3(1,1,1);
+			transform.localScale = new Vector3 (1, 1, 1);
 		}
 	}
 
@@ -51,4 +52,12 @@ public abstract class PeopleMovementScript : MonoBehaviour
 		handleJump ();
 		assignDirection ();
 	}
+
+	// =========================
+	// Abstract Methods
+	// ======================
+	
+	public abstract void handleJump ();
+	
+	public abstract void handleMovement ();
 }

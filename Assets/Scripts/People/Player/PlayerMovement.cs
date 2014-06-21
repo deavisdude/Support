@@ -18,7 +18,7 @@ public class PlayerMovement : PeopleMovementScript
 	override public void handleMovement ()
 	{
 		if (Input.GetAxisRaw ("Horizontal") != 0) {
-			anim.SetBool("walking", true);
+			anim.SetBool ("walking", true);
 
 			mAcceleration.x = Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.deltaTime;
 
@@ -32,9 +32,9 @@ public class PlayerMovement : PeopleMovementScript
 			rigidbody2D.velocity += mAcceleration * Time.deltaTime;
 
 		} else {
-			if(canJump)
-				rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x * 0.8f, rigidbody2D.velocity.y);
-			anim.SetBool("walking", false);
+			if (canJump)
+				rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x * 0.8f, rigidbody2D.velocity.y);
+			anim.SetBool ("walking", false);
 		}
 		
 		if (rigidbody2D.velocity.x > MAX_SPEED.x) {
@@ -46,7 +46,8 @@ public class PlayerMovement : PeopleMovementScript
 
 	protected void OnCollisionEnter2D (Collision2D other)
 	{
-		if(other.gameObject.layer == LayerMask.NameToLayer("platform"))
+		if (other.gameObject.layer == LayerMask.NameToLayer ("platform")) {
 			canJump = true;
+		}
 	}
 }
