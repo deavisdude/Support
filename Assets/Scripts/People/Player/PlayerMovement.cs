@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerMovement : PeopleMovementScript
 {
-	public float jumpPower = 1000;
+	public float jumpPower = 400;
 	private bool canJump;
 
 	override public void handleJump ()
@@ -40,7 +40,7 @@ public class PlayerMovement : PeopleMovementScript
 		mAcceleration.x = 0;
 	}
 
-	protected void OnTriggerEnter2D (Collider2D other)
+	protected void OnCollisionEnter2D (Collision2D other)
 	{
 		canJump = true;
 	}
