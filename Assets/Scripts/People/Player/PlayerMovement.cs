@@ -30,7 +30,7 @@ public class PlayerMovement : PeopleMovementScript
 		}
 		
 		Vector3 displacement = mVelocity * Time.deltaTime;
-		transform.position += displacement;
+		rigidbody2D.AddForce(mVelocity);
 		mVelocity += mAcceleration * Time.deltaTime;
 		
 		if (mVelocity.x > MAX_SPEED) {
