@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 8992c39eb354d4817985b247ebd45be5
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - borderCubePrefab: {fileID: 100000, guid: 92b72330025924cb8851bef4a9acc05b, type: 2}
+  - cam: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
