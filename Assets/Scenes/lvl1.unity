@@ -796,6 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc98f649c951dd42a4091401e40cad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MAX_SPEED: {x: 5, y: 5}
 --- !u!50 &964807824
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -1025,6 +1026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ca718076c2f4d849f97116c4c8a031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MAX_SPEED: {x: 600, y: 600}
   mFollowerManager: {fileID: 100000, guid: e4ba6d952942c464eb3e91c10068c534, type: 2}
   mFollowerManagerScript: {fileID: 0}
 --- !u!50 &1203615993
@@ -1171,6 +1173,14 @@ Prefab:
     - target: {fileID: 100000, guid: ac056f851aae9431388678a2b3769657, type: 2}
       propertyPath: m_TagString
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: ac056f851aae9431388678a2b3769657, type: 2}
+      propertyPath: MAX_SPEED.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: ac056f851aae9431388678a2b3769657, type: 2}
+      propertyPath: MAX_SPEED.y
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac056f851aae9431388678a2b3769657, type: 2}
