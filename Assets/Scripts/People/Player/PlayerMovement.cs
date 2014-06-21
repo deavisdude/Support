@@ -3,13 +3,12 @@ using System.Collections;
 
 public class PlayerMovement : PeopleMovementScript
 {
-	public float jumpPower = 170;
 	private bool canJump;
 
 	override public void handleJump ()
 	{
 		if (Input.GetButtonDown ("Jump") && canJump) {
-			gameObject.rigidbody2D.AddForce (new Vector2 (0f, jumpPower));
+			gameObject.rigidbody2D.AddForce (new Vector2 (0f, JUMP_POWER));
 			canJump = false;
 		}
 	}
@@ -17,7 +16,7 @@ public class PlayerMovement : PeopleMovementScript
 	override public void handleMovement ()
 	{
 		if (Input.GetAxis ("Horizontal") != 0) {
-			mAcceleration.x += Input.GetAxis ("Horizontal") * accelerationFactor * Time.deltaTime;
+			mAcceleration.x += Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.deltaTime;
 
 			if ((mAcceleration.x < 0 && mVelocity.x > 0) ||
 				(mAcceleration.x > 0 && mVelocity.x < 0)) {

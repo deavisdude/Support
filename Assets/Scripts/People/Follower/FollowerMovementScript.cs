@@ -17,7 +17,7 @@ public class FollowerMovementScript : PeopleMovementScript
 	// ==================================================
 	// Methods
 	// ==================================================
-
+	
 	override public void handleJump ()
 	{
 
@@ -26,14 +26,36 @@ public class FollowerMovementScript : PeopleMovementScript
 	override public void handleMovement ()
 	{
 		if (mFollowPlayer) {
-			Vector3 playerPosition = mPlayer.transform.position;
+			if (isPlayerOnLeft ()) {
 
-			if (playerPosition.x > transform.position.x) {
+			} else if (isPlayerOnRight ()) {
+				
+			} else {
 
-			} else if (playerPosition.x < transform.position.x) {
-			
 			}
 		}
+	}
+
+	private bool isPlayerOnLeft ()
+	{
+		Vector3 playerPosition = mPlayer.transform.position;
+		
+		if (playerPosition.x < transform.position.x) {
+			return true;
+		}
+		
+		return false;
+	}
+
+	private bool isPlayerOnRight ()
+	{
+		Vector3 playerPosition = mPlayer.transform.position;
+
+		if (playerPosition.x > transform.position.x) {
+			return true;
+		}
+
+		return false;
 	}
 
 	// =========================
