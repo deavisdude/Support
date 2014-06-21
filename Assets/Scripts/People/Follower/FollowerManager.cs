@@ -4,16 +4,21 @@ using System.Collections;
 public class FollowerManager : MonoBehaviour
 {
 
-	GameObject[] mFollowers;
+	ArrayList mFollowers = new ArrayList ();
+
+	public void testMethod (GameObject followerObject)
+	{
+		if (!mFollowers.Contains (followerObject)) {
+			mFollowers.Add (followerObject);
+		}
+	}
 
 	// Use this for initialization
 	void Start ()
 	{
-		mFollowers = GameObject.FindGameObjectsWithTag ("follower");
-		Debug.Log (mFollowers.Length);
+
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
 	{
 	
