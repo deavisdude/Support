@@ -7,10 +7,23 @@ public class PlayerMovement : PeopleMovementScript
 	// ==================================================
 	// Variables
 	// ==================================================
+	
+	public static bool isBoy;
+	public Sprite boyClothes;
+	public Sprite girlClothes;
 
 	// ==================================================
 	// Methods
 	// ==================================================
+
+	void Start ()
+	{
+		if (isBoy) {
+			GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = boyClothes;
+		} else {
+			GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = girlClothes;
+		}
+	}
 
 	override public void handleJump ()
 	{
