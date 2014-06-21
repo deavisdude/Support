@@ -22,6 +22,8 @@ public class FollowerManager : MonoBehaviour
 		if (!mFollowers.Contains (followerObject)) {
 			mFollowers.Add (followerObject);
 			Debug.Log ("Follower has been added! There are now " + mFollowers.Count + " followers!");
+			FollowerMovementScript movementScript = followerObject.GetComponent<FollowerMovementScript> ();
+			movementScript.shouldFollow = true;
 		}
 	}
 

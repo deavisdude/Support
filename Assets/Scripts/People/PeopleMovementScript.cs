@@ -10,8 +10,9 @@ public abstract class PeopleMovementScript : MonoBehaviour
 	
 	public const float ACCELERATION_FACTOR = 1000;
 	protected Vector2 MAX_SPEED = new Vector2 (5, 5);
+	protected float MAX_JUMP = 7;
 
-	public const float JUMP_POWER = 5f;
+	public const float JUMP_POWER = .5f;
 
 	public Direction currentDirection;
 	
@@ -34,8 +35,10 @@ public abstract class PeopleMovementScript : MonoBehaviour
 	{
 		if (rigidbody2D.velocity.x > 0) {
 			currentDirection = Direction.RIGHT;
+			transform.localScale = new Vector3(-1,1,1);
 		} else if (rigidbody2D.velocity.x < 0) {
 			currentDirection = Direction.LEFT;
+			transform.localScale = new Vector3(1,1,1);
 		}
 	}
 
@@ -43,7 +46,7 @@ public abstract class PeopleMovementScript : MonoBehaviour
 	// Lifecycle Methods
 	// =========================
 	
-	protected void Update ()
+	protected void FixedUpdate ()
 	{
 		handleMovement ();
 		handleJump ();
