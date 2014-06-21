@@ -28,6 +28,7 @@ public class PlayerMovement : PeopleMovementScript
 				mVelocity.x = 0;
 			}
 		} else {
+			mAcceleration.x = 0;
 			mVelocity /= 1.2f;
 			anim.SetBool ("walking", false);
 		}
@@ -39,8 +40,6 @@ public class PlayerMovement : PeopleMovementScript
 		} else if (rigidbody2D.velocity.x < -MAX_SPEED.x) {
 			rigidbody2D.velocity = new Vector2 (-MAX_SPEED.x, rigidbody2D.velocity.y);
 		}
-		
-		mAcceleration.x = 0;
 	}
 
 	protected void OnCollisionEnter2D (Collision2D other)
