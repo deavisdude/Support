@@ -11,8 +11,8 @@ public class FollowerMovementScript : PeopleMovementScript
 	// Variables
 	// ==================================================
 
-	private bool mFollowPlayer = true;
-	private GameObject mPlayer;
+	public GameObject mFollowerManager;
+	public FollowerManager mFollowerManagerScript;
 
 	// ==================================================
 	// Methods
@@ -25,37 +25,7 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	override public void handleMovement ()
 	{
-		if (mFollowPlayer) {
-			if (isPlayerOnLeft ()) {
 
-			} else if (isPlayerOnRight ()) {
-				
-			} else {
-
-			}
-		}
-	}
-
-	private bool isPlayerOnLeft ()
-	{
-		Vector3 playerPosition = mPlayer.transform.position;
-		
-		if (playerPosition.x < transform.position.x) {
-			return true;
-		}
-		
-		return false;
-	}
-
-	private bool isPlayerOnRight ()
-	{
-		Vector3 playerPosition = mPlayer.transform.position;
-
-		if (playerPosition.x > transform.position.x) {
-			return true;
-		}
-
-		return false;
 	}
 
 	// =========================
@@ -64,6 +34,22 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	protected void Start ()
 	{
-		mPlayer = GameObject.FindGameObjectWithTag ("Player");
+		mFollowerManagerScript = mFollowerManager.GetComponent<FollowerManager> ();
+		mFollowerManagerScript.testMethod (gameObject);
+	}
+
+	// =========================
+	// Triggered Methods
+	// =========================
+
+	protected void OnTriggerEnter2D (Collider2D other)
+	{
+		Debug.Log ("onTriggerEnter");
+
+		if (other.gameObject.tag.Equals ("player")) {
+			gameObject.layer = LayerMask.NameToLayer ("followingPeople");
+			gameObject.rigidbody2D.isKinematic = false;
+			gameObject.collider2D.isTrigger = false;
+		}
 	}
 }
