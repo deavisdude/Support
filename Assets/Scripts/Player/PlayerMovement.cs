@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	// Variables
 	// ==================================================
 
-	public float speed = 100;
+	public float accelerationFactor = 100;
 	public Vector3 mAcceleration = new Vector3 (0, 0, 0);
 	private Vector3 mVelocity = new Vector3 (0, 0, 0);
 
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
 	{
 		if(Input.GetAxis("Horizontal") != 0){
-			mAcceleration.x += Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+			mAcceleration.x += Input.GetAxis("Horizontal") * accelerationFactor * Time.deltaTime;
 		} else{
 			mVelocity /= 1.2f;
 			mAcceleration.x=0;
