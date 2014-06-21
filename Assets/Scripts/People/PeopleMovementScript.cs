@@ -8,7 +8,7 @@ public abstract class PeopleMovementScript : MonoBehaviour
 	// ==================================================
 	
 	public const float ACCELERATION_FACTOR = 1000;
-	public Vector2 MAX_SPEED = new Vector2(.1f, .1f);
+	public Vector2 MAX_SPEED = new Vector2(5, 5);
 	public const float JUMP_POWER = 5f;
 	
 	// ==================================================
