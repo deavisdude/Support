@@ -20,10 +20,10 @@ public class FollowerManager : MonoBehaviour
 	public void addFollower (GameObject followerObject)
 	{
 		if (!mFollowers.Contains (followerObject)) {
-			mFollowers.Add (followerObject);
-			Debug.Log ("Follower has been added! There are now " + mFollowers.Count + " followers!");
 			FollowerMovementScript movementScript = followerObject.GetComponent<FollowerMovementScript> ();
 			movementScript.shouldFollow = true;
+			mFollowers.Add (followerObject);
+			Debug.Log ("Follower has been added! There are now " + mFollowers.Count + " followers!");
 		}
 	}
 

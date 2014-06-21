@@ -85,7 +85,7 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	protected void OnTriggerEnter2D (Collider2D other)
 	{
-		if (other.gameObject.tag.Equals ("player")) {
+		if (other.gameObject.tag.Equals ("Player")) {
 			mFollowerManagerScript.addFollower (gameObject);
 			gameObject.layer = LayerMask.NameToLayer ("followingPeople");
 			gameObject.rigidbody2D.isKinematic = false;
