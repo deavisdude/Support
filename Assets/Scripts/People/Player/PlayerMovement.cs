@@ -30,7 +30,6 @@ public class PlayerMovement : PeopleMovementScript
 			}
 
 			rigidbody2D.velocity += mAcceleration * Time.deltaTime;
-
 		} else {
 			if (canJump)
 				rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x * 0.8f, rigidbody2D.velocity.y);
