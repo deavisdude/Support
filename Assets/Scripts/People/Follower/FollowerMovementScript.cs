@@ -37,10 +37,10 @@ public class FollowerMovementScript : PeopleMovementScript
 		rigidbody2D.AddForce (mVelocity);
 		mVelocity += mAcceleration * Time.deltaTime;
 
-		if (mVelocity.x > MAX_SPEED) {
-			mVelocity.x = MAX_SPEED;
-		} else if (mVelocity.x < -MAX_SPEED) {
-			mVelocity.x = -MAX_SPEED;
+		if (mVelocity.x > MAX_SPEED.x) {
+			mVelocity.x = MAX_SPEED.x;
+		} else if (mVelocity.x < -MAX_SPEED.x) {
+			mVelocity.x = -MAX_SPEED.x;
 		}
 		
 		mAcceleration.x = 0;
