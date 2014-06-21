@@ -5,6 +5,7 @@ using SPSUGameJam;
 public class PlayerMovement : PeopleMovementScript
 {
 	private bool canJump;
+	public Animator anim;
 
 	override public void handleJump ()
 	{
@@ -18,6 +19,7 @@ public class PlayerMovement : PeopleMovementScript
 	override public void handleMovement ()
 	{
 		if (Input.GetAxis ("Horizontal") != 0) {
+			anim.SetBool("walking", true);
 			mAcceleration.x += Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.deltaTime;
 
 
@@ -29,6 +31,7 @@ public class PlayerMovement : PeopleMovementScript
 			}
 		} else {
 			mVelocity /= 1.2f;
+			anim.SetBool("walking", false);
 		}
 
 		rigidbody2D.velocity += mAcceleration * Time.deltaTime;
