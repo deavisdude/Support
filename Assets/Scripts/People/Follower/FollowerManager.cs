@@ -18,7 +18,10 @@ public class FollowerManager : MonoBehaviour
 
 	public void addFollower (GameObject followerObject)
 	{
-		
+		Debug.Log (mFollowers.Count);
+		followerObject.GetComponent<FollowerMovementScript> ().mTargetPosition = mPlayer.transform.position;
+		mFollowers.Add (followerObject);
+		Debug.Log (mFollowers.Count);
 	}
 
 	// ====================
