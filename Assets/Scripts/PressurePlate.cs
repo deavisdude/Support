@@ -16,9 +16,12 @@ public class PressurePlate : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D collider)
 	{
-		activated = true;
-		spriteRender.color = Color.green;
-		StopAllCoroutines();
+		if(collider.gameObject.layer == LayerMask.NameToLayer("player") || collider.gameObject.layer == LayerMask.NameToLayer("followingPeople"))
+		{
+			activated = true;
+			spriteRender.color = Color.green;
+			StopAllCoroutines();
+		}
 	}
 
 	void OnTriggerExit2D (Collider2D collider)
