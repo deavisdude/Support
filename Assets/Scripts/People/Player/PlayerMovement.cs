@@ -8,7 +8,8 @@ public class PlayerMovement : PeopleMovementScript
 	override public void handleJump ()
 	{
 		if (Input.GetButton ("Jump") && canJump) {
-			gameObject.rigidbody2D.AddForce (new Vector2 (0f, JUMP_POWER));
+			gameObject.rigidbody2D.velocity += new Vector2 (0f, JUMP_POWER);
+			//mVelocity = rigidbody2D.velocity;
 			canJump = false;
 		}
 	}
@@ -28,15 +29,14 @@ public class PlayerMovement : PeopleMovementScript
 		} else {
 			mVelocity /= 1.2f;
 		}
+
+		rigidbody2D.velocity += mAcceleration * Time.deltaTime;
+		//rigidbody2D.velocity = mVelocity;
 		
-		Vector3 displacement = mVelocity * Time.deltaTime;
-		rigidbody2D.AddForce(mVelocity);
-		mVelocity += mAcceleration * Time.deltaTime;
-		
-		if (mVelocity.x > MAX_SPEED) {
-			mVelocity.x = MAX_SPEED;
-		} else if (mVelocity.x < -MAX_SPEED) {
-			mVelocity.x = -MAX_SPEED;
+		if (rigidbody2D.velocity.x > MAX_SPEED.x) {
+			rigidbody2D.velocity = new Vector2(MAX_SPEED.x, rigidbody2D.velocity.y);
+		} else if (rigidbody2D.velocity.x < -MAX_SPEED.x) {
+			rigidbody2D.velocity = new Vector2(-MAX_SPEED.x, rigidbody2D.velocity.y);
 		}
 		
 		mAcceleration.x = 0;
