@@ -5,6 +5,7 @@ public class PressurePlateManager : MonoBehaviour {
 
 	public PressurePlate[] pressurePlates;
 	private bool allPlatesActive = false;
+	public Obstacle obstacle;
 
 	// Update is called once per frame
 	void Update () {
@@ -22,6 +23,16 @@ public class PressurePlateManager : MonoBehaviour {
 		if(allPlatesActive)
 		{
 			// tell obstacle to shrink and start timer
+			obstacle.Shrink();
+
+			if(obstacle.timed)
+			{
+				for (int i = 0; i < pressurePlates.Length; i++)
+				{
+					float plateDeactivationTime = obstacle.growBackWaitTime / pressurePlates.Length;
+					pressurePlates[i].Deactivate(plateDeactivationTime * i, plateDeactivationTime);
+				}
+			}
 		}
 	}
 }
