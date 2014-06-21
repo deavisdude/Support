@@ -7,13 +7,13 @@ public class PlayerMovement : MonoBehaviour
 	// Constants
 	// ==================================================
 
-	private Vector3 mHorizontalAccelerationChange = new Vector3 (30, 0, 0);
+	public const float accelerationFactor = 1000;
+	public const float MAX_SPEED = 10f;
 
 	// ==================================================
 	// Variables
 	// ==================================================
-
-	public float accelerationFactor = 100;
+	
 	public Vector3 mAcceleration = new Vector3 (0, 0, 0);
 	private Vector3 mVelocity = new Vector3 (0, 0, 0);
 
@@ -22,29 +22,30 @@ public class PlayerMovement : MonoBehaviour
 	// ==================================================
 
 
-	private void jump ()
+	private void handleJump ()
 	{
 
 	}
 
 	private void adjustAcceleration ()
-
 	{
-		if(Input.GetAxis("Horizontal") != 0){
-			mAcceleration.x += Input.GetAxis("Horizontal") * accelerationFactor * Time.deltaTime;
-		} else{
+		if (Input.GetAxis ("Horizontal") != 0) {
+			mAcceleration.x += Input.GetAxis ("Horizontal") * accelerationFactor * Time.deltaTime;
+		} else {
 			mVelocity /= 1.2f;
-			mAcceleration.x=0;
 		}
+
 		Vector3 displacement = mVelocity * Time.deltaTime;
 		transform.position += displacement;
 		mVelocity += mAcceleration * Time.deltaTime;
-		if(mVelocity.x > 3.5f){
-			mVelocity.x=3.5f;
-		}else if(mVelocity.x <-3.5f){
-			mVelocity.x=-3.5f;
+
+		if (mVelocity.x > MAX_SPEED) {
+			mVelocity.x = MAX_SPEED;
+		} else if (mVelocity.x < -MAX_SPEED) {
+			mVelocity.x = -MAX_SPEED;
 		}
-		mAcceleration.x=0;
+
+		mAcceleration.x = 0;
 	}
 
 	// =========================
@@ -53,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
 	
 	protected void Update ()
 	{
+		handleJump ();
 		adjustAcceleration ();
 	}
 }
