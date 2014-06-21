@@ -11,7 +11,6 @@ public class PlayerMovement : PeopleMovementScript
 	{
 		if (Input.GetButton ("Jump") && canJump) {
 			gameObject.rigidbody2D.velocity += new Vector2 (0f, JUMP_POWER);
-			//mVelocity = rigidbody2D.velocity;
 			canJump = false;
 		}
 	}
@@ -19,9 +18,8 @@ public class PlayerMovement : PeopleMovementScript
 	override public void handleMovement ()
 	{
 		if (Input.GetAxis ("Horizontal") != 0) {
-			anim.SetBool("walking", true);
+			anim.SetBool ("walking", true);
 			mAcceleration.x += Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.deltaTime;
-
 
 			if (!canJump) {
 				mAcceleration.x = 0;
@@ -31,7 +29,7 @@ public class PlayerMovement : PeopleMovementScript
 			}
 		} else {
 			mVelocity /= 1.2f;
-			anim.SetBool("walking", false);
+			anim.SetBool ("walking", false);
 		}
 
 		rigidbody2D.velocity += mAcceleration * Time.deltaTime;

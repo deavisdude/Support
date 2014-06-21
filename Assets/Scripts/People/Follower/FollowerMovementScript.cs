@@ -6,7 +6,9 @@ public class FollowerMovementScript : PeopleMovementScript
 	// ==================================================
 	// Constants
 	// ==================================================
-	
+
+	private const float TARGET_POSITION_LEEWAY = .5f;
+
 	// ==================================================
 	// Variables
 	// ==================================================
@@ -29,12 +31,11 @@ public class FollowerMovementScript : PeopleMovementScript
 		Vector3 currentPosition = transform.position;
 
 		if (mTargetPosition.x > currentPosition.x) {
-			mAcceleration.x += ACCELERATION_FACTOR * Time.deltaTime;
+			mAcceleration.x += ACCELERATION_FACTOR * 2 * Time.deltaTime;
 		} else if (mTargetPosition.x < currentPosition.x) {
-			mAcceleration.x -= ACCELERATION_FACTOR * Time.deltaTime;
+			mAcceleration.x -= ACCELERATION_FACTOR * 2 * Time.deltaTime;
 		}
 
-		Debug.Log ("current velocity: " + mVelocity);
 		rigidbody2D.AddForce (mVelocity);
 		mVelocity += mAcceleration * Time.deltaTime;
 
@@ -43,8 +44,22 @@ public class FollowerMovementScript : PeopleMovementScript
 		} else if (mVelocity.x < -MAX_SPEED.x) {
 			mVelocity.x = -MAX_SPEED.x;
 		}
+
+		if (isNearTargetPosition ()) {
+			mVelocity.x = 0;
+		}
 		
 		mAcceleration.x = 0;
+	}
+
+	private bool isNearTargetPosition ()
+	{
+		if (transform.position.x > mTargetPosition.x - TARGET_POSITION_LEEWAY 
+			&& transform.position.x < mTargetPosition.x + TARGET_POSITION_LEEWAY) {
+			return true;
+		}
+
+		return false;
 	}
 
 	// =========================

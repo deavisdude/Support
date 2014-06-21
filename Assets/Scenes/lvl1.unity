@@ -251,7 +251,7 @@ GameObject:
   - 4: {fileID: 169284218}
   - 212: {fileID: 169284219}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: clothes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,7 +304,7 @@ GameObject:
   - 114: {fileID: 386108488}
   - 212: {fileID: 386108483}
   - 61: {fileID: 386108487}
-  m_Layer: 14
+  m_Layer: 15
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 386108482}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Size: {x: 2.55999994, y: 2.55999994}
   m_Center: {x: 0, y: 0}
 --- !u!114 &386108488
@@ -545,8 +545,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 572439696}
   - 212: {fileID: 572439697}
+  - 95: {fileID: 572439698}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -587,6 +588,21 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 4594e7701058c4f41a1157aca31c499f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!95 &572439698
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9500000, guid: 56973896c262e254096c40f1f357c0da,
+    type: 2}
+  m_PrefabInternal: {fileID: 111584813}
+  m_GameObject: {fileID: 572439695}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ddc5314f8d224957815c986fcb9710e, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1001 &649325021
 Prefab:
   m_ObjectHideFlags: 0
@@ -865,8 +881,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc98f649c951dd42a4091401e40cad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDirection: 0
   mAcceleration: {x: 0, y: 0}
   mVelocity: {x: 0, y: 0}
+  anim: {fileID: 0}
 --- !u!50 &964807824
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -1097,6 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ca718076c2f4d849f97116c4c8a031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDirection: 0
   mAcceleration: {x: 0, y: 0}
   mVelocity: {x: 0, y: 0}
   mFollowerManager: {fileID: 100000, guid: e4ba6d952942c464eb3e91c10068c534, type: 2}

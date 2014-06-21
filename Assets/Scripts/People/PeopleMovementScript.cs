@@ -32,9 +32,9 @@ public abstract class PeopleMovementScript : MonoBehaviour
 
 	private void assignDirection ()
 	{
-		if (mVelocity.x > 0) {
+		if (rigidbody2D.velocity.x > 0) {
 			currentDirection = Direction.RIGHT;
-		} else if (mVelocity.x < 0) {
+		} else if (rigidbody2D.velocity.x < 0) {
 			currentDirection = Direction.LEFT;
 		}
 	}
