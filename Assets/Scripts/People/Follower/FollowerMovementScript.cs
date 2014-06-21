@@ -11,7 +11,7 @@ public class FollowerMovementScript : PeopleMovementScript
 	// Variables
 	// ==================================================
 
-	private bool mFollowPlayer = false;
+	private bool mFollowPlayer = true;
 	private GameObject mPlayer;
 
 	// ==================================================
@@ -25,7 +25,11 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	override public void handleMovement ()
 	{
-
+		Debug.Log ("handleMovement");
+		if (mFollowPlayer) {
+			Vector3 playerPosition = mPlayer.transform.position;
+			transform.position = playerPosition;
+		}
 	}
 
 	// =========================
