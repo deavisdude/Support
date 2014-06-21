@@ -30,7 +30,10 @@ public class SPSUAudioManager : MonoBehaviour
 	
 	public void playRainLoop ()
 	{
-		AudioSource.PlayClipAtPoint (mRainLoop, transform.position);
+		AudioSource rainSource = gameObject.AddComponent<AudioSource> ();
+		rainSource.clip = mRainLoop;
+		rainSource.loop = true;
+		rainSource.Play ();
 	}
 
 	// =========================
@@ -64,7 +67,7 @@ public class SPSUAudioManager : MonoBehaviour
 	
 	public void playJumpSound ()
 	{
-		AudioSource.PlayClipAtPoint (mJump, transform.position);
+		AudioSource.PlayClipAtPoint (mJump, transform.position, .5f);
 	}
 	
 	public void playMenuSound ()
@@ -94,5 +97,6 @@ public class SPSUAudioManager : MonoBehaviour
 	protected void Start ()
 	{
 		GameObject.DontDestroyOnLoad (gameObject);
+		playRainLoop ();
 	}
 }

@@ -17,7 +17,7 @@ public class SPSUGameJamScript : MonoBehaviour
 	// Lifecycle Methods
 	// =========================
 
-	void Start ()
+	public void Start ()
 	{
 		GameObject audioManagerGameObject = GameObject.FindGameObjectWithTag ("audioManager");
 		audioManager = audioManagerGameObject.GetComponent<SPSUAudioManager> ();

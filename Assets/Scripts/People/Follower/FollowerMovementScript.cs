@@ -33,7 +33,7 @@ public class FollowerMovementScript : PeopleMovementScript
 		if (shouldFollow) {
 			float velocityX = 0;
 
-			if (!onTarget ()) {
+			if (!isOnTarget ()) {
 				if (isFarFromTargetPosition ()) {
 					velocityX = MAX_SPEED.x;
 				} else if (isNearTargetPosition ()) {
@@ -65,7 +65,7 @@ public class FollowerMovementScript : PeopleMovementScript
 		return false;
 	}
 
-	private bool onTarget ()
+	private bool isOnTarget ()
 	{
 		if (transform.position.x > mTargetPosition.x - TARGET_POSITION_VALID_OFFSET 
 			&& transform.position.x < mTargetPosition.x + TARGET_POSITION_VALID_OFFSET) {
@@ -74,10 +74,6 @@ public class FollowerMovementScript : PeopleMovementScript
 		
 		return false;
 	}
-
-	// =========================
-	// Lifecycle Methods
-	// =========================
 
 	// =========================
 	// Triggered Methods

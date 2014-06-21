@@ -7,23 +7,21 @@ public class PlayerMovement : PeopleMovementScript
 	// ==================================================
 	// Variables
 	// ==================================================
-
+	
 	public static bool isBoy;
 	public Sprite boyClothes;
 	public Sprite girlClothes;
-	private bool canJump;
-	private bool jumping = false;
-	private float jumpMultiplier;
 
 	// ==================================================
 	// Methods
 	// ==================================================
 
-	void Start(){
-		if(isBoy){
-			GameObject.Find("clothes").GetComponent<SpriteRenderer>().sprite=boyClothes;
-		}else{
-			GameObject.Find("clothes").GetComponent<SpriteRenderer>().sprite=girlClothes;
+	void Start ()
+	{
+		if (isBoy) {
+			GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = boyClothes;
+		} else {
+			GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = girlClothes;
 		}
 	}
 
@@ -39,18 +37,6 @@ public class PlayerMovement : PeopleMovementScript
 			jumpMultiplier *= .75f;
 			canJump = false;
 			jumping = true;
-		}
-
-		if (jumping && Input.GetButtonUp ("Jump")) {
-			jumping = false;
-		}
-
-		if (rigidbody2D.velocity.y > MAX_JUMP) {
-			jumping = false;
-		}
-
-		if (!jumping && rigidbody2D.velocity.y < 0) {
-			rigidbody2D.velocity -= new Vector2 (0f, JUMP_POWER);
 		}
 	}
 
