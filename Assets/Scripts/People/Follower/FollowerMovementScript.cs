@@ -35,7 +35,6 @@ public class FollowerMovementScript : PeopleMovementScript
 	protected void Start ()
 	{
 		mFollowerManagerScript = mFollowerManager.GetComponent<FollowerManager> ();
-		mFollowerManagerScript.testMethod (gameObject);
 	}
 
 	// =========================
@@ -50,6 +49,7 @@ public class FollowerMovementScript : PeopleMovementScript
 			gameObject.layer = LayerMask.NameToLayer ("followingPeople");
 			gameObject.rigidbody2D.isKinematic = false;
 			gameObject.collider2D.isTrigger = false;
+			mFollowerManagerScript.addFollower (gameObject);
 		}
 	}
 }

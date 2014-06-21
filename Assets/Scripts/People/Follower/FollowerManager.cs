@@ -3,21 +3,28 @@ using System.Collections;
 
 public class FollowerManager : MonoBehaviour
 {
+	// ==================================================
+	// Variables
+	// ==================================================
+
+	public GameObject mPlayer;
 
 	ArrayList mFollowers = new ArrayList ();
 
-	public void testMethod (GameObject followerObject)
+	// ==================================================
+	// Methods
+	// ==================================================
+
+	public void addFollower (GameObject followerObject)
 	{
 		if (!mFollowers.Contains (followerObject)) {
 			mFollowers.Add (followerObject);
 		}
 	}
 
-	// Use this for initialization
-	void Start ()
-	{
-
-	}
+	// ====================
+	// Lifecycle Methods
+	// ====================
 
 	void Update ()
 	{
