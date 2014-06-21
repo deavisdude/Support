@@ -345,6 +345,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 53576278e797dbf409085a18d8ac067c, type: 2}
+      propertyPath: m_Name
+      value: Plate2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53576278e797dbf409085a18d8ac067c, type: 2}
   m_RootGameObject: {fileID: 827977421}
@@ -362,7 +366,7 @@ GameObject:
   - 65: {fileID: 827977423}
   - 23: {fileID: 827977422}
   m_Layer: 0
-  m_Name: Plate
+  m_Name: Plate2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -546,7 +550,7 @@ GameObject:
   - 65: {fileID: 1001999752}
   - 23: {fileID: 1001999751}
   m_Layer: 0
-  m_Name: Plate
+  m_Name: Plate1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,6 +786,10 @@ Prefab:
     - target: {fileID: 400000, guid: 53576278e797dbf409085a18d8ac067c, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 53576278e797dbf409085a18d8ac067c, type: 2}
+      propertyPath: m_Name
+      value: Plate1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53576278e797dbf409085a18d8ac067c, type: 2}
