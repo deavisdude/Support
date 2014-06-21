@@ -4,16 +4,26 @@ using System.Collections;
 public class PressurePlate : MonoBehaviour {
 
 	public bool activated = false;
+	public SpriteRenderer spriteRender;
 
-	void OnCollisionEnter2D (Collision2D collision)
+	void Awake ()
+	{
+		if(spriteRender == null)
+			spriteRender = GetComponent<SpriteRenderer>();
+	}
+
+
+	void OnTriggerEnter2D (Collider2D collider)
 	{
 		activated = true;
+		spriteRender.color = Color.green;
 		StopAllCoroutines();
 	}
 
-	void OnCollisionExit2D (Collision2D collision)
+	void OnTriggerExit2D (Collider2D collider)
 	{
 		activated = false;
+		spriteRender.color = Color.white;
 	}
 
 	public void Deactivate(float waitTime, float deactivateTimeLength)
