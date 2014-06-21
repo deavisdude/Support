@@ -34,6 +34,7 @@ public class FollowerMovementScript : PeopleMovementScript
 			mAcceleration.x -= ACCELERATION_FACTOR * Time.deltaTime;
 		}
 
+		Debug.Log ("current velocity: " + mVelocity);
 		rigidbody2D.AddForce (mVelocity);
 		mVelocity += mAcceleration * Time.deltaTime;
 
@@ -50,11 +51,6 @@ public class FollowerMovementScript : PeopleMovementScript
 	// Lifecycle Methods
 	// =========================
 
-	protected void Start ()
-	{
-		mFollowerManagerScript = mFollowerManager.GetComponent<FollowerManager> ();
-	}
-
 	// =========================
 	// Triggered Methods
 	// =========================
@@ -62,7 +58,6 @@ public class FollowerMovementScript : PeopleMovementScript
 	protected void OnTriggerEnter2D (Collider2D other)
 	{
 		if (other.gameObject.tag.Equals ("player")) {
-			Debug.Log ("Player collided with follower!");
 			mFollowerManagerScript.addFollower (gameObject);
 			gameObject.layer = LayerMask.NameToLayer ("followingPeople");
 			gameObject.rigidbody2D.isKinematic = false;
