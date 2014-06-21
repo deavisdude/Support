@@ -1,18 +1,24 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
+	// ==================================================
+	// Variables
+	// ==================================================
 
-		// Use this for initialization
-		void Start ()
-		{
+	// ==================================================
+	// Methods
+	// ==================================================
+
+	void Start ()
+	{
 	
-		}
+	}
+
+	// Update is called once per frame
+	void Update ()
+	{
 	
-		// Update is called once per frame
-		void Update ()
-		{
-	
-		}
+	}
 }
