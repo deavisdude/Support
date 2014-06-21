@@ -10,6 +10,7 @@ public class FollowerManager : MonoBehaviour
 	void Start ()
 	{
 		mFollowers = GameObject.FindGameObjectsWithTag ("follower");
+		Debug.Log (mFollowers.Length);
 	}
 	
 	// Update is called once per frame
