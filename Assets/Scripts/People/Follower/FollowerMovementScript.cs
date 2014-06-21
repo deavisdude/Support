@@ -29,7 +29,7 @@ public class FollowerMovementScript : PeopleMovementScript
 			if (isPlayerOnLeft ()) {
 
 			} else if (isPlayerOnRight ()) {
-
+				
 			} else {
 
 			}

@@ -91,10 +91,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a16987d70d7e74f25b73c85d64f5e74e, type: 3}
+  m_Script: {fileID: 11500000, guid: fcc98f649c951dd42a4091401e40cad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 1000
+  jumpPower: 300
 --- !u!212 &21200002
 SpriteRenderer:
   m_ObjectHideFlags: 1
