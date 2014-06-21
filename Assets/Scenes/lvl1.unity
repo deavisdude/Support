@@ -84,7 +84,7 @@ GameObject:
   - 4: {fileID: 60558679}
   - 212: {fileID: 60558678}
   m_Layer: 0
-  m_Name: level1
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1704,7 +1704,7 @@ Transform:
   m_PrefabInternal: {fileID: 1723909852}
   m_GameObject: {fileID: 1546563257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0596534, y: -.366795242, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1851,11 +1851,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: e4ba6d952942c464eb3e91c10068c534, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.0596534
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e4ba6d952942c464eb3e91c10068c534, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -.366795242
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e4ba6d952942c464eb3e91c10068c534, type: 2}
       propertyPath: m_LocalPosition.z
