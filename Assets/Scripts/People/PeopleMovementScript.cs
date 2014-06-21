@@ -24,6 +24,10 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 	
 	public Vector2 mAcceleration = new Vector2 (0, 0);
 	public Vector2 mVelocity = new Vector2 (0, 0);
+
+	protected bool canJump;
+	protected bool jumping = false;
+	protected float jumpMultiplier;
 	
 	// ==================================================
 	// Methods
@@ -61,6 +65,19 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 	{
 		handleMovement ();
 		handleJump ();
+
+		if (jumping && Input.GetButtonUp ("Jump")) {
+			jumping = false;
+		}
+		
+		if (rigidbody2D.velocity.y > MAX_JUMP) {
+			jumping = false;
+		}
+		
+		if (!jumping && rigidbody2D.velocity.y < 0) {
+			rigidbody2D.velocity -= new Vector2 (0f, JUMP_POWER);
+		}
+
 		assignDirection ();
 		determineAnimation ();
 	}
