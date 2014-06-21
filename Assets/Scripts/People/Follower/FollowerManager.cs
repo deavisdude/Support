@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using SPSUGameJam;
 
 public class FollowerManager : MonoBehaviour
 {
@@ -26,7 +27,11 @@ public class FollowerManager : MonoBehaviour
 
 	private Vector3 getTargetPositionForIndexFollower (int i)
 	{
-
+		PlayerMovement movementScript = mPlayer.GetComponent<PlayerMovement> ();
+		Direction directionOfPlayer = movementScript.currentDirection;
+		float xDisplacement = 2.5f * (i + 1) * ((directionOfPlayer == Direction.RIGHT) ? -1f : 1f);
+		Vector3 targetPosition = new Vector3 (xDisplacement, 0, 0);
+		return targetPosition;
 	}
 
 	// ====================
@@ -38,7 +43,7 @@ public class FollowerManager : MonoBehaviour
 		for (int i = 0; i < mFollowers.Count; i ++) {
 			GameObject follower = (GameObject)mFollowers [i];
 			FollowerMovementScript movementScript = follower.GetComponent<FollowerMovementScript> ();
-			movementScript.mTargetPosition = getTargetPositionForIndex (i);
+			movementScript.mTargetPosition = getTargetPositionForIndexFollower (i);
 		}
 	}
 }
