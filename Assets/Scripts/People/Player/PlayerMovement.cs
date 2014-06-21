@@ -3,12 +3,12 @@ using System.Collections;
 
 public class PlayerMovement : PeopleMovementScript
 {
-	public float jumpPower = 400;
+	public float jumpPower = 170;
 	private bool canJump;
 
 	override public void handleJump ()
 	{
-		if (Input.GetButtonUp ("Jump") && canJump) {
+		if (Input.GetButtonDown ("Jump") && canJump) {
 			gameObject.rigidbody2D.AddForce (new Vector2 (0f, jumpPower));
 			canJump = false;
 		}
