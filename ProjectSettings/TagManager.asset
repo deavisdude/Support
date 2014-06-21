@@ -3,6 +3,9 @@
 --- !u!78 &1
 TagManager:
   tags:
+  - player
+  - follower
+  - followerManager
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -17,9 +20,9 @@ TagManager:
   User Layer 10: screen collider
   User Layer 11: obstacle
   User Layer 12: player
-  User Layer 13: person
-  User Layer 14: exit
-  User Layer 15: 
+  User Layer 13: followingPeople
+  User Layer 14: nonFollowingPeople
+  User Layer 15: exit
   User Layer 16: 
   User Layer 17: 
   User Layer 18: 
