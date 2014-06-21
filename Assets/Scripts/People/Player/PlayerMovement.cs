@@ -5,14 +5,34 @@ using SPSUGameJam;
 public class PlayerMovement : PeopleMovementScript
 {
 	private bool canJump;
+	private bool jumping = false;
+	private float jumpMultiplier;
 	public Animator anim;
 
 	override public void handleJump ()
 	{
-		if (Input.GetButton ("Jump") && canJump) {
-			rigidbody2D.velocity += new Vector2 (0f, JUMP_POWER);
+		if (Input.GetButton ("Jump") && (canJump || jumping)) {
+
+			if(canJump)
+			{
+				jumpMultiplier = 5;
+				mAcceleration.x *= .5f;
+			}
+
+			rigidbody2D.velocity += new Vector2 (0f, JUMP_POWER * jumpMultiplier);
+			jumpMultiplier *= .75f;
 			canJump = false;
+			jumping = true;
 		}
+
+		if(jumping && Input.GetButtonUp("Jump"))
+			jumping = false;
+
+		if(rigidbody2D.velocity.y > MAX_JUMP)
+			jumping = false;
+
+		if(!jumping && rigidbody2D.velocity.y < 0)
+			rigidbody2D.velocity -= new Vector2 (0f, JUMP_POWER);
 	}
 
 	override public void handleMovement ()
@@ -22,9 +42,7 @@ public class PlayerMovement : PeopleMovementScript
 
 			mAcceleration.x = Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.deltaTime;
 
-			if (!canJump) {
-				mAcceleration.x = 0;
-			} else if ((mAcceleration.x < 0 && mVelocity.x > 0) ||
+			if ((mAcceleration.x < 0 && mVelocity.x > 0) ||
 				(mAcceleration.x > 0 && mVelocity.x < 0)) {
 				mVelocity.x = 0;
 			}
