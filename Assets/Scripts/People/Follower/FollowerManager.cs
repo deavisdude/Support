@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SPSUGameJam;
 
-public class FollowerManager : MonoBehaviour
+public class FollowerManager : SPSUGameJamScript
 {
 	// ==================================================
 	// Variables
@@ -19,11 +19,20 @@ public class FollowerManager : MonoBehaviour
 
 	public void addFollower (GameObject followerObject)
 	{
+		this.addFollower (followerObject, true);
+	}
+
+	public void addFollower (GameObject followerObject, bool triggerNextMusicLoop)
+	{
 		if (!mFollowers.Contains (followerObject)) {
 			FollowerMovementScript movementScript = followerObject.GetComponent<FollowerMovementScript> ();
 			movementScript.shouldFollow = true;
 			mFollowers.Add (followerObject);
 			Debug.Log ("Follower has been added! There are now " + mFollowers.Count + " followers!");
+
+			if (triggerNextMusicLoop) {
+				audioManager.incrementTrackIndex ();
+			}
 		}
 	}
 

@@ -98,7 +98,7 @@ public class FollowerMovementScript : PeopleMovementScript
 
 		if (shouldFollow) {
 			Debug.Log ("shouldFollowOnStart");
-			mFollowerManagerScript.addFollower (gameObject);
+			mFollowerManagerScript.addFollower (gameObject, false);
 		}
 	}
 	// =========================

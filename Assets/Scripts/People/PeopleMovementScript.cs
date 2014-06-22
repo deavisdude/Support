@@ -35,11 +35,9 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 
 	public void jump ()
 	{
-//		Debug.Log ("jump");
 		if (!jumping && isOnFloor) {
 			Vector2 addedForce = new Vector2 (0f, 400f);
-			if(!collidingWithSomething)
-			{
+			if (!collidingWithSomething) {
 				rigidbody2D.AddForce (addedForce);
 				jumping = true;
 			}
@@ -79,8 +77,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 				jumpMultiplier = 5;
 			}
 
-			if(!collidingWithSomething)
-			{
+			if (!collidingWithSomething) {
 				rigidbody2D.velocity += new Vector2 (0f, JUMP_POWER * jumpMultiplier);
 				jumpMultiplier *= .75f;
 				isOnFloor = false;
@@ -103,7 +100,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 
 	private void determineAnimation ()
 	{
-		if (Mathf.Abs(rigidbody2D.velocity.x) > 0.5f) {
+		if (Mathf.Abs (rigidbody2D.velocity.x) > 0.5f) {
 			walkingAnimation.SetBool ("walking", true);
 		} else {
 			walkingAnimation.SetBool ("walking", false);
@@ -133,8 +130,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 			if (!isOnFloor) {
 				onLandOnFloor ();
 			}
-		}
-		else
+		} else
 			collidingWithSomething = true;
 	}
 
@@ -144,8 +140,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 			if (isOnFloor) {
 				isOnFloor = false;
 			}
-		}
-		else
+		} else
 			collidingWithSomething = false;
 	}
 
