@@ -315,64 +315,7 @@ Transform:
   m_LocalScale: {x: 1.3948257, y: 1.39482415, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!1 &1108138863
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
-  m_PrefabInternal: {fileID: 1283972674}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1108138865}
-  - 114: {fileID: 1108138864}
-  m_Layer: 0
-  m_Name: Audio Manager
-  m_TagString: audioManager
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1108138864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1,
-    type: 2}
-  m_PrefabInternal: {fileID: 1283972674}
-  m_GameObject: {fileID: 1108138863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca1e64949c1b348ce90166639b9acec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  birdsAndTheBees: {fileID: 8300000, guid: 5c8239a9f39134097ba65ddc76f75c46, type: 3}
-  bodyHit: {fileID: 8300000, guid: 7a64db00c89d34368be77b9456b53be2, type: 3}
-  creditsClip: {fileID: 8300000, guid: af95f4ffe70e4e64fb17dde3b213d811, type: 3}
-  doorOpen: {fileID: 8300000, guid: b8ce87b8ce4ed4d38897aa218a4028bb, type: 3}
-  evilLaugh: {fileID: 8300000, guid: 7c0cc3c1c3d2a448aa0003224058d492, type: 3}
-  gameMusic: {fileID: 8300000, guid: 3d2ae386a6a824467b5459babdb2dc39, type: 3}
-  gateOpen: {fileID: 8300000, guid: 617bf97d958354325ac04cd2d1b35e0b, type: 3}
-  jumpNoise: {fileID: 8300000, guid: d0866f6e2155e42f89cb0d704963ee13, type: 3}
-  levelUp: {fileID: 8300000, guid: c991cabd1b37a4047b6d8bf0c0635303, type: 3}
-  menuMusic: {fileID: 8300000, guid: 648a7fe9b95dd4094bca0839e6bed70a, type: 3}
-  menuSound: {fileID: 8300000, guid: 96f122a8b92d84430ad0c845fb58f0de, type: 3}
-  newFriendSound: {fileID: 8300000, guid: cbf2a3e02f20d8741bad4b7f6098e225, type: 3}
-  pressurePlateActivated: {fileID: 8300000, guid: 0161ee19509a0424ebd6a91bf8c90c9f,
-    type: 3}
-  pressurePlateDeactivated: {fileID: 8300000, guid: 03f51d46ce33e40daafe8c39480a2d50,
-    type: 3}
-  rainLoop: {fileID: 8300000, guid: 94fcf1ec5eb0f49a0acf698546c86504, type: 3}
-  sighNoise: {fileID: 8300000, guid: 168e5cad7d8f349718b78c7978d9fc51, type: 3}
---- !u!4 &1108138865
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
-  m_PrefabInternal: {fileID: 1283972674}
-  m_GameObject: {fileID: 1108138863}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.29763079, y: .759427965, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
---- !u!1001 &1283972674
+--- !u!1001 &1084902545
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -407,15 +350,68 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
-      propertyPath: gameMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: 3d2ae386a6a824467b5459babdb2dc39, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
   m_RootGameObject: {fileID: 1108138863}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1108138863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
+  m_PrefabInternal: {fileID: 1084902545}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1108138865}
+  - 114: {fileID: 1108138864}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: audioManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1108138864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1084902545}
+  m_GameObject: {fileID: 1108138863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1e64949c1b348ce90166639b9acec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  birdsAndTheBees: {fileID: 8300000, guid: 5c8239a9f39134097ba65ddc76f75c46, type: 3}
+  bodyHit: {fileID: 8300000, guid: 7a64db00c89d34368be77b9456b53be2, type: 3}
+  creditsClip: {fileID: 8300000, guid: af95f4ffe70e4e64fb17dde3b213d811, type: 3}
+  doorOpen: {fileID: 8300000, guid: b8ce87b8ce4ed4d38897aa218a4028bb, type: 3}
+  evilLaugh: {fileID: 8300000, guid: 7c0cc3c1c3d2a448aa0003224058d492, type: 3}
+  gameMusic: {fileID: 8300000, guid: 0f8a3afd807b14f8a869d3cb8b41f8bb, type: 3}
+  gateOpen: {fileID: 8300000, guid: 617bf97d958354325ac04cd2d1b35e0b, type: 3}
+  jumpNoise: {fileID: 8300000, guid: d0866f6e2155e42f89cb0d704963ee13, type: 3}
+  levelUp: {fileID: 8300000, guid: c991cabd1b37a4047b6d8bf0c0635303, type: 3}
+  menuMusic: {fileID: 8300000, guid: 648a7fe9b95dd4094bca0839e6bed70a, type: 3}
+  menuSound: {fileID: 8300000, guid: 96f122a8b92d84430ad0c845fb58f0de, type: 3}
+  newFriendSound: {fileID: 8300000, guid: cbf2a3e02f20d8741bad4b7f6098e225, type: 3}
+  pressurePlateActivated: {fileID: 8300000, guid: 0161ee19509a0424ebd6a91bf8c90c9f,
+    type: 3}
+  pressurePlateDeactivated: {fileID: 8300000, guid: 03f51d46ce33e40daafe8c39480a2d50,
+    type: 3}
+  rainLoop: {fileID: 8300000, guid: 94fcf1ec5eb0f49a0acf698546c86504, type: 3}
+  sighNoise: {fileID: 8300000, guid: 168e5cad7d8f349718b78c7978d9fc51, type: 3}
+--- !u!4 &1108138865
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
+  m_PrefabInternal: {fileID: 1084902545}
+  m_GameObject: {fileID: 1108138863}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.29763079, y: .759427965, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &1354008947
 GameObject:
   m_ObjectHideFlags: 0

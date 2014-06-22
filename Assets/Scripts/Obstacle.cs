@@ -34,7 +34,7 @@ public class Obstacle : SPSUGameJamScript
 	{
 		TweenParms tween = new TweenParms ().Prop ("localScale", new Vector3 (startScale.x - 1, startScale.y - 1, startScale.z - 1)).OnComplete (GoToExit);
 		HOTween.To (transform, 1, tween);
-		HOTween.To (spriteRenderers[0], 1, "color", Exit.enemyColors[Exit.GetNextLevelColorIndex()]);
+		HOTween.To (spriteRenderers [0], 1, "color", Exit.enemyColors [Exit.GetNextLevelColorIndex ()]);
 		audioManager.playEvilLaughSound ();
 
 		if (timed) {
@@ -48,8 +48,8 @@ public class Obstacle : SPSUGameJamScript
 		
 		myCollider2D.enabled = true;
 
-		HOTween.To (spriteRenderers[0], 1, "color", Exit.enemyColors[Exit.GetCurrentLevelColorIndex()]);
-		HOTween.To (spriteRenderers[1], 1, "color", new Color (1, 1, 1, 1));
+		HOTween.To (spriteRenderers [0], 1, "color", Exit.enemyColors [Exit.GetCurrentLevelColorIndex ()]);
+		HOTween.To (spriteRenderers [1], 1, "color", new Color (1, 1, 1, 1));
 		
 		yield return new WaitForSeconds (1);
 		
@@ -100,7 +100,7 @@ public class Obstacle : SPSUGameJamScript
 			spriteRenderers [1].sprite = girlClothes;
 		}
 
-		spriteRenderers[0].color = Exit.enemyColors[Exit.GetCurrentLevelColorIndex()];
+		spriteRenderers [0].color = Exit.enemyColors [Exit.GetCurrentLevelColorIndex ()];
 	}
 
 }

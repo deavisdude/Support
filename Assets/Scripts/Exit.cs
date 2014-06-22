@@ -18,7 +18,7 @@ public class Exit : SPSUGameJamScript
 
 		enemyColors [0] = new Color (255f / 255f, 50f / 255f, 50f / 255f);
 		enemyColors [1] = new Color (220f / 255f, 120f / 255f, 120f / 255f);
-		enemyColors [2] = playerColors [1];
+		enemyColors [2] = new Color (167f / 255f, 118f / 255f, 168f / 255f);
 		enemyColors [3] = playerColors [0];
 	}
 

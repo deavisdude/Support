@@ -19,9 +19,14 @@ public class FollowerMovementScript : PeopleMovementScript
 	public bool shouldFollow = false;
 	public bool shouldJumpBool = false;
 
+	public Sprite boyClothes;
+	public Sprite girlClothes;
+
 	public GameObject mFollowerManager;
 	public FollowerManager mFollowerManagerScript;
 	public Vector3 mTargetPosition;
+
+	public SpriteRenderer[] spriteRenderers;
 
 	// ==================================================
 	// Methods
@@ -117,6 +122,20 @@ public class FollowerMovementScript : PeopleMovementScript
 			GetComponentInChildren<SpriteRenderer> ().material.color = currentColor;
 		} else {
 			GetComponentInChildren<SpriteRenderer> ().material.color = Exit.enemyColors [3];
+
+			SpriteRenderer aaronIsSleepy = GameObject.Find ("Oclothes").GetComponent<SpriteRenderer> ();
+
+			if (Obstacle.enemyIsBoy) {
+				aaronIsSleepy.sprite = boyClothes;
+			} else {
+				aaronIsSleepy.sprite = girlClothes;
+			}
+
+			/*if (Obstacle.enemyIsBoy) {
+				GetComponentInChildren<SpriteRenderer> ().sprite = boyClothes;
+			} else {
+				GetComponentInChildren<SpriteRenderer> ().sprite = girlClothes;
+			}*/
 		}
 	}
 

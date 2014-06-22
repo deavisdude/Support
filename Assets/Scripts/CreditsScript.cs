@@ -24,7 +24,7 @@ public class CreditsScript : SPSUGameJamScript
 		renderer.material.color = color;
 	}
 
-	new public void Update ()
+	public void Update ()
 	{
 		testColor = renderer.material.color;
 		if (mIsFadingIn) {

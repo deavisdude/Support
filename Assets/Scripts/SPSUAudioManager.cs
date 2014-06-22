@@ -42,8 +42,7 @@ public class SPSUAudioManager : MonoBehaviour
 	private AudioSource mRainMusic;
 	private AudioSource mGateSource;
 	private AudioSource mLaughAudioSource;
-
-	private bool mGameMusicHasBeenStarted = false;
+	
 	private bool mIsFadingCreditsOut = false;
 	private bool mIsFadingMenuOut = false;
 	private bool mIsFadingGameMusicOut = false;

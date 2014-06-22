@@ -43,7 +43,7 @@ MonoBehaviour:
   creditsClip: {fileID: 8300000, guid: af95f4ffe70e4e64fb17dde3b213d811, type: 3}
   doorOpen: {fileID: 8300000, guid: b8ce87b8ce4ed4d38897aa218a4028bb, type: 3}
   evilLaugh: {fileID: 8300000, guid: 7c0cc3c1c3d2a448aa0003224058d492, type: 3}
-  gameMusic: {fileID: 8300000, guid: 3d2ae386a6a824467b5459babdb2dc39, type: 3}
+  gameMusic: {fileID: 8300000, guid: 0f8a3afd807b14f8a869d3cb8b41f8bb, type: 3}
   gateOpen: {fileID: 8300000, guid: 617bf97d958354325ac04cd2d1b35e0b, type: 3}
   jumpNoise: {fileID: 8300000, guid: d0866f6e2155e42f89cb0d704963ee13, type: 3}
   levelUp: {fileID: 8300000, guid: c991cabd1b37a4047b6d8bf0c0635303, type: 3}
