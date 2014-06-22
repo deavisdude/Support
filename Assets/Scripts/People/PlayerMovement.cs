@@ -21,6 +21,11 @@ public class PlayerMovement : PeopleMovementScript
 	// Methods
 	// ==================================================
 
+	override public void thisIsAReallyBadMethodPleaseIgnoreForNow ()
+	{
+		// do nothing, just cry because this code is terrible.
+	}
+
 	override public bool shouldJump ()
 	{
 		return (Input.GetButton ("Jump") && (isOnFloor || jumping));
@@ -58,15 +63,15 @@ public class PlayerMovement : PeopleMovementScript
 		base.Start ();
 		clothesSpriteRenderer = GameObject.Find ("clothes").GetComponent<SpriteRenderer> ();
 		clothesSpriteRenderer.sprite = (isBoy) ? boyClothes : girlClothes;
-		baseSpriteRender = GetComponentInChildren<SpriteRenderer>();
+		baseSpriteRender = GetComponentInChildren<SpriteRenderer> ();
 
-		if(Exit.GetCurrentLevelColorIndex() < 4)
-			baseSpriteRender.color = Exit.playerColors[Exit.GetCurrentLevelColorIndex()];
+		if (Exit.GetCurrentLevelColorIndex () < 4)
+			baseSpriteRender.color = Exit.playerColors [Exit.GetCurrentLevelColorIndex ()];
 	}
 
 	void Update ()
 	{
-		if(Input.GetKeyDown(KeyCode.Escape))
-			Application.LoadLevel("menu");
+		if (Input.GetKeyDown (KeyCode.Escape))
+			Application.LoadLevel ("menu");
 	}
 }

@@ -44,6 +44,7 @@ public class SPSUAudioManager : MonoBehaviour
 	private AudioSource mMenuMusic;
 	private AudioSource mMusicLoop;
 	private AudioSource mRainMusic;
+	private AudioSource mGateSource;
 
 	private bool mGameMusicHasBeenStarted = false;
 	private bool mIsFadingCreditsOut = false;
@@ -238,7 +239,9 @@ public class SPSUAudioManager : MonoBehaviour
 	
 	public void playGateOpenSound ()
 	{
-		AudioSource.PlayClipAtPoint (gateOpen, transform.position);
+		if (!mGateSource.isPlaying) {
+			mGateSource.Play ();
+		}
 	}
 	
 	public void playJumpSound ()
@@ -283,14 +286,17 @@ public class SPSUAudioManager : MonoBehaviour
 		mMusicLoop = gameObject.AddComponent<AudioSource> ();
 		mRainMusic = gameObject.AddComponent<AudioSource> ();
 		mMenuMusic = gameObject.AddComponent<AudioSource> ();
+		mGateSource = gameObject.AddComponent<AudioSource> ();
 		mBirdsAmbience.clip = birdsAndTheBees;
 		mCreditsMusic.clip = creditsClip;
+		mGateSource.clip = gateOpen;
 		mRainMusic.clip = rainLoop;
 		mMenuMusic.clip = menuMusic;
 		mBirdsAmbience.loop = true;
 		mCreditsMusic.loop = true;
 		mMusicLoop.loop = true;
 		mRainMusic.loop = true;
+		mGateSource.loop = false;
 		mMenuMusic.loop = true;
 		playMenuMusic ();
 	}

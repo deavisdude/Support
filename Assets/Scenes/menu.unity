@@ -393,7 +393,7 @@ MonoBehaviour:
   gameMusicLoop3: {fileID: 8300000, guid: b6ca65f5825678148ae53da183fec812, type: 3}
   gameMusicLoop4: {fileID: 8300000, guid: d76531ecc188cfe43887f334a6235cbc, type: 3}
   gameMusicLoop5: {fileID: 8300000, guid: 4bc63d94b227e5449886464bfeba7196, type: 3}
-  gateOpen: {fileID: 8300000, guid: 8910e76465ffb4e6199fd9637dac97c5, type: 3}
+  gateOpen: {fileID: 8300000, guid: 617bf97d958354325ac04cd2d1b35e0b, type: 3}
   jumpNoise: {fileID: 8300000, guid: d0866f6e2155e42f89cb0d704963ee13, type: 3}
   levelUp: {fileID: 8300000, guid: c991cabd1b37a4047b6d8bf0c0635303, type: 3}
   menuMusic: {fileID: 8300000, guid: 648a7fe9b95dd4094bca0839e6bed70a, type: 3}

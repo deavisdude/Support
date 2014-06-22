@@ -124,6 +124,12 @@ public class FollowerMovementScript : PeopleMovementScript
 	{
 		clothesChange ();
 	}
+
+	override public void thisIsAReallyBadMethodPleaseIgnoreForNow ()
+	{
+		collidingWithSomething = false;
+	}
+
 	// =========================
 	// Triggered Methods
 	// =========================
@@ -134,8 +140,10 @@ public class FollowerMovementScript : PeopleMovementScript
 			mFollowerManagerScript.addFollower (gameObject);
 			gameObject.layer = LayerMask.NameToLayer ("followingPeople");
 			gameObject.rigidbody2D.isKinematic = false;
-			foreach (Collider2D coll in gameObject.GetComponents<Collider2D>())
+
+			foreach (Collider2D coll in gameObject.GetComponents<Collider2D>()) {
 				coll.isTrigger = false;
+			}
 		}
 	}
 }

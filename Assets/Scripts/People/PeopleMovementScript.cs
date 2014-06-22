@@ -27,7 +27,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 
 	protected float jumpMultiplier;
 
-	private bool collidingWithSomething = false;
+	protected bool collidingWithSomething = false;
 	
 	// ==================================================
 	// Methods
@@ -118,8 +118,12 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 		handleJump ();
 		assignDirection ();
 		determineAnimation ();
-	}
 
+		if (!IsInvoking ("thisIsBad")) {
+			Invoke ("thisIsBad", 1);
+		}
+	}
+	
 	// =========================
 	// Triggered Methods
 	// =========================
@@ -131,8 +135,6 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 				onLandOnFloor ();
 			}
 		} else {
-			Debug.Log ("COLLIDED WITH SOMETHING!");
-			Debug.Log ("not the platform! set collidingWithSomething to true");
 			collidingWithSomething = true;
 		}
 	}
@@ -144,8 +146,6 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 				isOnFloor = false;
 			}
 		} else {
-			Debug.Log ("COLLISION EXITED!");
-			Debug.Log ("not the platform! set collidingWithSomething to false");
 			collidingWithSomething = false;
 		}
 	}
@@ -153,7 +153,13 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 	// =========================
 	// Abstract Methods
 	// =========================
-	
+
+	public void thisIsBad ()
+	{
+		thisIsAReallyBadMethodPleaseIgnoreForNow ();
+	}
+	public abstract void thisIsAReallyBadMethodPleaseIgnoreForNow ();
+
 	public abstract bool shouldJump ();
 
 	public abstract void handleMovement ();

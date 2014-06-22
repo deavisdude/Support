@@ -16,7 +16,7 @@ public class CreditsScript : SPSUGameJamScript
 		audioManager.playCreditsMusic ();
 	}
 
-	public void Start ()
+	new public void Start ()
 	{
 		base.Start ();
 		Color color = renderer.material.color;
@@ -24,7 +24,7 @@ public class CreditsScript : SPSUGameJamScript
 		renderer.material.color = color;
 	}
 
-	public void Update ()
+	new public void Update ()
 	{
 		testColor = renderer.material.color;
 		if (mIsFadingIn) {

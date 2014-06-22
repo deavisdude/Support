@@ -21,10 +21,12 @@ public class FollowerManager : SPSUGameJamScript
 	public void addFollower (GameObject followerObject)
 	{
 		int nextLevel = Exit.GetNextLevelColorIndex ();
-		if (nextLevel < 4)
-			HOTween.To (PlayerMovement.baseSpriteRender, 5, "color", Exit.playerColors [nextLevel]);
 
-		this.addFollower (followerObject, true);
+		if (nextLevel < 4) {
+			HOTween.To (PlayerMovement.baseSpriteRender, 5, "color", Exit.playerColors [nextLevel]);
+		}
+
+		addFollower (followerObject, true);
 	}
 
 	public void addFollower (GameObject followerObject, bool triggerNextMusicLoop)
@@ -33,7 +35,6 @@ public class FollowerManager : SPSUGameJamScript
 			FollowerMovementScript movementScript = followerObject.GetComponent<FollowerMovementScript> ();
 			movementScript.shouldFollow = true;
 			mFollowers.Add (followerObject);
-			Debug.Log ("Follower has been added! There are now " + mFollowers.Count + " followers!");
 
 			if (triggerNextMusicLoop) {
 				audioManager.incrementTrackIndex ();
@@ -44,13 +45,10 @@ public class FollowerManager : SPSUGameJamScript
 
 	public IEnumerator triggerJumpSequence ()
 	{
-		Debug.Log ("triggerJumpSequence");
-
 		for (int i = 0; i < mFollowers.Count; i ++) {
 			GameObject follower = (GameObject)mFollowers [i];
 			FollowerMovementScript movementScript = follower.GetComponent<FollowerMovementScript> ();
 			yield return new WaitForSeconds (1);
-			Debug.Log ("jump index: " + i);
 			movementScript.jump ();
 		}
 	}
