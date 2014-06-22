@@ -43,7 +43,7 @@ public class PlayerMovement : PeopleMovementScript
 
 	override public void onJump ()
 	{
-		followManager.triggerJumpSequence ();
+		StartCoroutine (followManager.triggerJumpSequence ());
 		audioManager.playJumpSound ();
 	}
 	

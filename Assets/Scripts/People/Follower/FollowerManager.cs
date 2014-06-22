@@ -27,11 +27,12 @@ public class FollowerManager : MonoBehaviour
 		}
 	}
 
-	public void triggerJumpSequence ()
+	public IEnumerator triggerJumpSequence ()
 	{
 		for (int i = 0; i < mFollowers.Count; i ++) {
 			GameObject follower = (GameObject)mFollowers [i];
 			FollowerMovementScript movementScript = follower.GetComponent<FollowerMovementScript> ();
+			yield return new WaitForSeconds (1);
 			movementScript.jump ();
 		}
 	}
