@@ -48,6 +48,7 @@ public class SPSUAudioManager : MonoBehaviour
 	private bool mGameMusicHasBeenStarted = false;
 	private bool mIsFadingCreditsOut = false;
 	private bool mIsFadingMenuOut = false;
+	private bool mIsFadingGameMusicOut = false;
 
 	private int mCurrentTrackIndex = 0;
 
@@ -67,7 +68,7 @@ public class SPSUAudioManager : MonoBehaviour
 					mCreditsMusic.Stop ();
 				}
 			} else if (mCreditsMusic.volume < 1) {
-				mCreditsMusic.volume += 0.03f;
+				mCreditsMusic.volume += 0.01f;
 			}
 		}
 	}
@@ -89,6 +90,23 @@ public class SPSUAudioManager : MonoBehaviour
 		}
 	}
 
+	private void handleGameMusic ()
+	{
+		if (mMusicLoop.isPlaying) {
+			if (mIsFadingGameMusicOut) {
+				if (mMusicLoop.volume > 0) {
+					mMusicLoop.volume -= 0.03f;
+				}
+				
+				if (mMusicLoop.volume < 0.05) {
+					mMusicLoop.Stop ();
+				}
+			} else if (mMusicLoop.volume < 1) {
+				mMusicLoop.volume += 0.03f;
+			}
+		}
+	}
+
 	// =========================
 	// Music Methods
 	// =========================
@@ -97,6 +115,7 @@ public class SPSUAudioManager : MonoBehaviour
 	{
 		handleMenuMusic ();
 		handleCredits ();
+		handleGameMusic ();
 	}
 
 	public void play ()
@@ -164,6 +183,7 @@ public class SPSUAudioManager : MonoBehaviour
 			mCreditsMusic.Play ();
 			mIsFadingCreditsOut = false;
 			mCreditsMusic.volume = 0;
+			mIsFadingGameMusicOut = true;
 		}
 	}
 

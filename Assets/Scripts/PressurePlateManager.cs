@@ -5,6 +5,9 @@ public class PressurePlateManager : MonoBehaviour
 {
 
 	public PressurePlate[] pressurePlates;
+
+	public CreditsScript creditsScript;
+
 	private static bool _allPlatesActive = false;
 	public static bool allPlatesActive {
 		get { return _allPlatesActive; }
@@ -19,7 +22,6 @@ public class PressurePlateManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-
 		if (!allPlatesActive) {
 			_allPlatesActive = true;
 			foreach (PressurePlate plate in pressurePlates) {
@@ -42,7 +44,9 @@ public class PressurePlateManager : MonoBehaviour
 						}
 					}
 				} else {
-
+					if (creditsScript != null) {
+						creditsScript.startFadingIn ();
+					}
 				}
 			}
 		}
