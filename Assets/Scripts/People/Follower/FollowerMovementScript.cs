@@ -89,6 +89,19 @@ public class FollowerMovementScript : PeopleMovementScript
 	}
 
 	// =========================
+	// Lifecycle Methods
+	// =========================
+
+	protected void Start ()
+	{
+		base.Start ();
+
+		if (shouldFollow) {
+			Debug.Log ("shouldFollowOnStart");
+			mFollowerManagerScript.addFollower (gameObject);
+		}
+	}
+	// =========================
 	// Triggered Methods
 	// =========================
 

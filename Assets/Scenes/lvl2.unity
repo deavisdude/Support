@@ -323,6 +323,10 @@ Prefab:
       propertyPath: mFollowerManagerScript
       value: 
       objectReference: {fileID: 1079357556}
+    - target: {fileID: 11400000, guid: 8fab009ec8ea4214f904fec38703c0a7, type: 2}
+      propertyPath: shouldFollow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fab009ec8ea4214f904fec38703c0a7, type: 2}
   m_RootGameObject: {fileID: 1727521124}
@@ -763,7 +767,7 @@ SpriteRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 92ca52b7b2a20fb48b97db6fd375b510, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -2523,7 +2527,7 @@ SpriteRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 92ca52b7b2a20fb48b97db6fd375b510, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -2751,7 +2755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingAnimation: {fileID: 540742598}
   currentDirection: 0
-  shouldFollow: 0
+  shouldFollow: 1
   shouldJumpBool: 0
   mFollowerManager: {fileID: 1079357555}
   mFollowerManagerScript: {fileID: 1079357556}
@@ -2906,7 +2910,7 @@ SpriteRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 02c436ea1af56ea4386e6e5ccf3e53f0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
