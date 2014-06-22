@@ -35,10 +35,9 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 
 	public void jump ()
 	{
-		Debug.Log ("jump");
-
 		if (!jumping && isOnFloor) {
 			Vector2 addedForce = new Vector2 (0f, 400f);
+
 			if (!collidingWithSomething) {
 				rigidbody2D.AddForce (addedForce);
 				jumping = true;
@@ -74,8 +73,6 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 	private void handleJump ()
 	{
 		if (shouldJump ()) {
-			Debug.Log ("shouldJump");
-
 			if (isOnFloor) {
 				onJump ();
 				jumpMultiplier = 5;

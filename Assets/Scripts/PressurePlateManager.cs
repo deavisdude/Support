@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PressurePlateManager : MonoBehaviour {
+public class PressurePlateManager : MonoBehaviour
+{
 
 	public PressurePlate[] pressurePlates;
 	private static bool _allPlatesActive = false;
-	public static bool allPlatesActive
-	{
+	public static bool allPlatesActive {
 		get { return _allPlatesActive; }
 	}
 	public Obstacle obstacle;
@@ -17,41 +17,40 @@ public class PressurePlateManager : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 
-		if(!allPlatesActive)
-		{
+		if (!allPlatesActive) {
 			_allPlatesActive = true;
-			foreach(PressurePlate plate in pressurePlates)
-			{
-				if(!plate.activated)
-				{
+			foreach (PressurePlate plate in pressurePlates) {
+				if (!plate.activated) {
 					_allPlatesActive = false;
 					break;
 				}
 			}
 
-			if(_allPlatesActive)
-			{
-				// tell obstacle to shrink and start timer
-				obstacle.Shrink();
+			if (_allPlatesActive) {
+				if (Application.loadedLevel != 4) {
+					// tell obstacle to shrink and start timer
+					obstacle.Shrink ();
 
-				if(obstacle.timed)
-				{
-					for (int i = (pressurePlates.Length - 1); i >= 0; i--)
-					{
-						float plateDeactivationTime = obstacle.growBackWaitTime / pressurePlates.Length;
-						pressurePlates[i].DeactivateTimed(plateDeactivationTime * (pressurePlates.Length - i), plateDeactivationTime);
-						StartCoroutine(WaitAndDeactivate(obstacle.growBackWaitTime));
+					if (obstacle.timed) {
+						for (int i = (pressurePlates.Length - 1); i >= 0; i--) {
+							float plateDeactivationTime = obstacle.growBackWaitTime / pressurePlates.Length;
+							pressurePlates [i].DeactivateTimed (plateDeactivationTime * (pressurePlates.Length - i), plateDeactivationTime);
+							StartCoroutine (WaitAndDeactivate (obstacle.growBackWaitTime));
+						}
 					}
+				} else {
+
 				}
 			}
 		}
 	}
 
-	private IEnumerator WaitAndDeactivate(float wait)
+	private IEnumerator WaitAndDeactivate (float wait)
 	{
-		yield return new WaitForSeconds(wait);
+		yield return new WaitForSeconds (wait);
 		_allPlatesActive = false;
 	}
 }

@@ -23,7 +23,6 @@ public class PressurePlate : SPSUGameJamScript
 			if ((collider.gameObject.layer == LayerMask.NameToLayer ("player") 
 				|| collider.gameObject.layer == LayerMask.NameToLayer ("followingPeople"))
 				&& !activated) {
-				Debug.Log ("plate active");
 				activated = true;
 				audioManager.playPressurePlateActivatedSound ();
 				spriteRender.color = Color.green;

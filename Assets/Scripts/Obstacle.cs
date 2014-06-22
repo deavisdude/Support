@@ -9,6 +9,7 @@ public class Obstacle : MonoBehaviour
 	// ==================================================
 
 	public static bool enemyIsBoy;
+	public static Color enemyColor = Exit.enemyLevelOne;
 
 	public bool timed = false;
 
@@ -97,6 +98,8 @@ public class Obstacle : MonoBehaviour
 		} else {
 			spriteRenderers [1].sprite = girlClothes;
 		}
+
+		GetComponentInChildren<SpriteRenderer> ().material.color = enemyColor;
 	}
 
 }
