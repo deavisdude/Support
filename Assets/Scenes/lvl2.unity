@@ -161,8 +161,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1, y: 1}
-  m_Center: {x: 0, y: 0}
+  m_Size: {x: 1, y: .899999976}
+  m_Center: {x: 0, y: -.0500000007}
 --- !u!1001 &73687997
 Prefab:
   m_ObjectHideFlags: 0
@@ -885,8 +885,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1, y: 1}
-  m_Center: {x: 0, y: 0}
+  m_Size: {x: 1, y: .899999976}
+  m_Center: {x: 0, y: -.0500000007}
 --- !u!1 &626414282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,7 +1321,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1, y: .939999998}
-  m_Center: {x: 0, y: 0}
+  m_Center: {x: 0, y: -.0500000007}
 --- !u!1001 &962218374
 Prefab:
   m_ObjectHideFlags: 0
@@ -2042,8 +2042,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1, y: 1}
-  m_Center: {x: 0, y: 0}
+  m_Size: {x: 1, y: .899999976}
+  m_Center: {x: 0, y: -.0500000007}
 --- !u!1 &1225140288
 GameObject:
   m_ObjectHideFlags: 0
@@ -2741,8 +2741,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1, y: 1}
-  m_Center: {x: 0, y: 0}
+  m_Size: {x: 1, y: .899999976}
+  m_Center: {x: 0, y: -.0500000007}
 --- !u!1 &1727521124
 GameObject:
   m_ObjectHideFlags: 0
@@ -3275,5 +3275,5 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1, y: 1}
-  m_Center: {x: 0, y: 0}
+  m_Size: {x: 1, y: .899999976}
+  m_Center: {x: 0, y: -.0500000007}

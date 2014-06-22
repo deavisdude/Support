@@ -2,7 +2,8 @@
 using System.Collections;
 using Holoville.HOTween;
 
-public class PressurePlate : SPSUGameJamScript {
+public class PressurePlate : SPSUGameJamScript
+{
 
 	public bool activated = false;
 	public SpriteRenderer spriteRender;
@@ -11,48 +12,48 @@ public class PressurePlate : SPSUGameJamScript {
 
 	void Awake ()
 	{
-		if(spriteRender == null)
-			spriteRender = GetComponent<SpriteRenderer>();
+		if (spriteRender == null)
+			spriteRender = GetComponent<SpriteRenderer> ();
 	}
 
 
 	void OnTriggerEnter2D (Collider2D collider)
 	{
-		if(!PressurePlateManager.allPlatesActive)
-		{	
-			if(collider.gameObject.layer == LayerMask.NameToLayer("player") || collider.gameObject.layer == LayerMask.NameToLayer("followingPeople"))
-			{
+		if (!PressurePlateManager.allPlatesActive) {	
+			if ((collider.gameObject.layer == LayerMask.NameToLayer ("player") 
+				|| collider.gameObject.layer == LayerMask.NameToLayer ("followingPeople"))
+				&& !activated) {
+				Debug.Log ("plate active");
 				activated = true;
-				audioManager.playPressurePlateActivatedSound();
+				audioManager.playPressurePlateActivatedSound ();
 				spriteRender.color = Color.green;
-				StopAllCoroutines();
+				StopAllCoroutines ();
 			}
 		}
 	}
 
 	void OnTriggerExit2D (Collider2D collider)
 	{
-		if(!PressurePlateManager.allPlatesActive)
-		{	
-			DeactivateNow();
-			audioManager.playPressurePlateDeactivedSound();
+		if (!PressurePlateManager.allPlatesActive && activated) {	
+			DeactivateNow ();
+			audioManager.playPressurePlateDeactivedSound ();
 		}
 	}
 
-	public void DeactivateTimed(float waitTime, float deactivateTimeLength)
+	public void DeactivateTimed (float waitTime, float deactivateTimeLength)
 	{
-		StartCoroutine(WaitAndDeactivate(waitTime, deactivateTimeLength));
+		StartCoroutine (WaitAndDeactivate (waitTime, deactivateTimeLength));
 	}
 
-	private IEnumerator WaitAndDeactivate(float waitTime, float deactivateTimeLength)
+	private IEnumerator WaitAndDeactivate (float waitTime, float deactivateTimeLength)
 	{
-		yield return new WaitForSeconds(waitTime);
+		yield return new WaitForSeconds (waitTime);
 
-		TweenParms tween = new TweenParms().Prop("color", Color.white).OnComplete(DeactivateNow);
-		HOTween.To(spriteRender, deactivateTimeLength, tween);
+		TweenParms tween = new TweenParms ().Prop ("color", Color.white).OnComplete (DeactivateNow);
+		HOTween.To (spriteRender, deactivateTimeLength, tween);
 	}
 
-	private void DeactivateNow()
+	private void DeactivateNow ()
 	{
 		activated = false;
 		spriteRender.color = Color.white;

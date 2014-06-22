@@ -11,7 +11,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 	protected const float ACCELERATION_FACTOR = 1000;
 	protected const float DECCELERATION_RATE = 0.95f;
 	protected const float JUMP_POWER = .5f;
-	protected const float MAX_JUMP = 7;
+	protected const float MAX_JUMP = 7.25f;
 	protected const float MAX_SPEED = 5f;
 
 	// ==================================================
@@ -26,6 +26,8 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 	public Direction currentDirection;
 
 	protected float jumpMultiplier;
+
+	private bool collidingWithSomething = false;
 	
 	// ==================================================
 	// Methods
@@ -33,10 +35,12 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 
 	public void jump ()
 	{
-		if (!jumping) {
+		if (!jumping && isOnFloor) {
 			Vector2 addedForce = new Vector2 (0f, 400f);
-			rigidbody2D.AddForce (addedForce);
-			jumping = true;
+			if (!collidingWithSomething) {
+				rigidbody2D.AddForce (addedForce);
+				jumping = true;
+			}
 		}
 	}
 
@@ -72,13 +76,15 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 				onJump ();
 				jumpMultiplier = 5;
 			}
-			
-			rigidbody2D.velocity += new Vector2 (0f, JUMP_POWER * jumpMultiplier);
-			jumpMultiplier *= .75f;
-			isOnFloor = false;
-			jumping = true;
-		}
 
+			if (!collidingWithSomething) {
+				rigidbody2D.velocity += new Vector2 (0f, JUMP_POWER * jumpMultiplier);
+				jumpMultiplier *= .75f;
+				isOnFloor = false;
+				jumping = true;
+			}
+		}
+		
 		if (jumping && Input.GetButtonUp ("Jump")) {
 			jumping = false;
 		}
@@ -94,7 +100,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 
 	private void determineAnimation ()
 	{
-		if (rigidbody2D.velocity.x != 0) {
+		if (Mathf.Abs (rigidbody2D.velocity.x) > 0.5f) {
 			walkingAnimation.SetBool ("walking", true);
 		} else {
 			walkingAnimation.SetBool ("walking", false);
@@ -124,7 +130,8 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 			if (!isOnFloor) {
 				onLandOnFloor ();
 			}
-		}
+		} else
+			collidingWithSomething = true;
 	}
 
 	protected void OnCollisionExit2D (Collision2D other)
@@ -133,7 +140,8 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 			if (isOnFloor) {
 				isOnFloor = false;
 			}
-		}
+		} else
+			collidingWithSomething = false;
 	}
 
 	// =========================
