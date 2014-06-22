@@ -28,7 +28,7 @@ public class InputManager : SPSUGameJamScript
 			showRight ();
 		} else if (Input.GetAxis ("Horizontal") < 0) {
 			showLeft ();
-		} else if (Input.GetButton ("Jump")) {
+		} else if (Input.GetButton ("Jump") || Input.GetKey(KeyCode.Return)) {
 			if (leftSelector.renderer.material.color.a == 1f) {
 				PlayerMovement.isBoy = true;
 			} else if (rightSelector.renderer.material.color.a == 1f) {

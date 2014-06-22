@@ -107,7 +107,7 @@ public class FollowerMovementScript : PeopleMovementScript
 			Color currentColor = new Color (1, randomGreen / 255f, randomBlue / 255);
 			GetComponentInChildren<SpriteRenderer> ().material.color = currentColor;
 		} else {
-			GetComponentInChildren<SpriteRenderer> ().material.color = Exit.enemyLevelFour;
+			GetComponentInChildren<SpriteRenderer> ().material.color = Exit.enemyColors[3];
 		}
 	}
 	// =========================

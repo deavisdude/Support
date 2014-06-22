@@ -9,7 +9,7 @@ public class Obstacle : MonoBehaviour
 	// ==================================================
 
 	public static bool enemyIsBoy;
-	public static Color enemyColor = Exit.enemyLevelOne;
+	public static Color enemyColor = Exit.enemyColors[0];
 
 	public bool timed = false;
 
