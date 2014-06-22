@@ -44,7 +44,7 @@ MonoBehaviour:
   mDoorOpen: {fileID: 8300000, guid: b8ce87b8ce4ed4d38897aa218a4028bb, type: 3}
   mEvilLaugh: {fileID: 8300000, guid: 7c0cc3c1c3d2a448aa0003224058d492, type: 3}
   mGameMusicLoop1: {fileID: 8300000, guid: 1272c47b07aeeb547b393327d582c1ff, type: 3}
-  mGameMusicLoop2: {fileID: 8300000, guid: 1272c47b07aeeb547b393327d582c1ff, type: 3}
+  mGameMusicLoop2: {fileID: 8300000, guid: 3e5fb5b3e53fbd048a1f9906aa4263f5, type: 3}
   mGameMusicLoop3: {fileID: 8300000, guid: b6ca65f5825678148ae53da183fec812, type: 3}
   mGameMusicLoop4: {fileID: 8300000, guid: d76531ecc188cfe43887f334a6235cbc, type: 3}
   mGameMusicLoop5: {fileID: 8300000, guid: 4bc63d94b227e5449886464bfeba7196, type: 3}

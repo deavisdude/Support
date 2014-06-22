@@ -52,18 +52,14 @@ public class SPSUAudioManager : MonoBehaviour
 	// Methods
 	// ==================================================
 
-	// =========================
-	// Music Methods
-	// =========================
-
-	public void Update ()
+	private void handleCredits ()
 	{
 		if (mCreditsMusic.isPlaying) {
 			if (mIsFadingCreditsOut) {
 				if (mCreditsMusic.volume > 0) {
 					mCreditsMusic.volume -= 0.03f;
 				}
-
+				
 				if (mCreditsMusic.volume < 0.05) {
 					mCreditsMusic.Stop ();
 				}
@@ -71,6 +67,15 @@ public class SPSUAudioManager : MonoBehaviour
 				mCreditsMusic.volume += 0.03f;
 			}
 		}
+	}
+
+	// =========================
+	// Music Methods
+	// =========================
+
+	public void Update ()
+	{
+		handleCredits ();
 
 		if (!mGameMusicHasBeenStarted) {
 			return;
@@ -101,10 +106,12 @@ public class SPSUAudioManager : MonoBehaviour
 			mMusicLoop.clip = mGameMusicLoop3;
 			mRainMusic.volume = .6f;
 			break;
+
 		case 4:
 			mMusicLoop.clip = mGameMusicLoop4;
 			mRainMusic.volume = .4f;
 			break;
+
 		case 5:
 			mMusicLoop.clip = mGameMusicLoop5;
 			mRainMusic.volume = .2f;
@@ -112,6 +119,7 @@ public class SPSUAudioManager : MonoBehaviour
 		}
 
 		mCurrentClipLength = mMusicLoop.clip.length;
+		mMusicLoop.loop = true;
 		mMusicLoop.Play ();
 	}
 
@@ -127,12 +135,6 @@ public class SPSUAudioManager : MonoBehaviour
 
 	public void playRainLoop ()
 	{
-		if (mRainMusic == null) {
-			mRainMusic = gameObject.AddComponent<AudioSource> ();
-			mRainMusic.clip = mRainLoop;
-			mRainMusic.loop = true;
-		} 
-
 		if (!mRainMusic.isPlaying) {
 			mRainMusic.Play ();
 		}
@@ -224,9 +226,12 @@ public class SPSUAudioManager : MonoBehaviour
 
 	protected void Start ()
 	{
+		mRainMusic = gameObject.AddComponent<AudioSource> ();
+		mRainMusic = gameObject.AddComponent<AudioSource> ();
+		mRainMusic.clip = mRainLoop;
+		mRainMusic.loop = true;
 		mMusicLoop = gameObject.AddComponent<AudioSource> ();
 		GameObject.DontDestroyOnLoad (gameObject);
 		playCreditsMusic ();
-		mRainMusic = gameObject.AddComponent<AudioSource> ();
 	}
 }

@@ -228,7 +228,7 @@ Transform:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
-  m_PrefabInternal: {fileID: 1525952781}
+  m_PrefabInternal: {fileID: 1860127998}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1108138865}
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1,
     type: 2}
-  m_PrefabInternal: {fileID: 1525952781}
+  m_PrefabInternal: {fileID: 1860127998}
   m_GameObject: {fileID: 1108138863}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -258,7 +258,7 @@ MonoBehaviour:
   mDoorOpen: {fileID: 8300000, guid: b8ce87b8ce4ed4d38897aa218a4028bb, type: 3}
   mEvilLaugh: {fileID: 8300000, guid: 7c0cc3c1c3d2a448aa0003224058d492, type: 3}
   mGameMusicLoop1: {fileID: 8300000, guid: 1272c47b07aeeb547b393327d582c1ff, type: 3}
-  mGameMusicLoop2: {fileID: 8300000, guid: 1272c47b07aeeb547b393327d582c1ff, type: 3}
+  mGameMusicLoop2: {fileID: 8300000, guid: 3e5fb5b3e53fbd048a1f9906aa4263f5, type: 3}
   mGameMusicLoop3: {fileID: 8300000, guid: b6ca65f5825678148ae53da183fec812, type: 3}
   mGameMusicLoop4: {fileID: 8300000, guid: d76531ecc188cfe43887f334a6235cbc, type: 3}
   mGameMusicLoop5: {fileID: 8300000, guid: 4bc63d94b227e5449886464bfeba7196, type: 3}
@@ -276,7 +276,7 @@ MonoBehaviour:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
-  m_PrefabInternal: {fileID: 1525952781}
+  m_PrefabInternal: {fileID: 1860127998}
   m_GameObject: {fileID: 1108138863}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.29763079, y: .759427965, z: 0}
@@ -422,7 +422,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!1001 &1525952781
+--- !u!1001 &1860127998
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
