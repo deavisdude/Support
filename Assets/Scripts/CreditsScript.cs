@@ -5,16 +5,28 @@ public class CreditsScript : SPSUGameJamScript
 {
 	private const float FADE_SPEED = .25f;
 
-	private bool mIsFadingIn = false;
+	public Color testColor;
+
+	public bool mIsFadingIn = false;
 	private bool mInputAllowed = false;
 
 	public void startFadingIn ()
 	{
 		mIsFadingIn = true;
+		audioManager.playCreditsMusic ();
+	}
+
+	public void Start ()
+	{
+		base.Start ();
+		Color color = renderer.material.color;
+		color.a = 0;
+		renderer.material.color = color;
 	}
 
 	public void Update ()
 	{
+		testColor = renderer.material.color;
 		if (mIsFadingIn) {
 			Color currentColor = renderer.material.color;
 			currentColor.a += FADE_SPEED * Time.deltaTime;
@@ -28,7 +40,8 @@ public class CreditsScript : SPSUGameJamScript
 
 		if (mInputAllowed) {
 			if (Input.anyKey) {
-				Debug.Log ("quit game");
+				audioManager.fadeCreditsMusicOut ();
+				Application.LoadLevel (0);
 			}
 		}
 	}
