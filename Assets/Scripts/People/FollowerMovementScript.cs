@@ -14,6 +14,7 @@ public class FollowerMovementScript : PeopleMovementScript
 	// Variables
 	// ==================================================
 
+	public Sprite friendlyBase;
 	public bool isEnemy = false;
 	public bool shouldFollow = false;
 	public bool shouldJumpBool = false;
@@ -89,6 +90,13 @@ public class FollowerMovementScript : PeopleMovementScript
 		return false;
 	}
 
+	public void clothesChange(){
+		if(gameObject.name == "Obstacle" && shouldFollow){
+			SpriteRenderer sr = gameObject.GetComponentInChildren<SpriteRenderer>();
+			sr.sprite = friendlyBase;
+		}
+	}
+
 	// =========================
 	// Lifecycle Methods
 	// =========================
@@ -101,7 +109,7 @@ public class FollowerMovementScript : PeopleMovementScript
 			mFollowerManagerScript.addFollower (gameObject, false);
 		}
 
-		if (!isEnemy) {
+		if (!isEnemy || gameObject.name != "Obstacle") {
 			float randomBlue = Random.Range (200, 245);
 			float randomGreen = Random.Range (200, 245);
 			Color currentColor = new Color (1, randomGreen / 255f, randomBlue / 255);
@@ -109,6 +117,10 @@ public class FollowerMovementScript : PeopleMovementScript
 		} else {
 			GetComponentInChildren<SpriteRenderer> ().material.color = Exit.enemyLevelFour;
 		}
+	}
+
+	public void Update(){
+		clothesChange();
 	}
 	// =========================
 	// Triggered Methods
