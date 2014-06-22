@@ -8,25 +8,23 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 	// Constants
 	// ==================================================
 	
-	public const float ACCELERATION_FACTOR = 1000;
-	protected Vector2 MAX_SPEED = new Vector2 (5, 5);
-	protected float MAX_JUMP = 7;
-
-	public const float JUMP_POWER = .5f;
+	protected const float ACCELERATION_FACTOR = 1000;
+	protected const float DECCELERATION_RATE = 0.95f;
+	protected const float JUMP_POWER = .5f;
+	protected const float MAX_JUMP = 7;
+	protected const float MAX_SPEED = 5f;
 
 	// ==================================================
 	// Variables
 	// ==================================================
 
-	public Animator anim;
-
-	public Direction currentDirection;
-	
-	public Vector2 mAcceleration = new Vector2 (0, 0);
-	public Vector2 mVelocity = new Vector2 (0, 0);
+	public Animator walkingAnimation;
 
 	protected bool canJump;
 	protected bool jumping = false;
+
+	public Direction currentDirection;
+
 	protected float jumpMultiplier;
 	
 	// ==================================================
@@ -49,22 +47,28 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 		}
 	}
 
-	private void determineAnimation ()
+	private void adjustForMaxSpeed ()
 	{
-		if (rigidbody2D.velocity.x != 0) {
-			anim.SetBool ("walking", true);
-		} else {
-			anim.SetBool ("walking", false);
+		if (rigidbody2D.velocity.x > MAX_SPEED) {
+			rigidbody2D.velocity = new Vector2 (MAX_SPEED, rigidbody2D.velocity.y);
+		} else if (rigidbody2D.velocity.x < -MAX_SPEED) {
+			rigidbody2D.velocity = new Vector2 (-MAX_SPEED, rigidbody2D.velocity.y);
 		}
 	}
-	// =========================
-	// Lifecycle Methods
-	// =========================
-	
-	protected void FixedUpdate ()
+
+	private void handleJump ()
 	{
-		handleMovement ();
-		handleJump ();
+		if (shouldJump ()) {
+			if (canJump) {
+				onJump ();
+				jumpMultiplier = 5;
+			}
+			
+			rigidbody2D.velocity += new Vector2 (0f, JUMP_POWER * jumpMultiplier);
+			jumpMultiplier *= .75f;
+			canJump = false;
+			jumping = true;
+		}
 
 		if (jumping && Input.GetButtonUp ("Jump")) {
 			jumping = false;
@@ -77,16 +81,48 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 		if (!jumping && rigidbody2D.velocity.y < 0) {
 			rigidbody2D.velocity -= new Vector2 (0f, JUMP_POWER);
 		}
+	}
 
+	private void determineAnimation ()
+	{
+		if (rigidbody2D.velocity.x != 0) {
+			walkingAnimation.SetBool ("walking", true);
+		} else {
+			walkingAnimation.SetBool ("walking", false);
+		}
+	}
+
+	// =========================
+	// Lifecycle Methods
+	// =========================
+	
+	protected void FixedUpdate ()
+	{
+		handleMovement ();
+		adjustForMaxSpeed ();
+		handleJump ();
 		assignDirection ();
 		determineAnimation ();
 	}
 
 	// =========================
+	// Triggered Methods
+	// =========================
+
+	protected void OnCollisionEnter2D (Collision2D other)
+	{
+		if (other.gameObject.layer == LayerMask.NameToLayer ("platform")) {
+			canJump = true;
+		}
+	}
+
+	// =========================
 	// Abstract Methods
-	// ======================
+	// =========================
 	
-	public abstract void handleJump ();
-	
+	public abstract bool shouldJump ();
+
 	public abstract void handleMovement ();
+
+	public abstract void onJump ();
 }

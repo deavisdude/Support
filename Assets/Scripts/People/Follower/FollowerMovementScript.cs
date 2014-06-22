@@ -22,10 +22,10 @@ public class FollowerMovementScript : PeopleMovementScript
 	// ==================================================
 	// Methods
 	// ==================================================
-	
-	override public void handleJump ()
-	{
 
+	override public bool shouldJump ()
+	{
+		return false;
 	}
 
 	override public void handleMovement ()
@@ -35,9 +35,9 @@ public class FollowerMovementScript : PeopleMovementScript
 
 			if (!isOnTarget ()) {
 				if (isFarFromTargetPosition ()) {
-					velocityX = MAX_SPEED.x;
+					velocityX = MAX_SPEED;
 				} else if (isNearTargetPosition ()) {
-					velocityX = MAX_SPEED.x / 2f;
+					velocityX = MAX_SPEED / 1.5f;
 				}
 
 				if (!(mTargetPosition.x > transform.position.x)) {
@@ -48,6 +48,11 @@ public class FollowerMovementScript : PeopleMovementScript
 			Vector2 newVelocity = new Vector2 (velocityX, rigidbody2D.velocity.y);
 			rigidbody2D.velocity = newVelocity;
 		}
+	}
+
+	override public void onJump ()
+	{
+		audioManager.playJumpSound ();
 	}
 
 	private bool isFarFromTargetPosition ()
