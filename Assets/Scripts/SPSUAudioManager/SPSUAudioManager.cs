@@ -26,11 +26,14 @@ public class SPSUAudioManager : MonoBehaviour
 	public AudioClip mLoop4;
 	public AudioClip mLoop5;
 
-	public AudioClip mCredits;
+	public AudioClip mCreditsClip;
 
-	public AudioSource mMusicLoop;
+	private AudioSource mMusicLoop;
+	private AudioSource mRainMusic;
+	private AudioSource mCreditsMusic;
 
-	bool mHasBeenStarted = false;
+	bool mGameMusicHasBeenStarted = false;
+	bool mIsFadingCreditsOut = false;
 	int mCurrentTrackIndex = 0;
 	float mCurrentClipLength = 0;
 	float mCurrentTime = 0;
@@ -45,7 +48,21 @@ public class SPSUAudioManager : MonoBehaviour
 
 	public void Update ()
 	{
-		if (!mHasBeenStarted) {
+		if (mCreditsMusic.isPlaying) {
+			if (mIsFadingCreditsOut) {
+				if (mCreditsMusic.volume > 0) {
+					mCreditsMusic.volume -= 0.03f;
+				}
+
+				if (mCreditsMusic.volume < 0.05) {
+					mCreditsMusic.Stop ();
+				}
+			} else if (mCreditsMusic.volume < 1) {
+				mCreditsMusic.volume += 0.03f;
+			}
+		}
+
+		if (!mGameMusicHasBeenStarted) {
 			return;
 		}
 
@@ -62,20 +79,25 @@ public class SPSUAudioManager : MonoBehaviour
 		switch (mCurrentTrackIndex) {
 		case 1:
 			mMusicLoop.clip = mLoop1;
+			mRainMusic.volume = 1;
 			break;
 
 		case 2:
 			mMusicLoop.clip = mLoop2;
+			mRainMusic.volume = .8f;
 			break;
 
 		case 3:
 			mMusicLoop.clip = mLoop3;
+			mRainMusic.volume = .6f;
 			break;
 		case 4:
 			mMusicLoop.clip = mLoop4;
+			mRainMusic.volume = .4f;
 			break;
 		case 5:
 			mMusicLoop.clip = mLoop5;
+			mRainMusic.volume = .2f;
 			break;
 		}
 
@@ -87,18 +109,49 @@ public class SPSUAudioManager : MonoBehaviour
 	{
 		mCurrentTrackIndex ++;
 
-		if (!mHasBeenStarted) {
-			mHasBeenStarted = true;
+		if (!mGameMusicHasBeenStarted) {
+			mGameMusicHasBeenStarted = true;
 			play ();
 		}
 	}
 
 	public void playRainLoop ()
 	{
-		AudioSource rainSource = gameObject.AddComponent<AudioSource> ();
-		rainSource.clip = mRainLoop;
-		rainSource.loop = true;
-		rainSource.Play ();
+		if (mRainMusic == null) {
+			mRainMusic = gameObject.AddComponent<AudioSource> ();
+			mRainMusic.clip = mRainLoop;
+			mRainMusic.loop = true;
+		} 
+
+		if (!mRainMusic.isPlaying) {
+			mRainMusic.Play ();
+		}
+	}
+
+	public void playCreditsMusic ()
+	{
+		if (mCreditsMusic == null) {
+			mCreditsMusic = gameObject.AddComponent<AudioSource> ();
+			mCreditsMusic.clip = mCreditsClip;
+			mCreditsMusic.loop = true;
+		} 
+
+		if (!mCreditsMusic.isPlaying) {
+			mCreditsMusic.Play ();
+			mIsFadingCreditsOut = false;
+			mCreditsMusic.volume = 0;
+		}
+	}
+
+	public void fadeCreditsMusicOut ()
+	{
+		mIsFadingCreditsOut = true;
+	}
+
+	public void startGameMusic ()
+	{
+		fadeCreditsMusicOut ();
+		playRainLoop ();
 	}
 
 	// =========================
@@ -163,6 +216,6 @@ public class SPSUAudioManager : MonoBehaviour
 	{
 		mMusicLoop = gameObject.AddComponent<AudioSource> ();
 		GameObject.DontDestroyOnLoad (gameObject);
-		playRainLoop ();
+		playCreditsMusic ();
 	}
 }

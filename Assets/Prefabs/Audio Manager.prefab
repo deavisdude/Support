@@ -57,8 +57,7 @@ MonoBehaviour:
   mLoop3: {fileID: 8300000, guid: b6ca65f5825678148ae53da183fec812, type: 3}
   mLoop4: {fileID: 8300000, guid: d76531ecc188cfe43887f334a6235cbc, type: 3}
   mLoop5: {fileID: 8300000, guid: 4bc63d94b227e5449886464bfeba7196, type: 3}
-  mCredits: {fileID: 8300000, guid: af95f4ffe70e4e64fb17dde3b213d811, type: 3}
-  mMusicLoop: {fileID: 0}
+  mCreditsClip: {fileID: 8300000, guid: af95f4ffe70e4e64fb17dde3b213d811, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

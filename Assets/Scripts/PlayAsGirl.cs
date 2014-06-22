@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayAsGirl : MonoBehaviour {
+public class PlayAsGirl : SPSUGameJamScript
+{
 
-	void OnMouseOver(){
-		if(Input.GetMouseButtonDown(0)){
-			Application.LoadLevel("lvl1");
+	void OnMouseOver ()
+	{
+		if (Input.GetMouseButtonDown (0)) {
+			Application.LoadLevel ("lvl1");
 			PlayerMovement.isBoy = false;
+			audioManager.playMenuSound ();
+			audioManager.startGameMusic ();
 		}
 	}
 }
