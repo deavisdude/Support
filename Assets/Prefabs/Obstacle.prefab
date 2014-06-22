@@ -148,6 +148,7 @@ MonoBehaviour:
   - {fileID: 21200000}
   boyClothes: {fileID: 21300000, guid: 19c5c8cc2befa4722ad6ed3cf7655c3e, type: 3}
   girlClothes: {fileID: 21300000, guid: e5f5b23b6295d46508ab1fe926f2d98d, type: 3}
+  myCollider2D: {fileID: 6100000}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

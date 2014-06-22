@@ -227,5 +227,6 @@ public class SPSUAudioManager : MonoBehaviour
 		mMusicLoop = gameObject.AddComponent<AudioSource> ();
 		GameObject.DontDestroyOnLoad (gameObject);
 		playCreditsMusic ();
+		mRainMusic = gameObject.AddComponent<AudioSource> ();
 	}
 }

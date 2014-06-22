@@ -16,10 +16,15 @@ public class Obstacle : MonoBehaviour {
 	public Sprite boyClothes;
 	public Sprite girlClothes;
 
+	public Collider2D myCollider2D;
+
 	void Awake()
 	{
 		startScale = transform.localScale;
 		startPosition = transform.position;
+
+		if(myCollider2D == null)
+			myCollider2D = GetComponentInChildren<Collider2D>();
 	}
 
 	void Start ()
@@ -50,6 +55,8 @@ public class Obstacle : MonoBehaviour {
 
 	private void Fade()
 	{
+		myCollider2D.enabled = false;
+
 		foreach(SpriteRenderer sprite in spriteRenderers)
 			HOTween.To(sprite, 1, "color", new Color(1,1,1,0));
 	}
@@ -57,6 +64,8 @@ public class Obstacle : MonoBehaviour {
 	private IEnumerator GrowBack()
 	{
 		yield return new WaitForSeconds(growBackWaitTime);
+
+		myCollider2D.enabled = true;
 
 		foreach(SpriteRenderer sprite in spriteRenderers)
 			HOTween.To(sprite, 1, "color", new Color(1,1,1,1));
