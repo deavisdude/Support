@@ -7,6 +7,7 @@ public class Obstacle : MonoBehaviour {
 	public bool timed = false;
 	public float growBackWaitTime = 10;
 	private Vector3 startScale;
+	private Vector3 startPosition;
 	private float shrinkAmount = 0.5f;
 	public Transform exitTransform;
 	public SpriteRenderer[] spriteRenderers;
@@ -14,6 +15,7 @@ public class Obstacle : MonoBehaviour {
 	void Awake()
 	{
 		startScale = transform.localScale;
+		startPosition = transform.position;
 	}
 	
 	public void Shrink()
@@ -42,6 +44,15 @@ public class Obstacle : MonoBehaviour {
 	private IEnumerator GrowBack()
 	{
 		yield return new WaitForSeconds(growBackWaitTime);
+
+		foreach(SpriteRenderer sprite in spriteRenderers)
+			HOTween.To(sprite, 1, "color", new Color(1,1,1,1));
+
+		yield return new WaitForSeconds(1);
+
+		HOTween.To(transform, 1, "position", startPosition);
+
+		yield return new WaitForSeconds(1);
 
 		// grow the obstace back to normal size
 		HOTween.To(transform, 1, "localScale", startScale);
