@@ -27,7 +27,7 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	override public bool shouldJump ()
 	{
-		return (canJump && shouldJumpBool);
+		return (isOnFloor && shouldJumpBool);
 	}
 
 	override public void handleMovement ()

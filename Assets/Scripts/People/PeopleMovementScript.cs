@@ -20,7 +20,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 
 	public Animator walkingAnimation;
 
-	protected bool canJump;
+	protected bool isOnFloor;
 	protected bool jumping = false;
 
 	public Direction currentDirection;
@@ -59,14 +59,14 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 	private void handleJump ()
 	{
 		if (shouldJump ()) {
-			if (canJump) {
+			if (isOnFloor) {
 				onJump ();
 				jumpMultiplier = 5;
 			}
 			
 			rigidbody2D.velocity += new Vector2 (0f, JUMP_POWER * jumpMultiplier);
 			jumpMultiplier *= .75f;
-			canJump = false;
+			isOnFloor = false;
 			jumping = true;
 		}
 
@@ -112,7 +112,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 	protected void OnCollisionEnter2D (Collision2D other)
 	{
 		if (other.gameObject.layer == LayerMask.NameToLayer ("platform")) {
-			canJump = true;
+			isOnFloor = true;
 		}
 	}
 
