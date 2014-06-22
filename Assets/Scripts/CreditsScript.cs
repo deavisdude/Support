@@ -16,7 +16,7 @@ public class CreditsScript : SPSUGameJamScript
 		audioManager.playCreditsMusic ();
 	}
 
-	public void Start ()
+	new public void Start ()
 	{
 		base.Start ();
 		Color color = renderer.material.color;

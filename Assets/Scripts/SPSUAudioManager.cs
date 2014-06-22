@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Holoville.HOTween;
 
 public class SPSUAudioManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class SPSUAudioManager : MonoBehaviour
 	public AudioClip gameMusicLoop3;
 	public AudioClip gameMusicLoop4;
 	public AudioClip gameMusicLoop5;
+	public AudioClip gameMusicLoop1Intro;
 
 	public AudioClip gateOpen;
 
@@ -44,6 +46,7 @@ public class SPSUAudioManager : MonoBehaviour
 	private AudioSource mMenuMusic;
 	private AudioSource mMusicLoop;
 	private AudioSource mRainMusic;
+	private AudioSource mLaughAudioSource;
 
 	private bool mGameMusicHasBeenStarted = false;
 	private bool mIsFadingCreditsOut = false;
@@ -105,6 +108,16 @@ public class SPSUAudioManager : MonoBehaviour
 				mMusicLoop.volume += 0.03f;
 			}
 		}
+		else
+		{
+			if(mMusicLoop.clip == gameMusicLoop1Intro)
+			{
+				Debug.Log("play loop 1");
+				mMusicLoop.clip = gameMusicLoop1;
+				mMusicLoop.loop = true;
+				mMusicLoop.Play();
+			}
+		}
 	}
 
 	// =========================
@@ -124,8 +137,10 @@ public class SPSUAudioManager : MonoBehaviour
 
 		switch (mCurrentTrackIndex) {
 		case 1:
-			newClip = gameMusicLoop1;
+			newClip = gameMusicLoop1Intro;
 			mRainMusic.volume = 1;
+			mMusicLoop.loop = false;
+			mMusicLoop.Play();
 			break;
 
 		case 2:
@@ -151,23 +166,24 @@ public class SPSUAudioManager : MonoBehaviour
 
 		if (mMusicLoop.clip != newClip) {
 			mMusicLoop.clip = newClip;
-			Invoke ("play", mMusicLoop.clip.length);
-			mMusicLoop.Play ();
+
+			if(newClip != gameMusicLoop1Intro)
+			{
+				Invoke ("play", mMusicLoop.clip.length);	
+			}
 		}
 	}
 
 	public void incrementTrackIndex ()
 	{
-		mCurrentTrackIndex ++;
+		HOTween.To(mMenuMusic, 1, "volume", 0);
+		mCurrentTrackIndex = Application.loadedLevel;
 
 		if (mCurrentTrackIndex > 5) {
 			mCurrentTrackIndex = 5;
 		}
 
-		if (!mGameMusicHasBeenStarted) {
-			mGameMusicHasBeenStarted = true;
-			play ();
-		}
+		play ();
 	}
 
 	public void playRainLoop ()
@@ -233,7 +249,12 @@ public class SPSUAudioManager : MonoBehaviour
 	
 	public void playEvilLaughSound ()
 	{
-		AudioSource.PlayClipAtPoint (evilLaugh, transform.position);
+		if(Obstacle.enemyIsBoy)
+			mLaughAudioSource.pitch = 1;
+		else
+			mLaughAudioSource.pitch = 1.75f;
+
+		mLaughAudioSource.Play();
 	}
 	
 	public void playGateOpenSound ()
@@ -283,6 +304,8 @@ public class SPSUAudioManager : MonoBehaviour
 		mMusicLoop = gameObject.AddComponent<AudioSource> ();
 		mRainMusic = gameObject.AddComponent<AudioSource> ();
 		mMenuMusic = gameObject.AddComponent<AudioSource> ();
+		mLaughAudioSource = gameObject.AddComponent<AudioSource>();
+		mLaughAudioSource.clip = evilLaugh;
 		mBirdsAmbience.clip = birdsAndTheBees;
 		mCreditsMusic.clip = creditsClip;
 		mRainMusic.clip = rainLoop;
@@ -292,6 +315,8 @@ public class SPSUAudioManager : MonoBehaviour
 		mMusicLoop.loop = true;
 		mRainMusic.loop = true;
 		mMenuMusic.loop = true;
-		playMenuMusic ();
+		mLaughAudioSource.loop = false;
+		if(Application.loadedLevelName == "menu")
+			playMenuMusic ();
 	}
 }
