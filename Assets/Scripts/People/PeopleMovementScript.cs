@@ -128,6 +128,15 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 		}
 	}
 
+	protected void OnCollisionExit2D (Collision2D other)
+	{
+		if (other.gameObject.layer == LayerMask.NameToLayer ("platform")) {
+			if (isOnFloor) {
+				isOnFloor = false;
+			}
+		}
+	}
+
 	// =========================
 	// Abstract Methods
 	// =========================
