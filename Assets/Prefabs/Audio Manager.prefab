@@ -52,6 +52,13 @@ MonoBehaviour:
     type: 3}
   mRainLoop: {fileID: 8300000, guid: 94fcf1ec5eb0f49a0acf698546c86504, type: 3}
   mSigh: {fileID: 8300000, guid: 168e5cad7d8f349718b78c7978d9fc51, type: 3}
+  mLoop1: {fileID: 8300000, guid: 1272c47b07aeeb547b393327d582c1ff, type: 3}
+  mLoop2: {fileID: 8300000, guid: 3e5fb5b3e53fbd048a1f9906aa4263f5, type: 3}
+  mLoop3: {fileID: 8300000, guid: b6ca65f5825678148ae53da183fec812, type: 3}
+  mLoop4: {fileID: 8300000, guid: d76531ecc188cfe43887f334a6235cbc, type: 3}
+  mLoop5: {fileID: 8300000, guid: 4bc63d94b227e5449886464bfeba7196, type: 3}
+  mCredits: {fileID: 8300000, guid: af95f4ffe70e4e64fb17dde3b213d811, type: 3}
+  mMusicLoop: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

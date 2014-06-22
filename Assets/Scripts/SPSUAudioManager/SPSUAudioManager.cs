@@ -20,6 +20,21 @@ public class SPSUAudioManager : MonoBehaviour
 	public AudioClip mRainLoop;
 	public AudioClip mSigh;
 
+	public AudioClip mLoop1;
+	public AudioClip mLoop2;
+	public AudioClip mLoop3;
+	public AudioClip mLoop4;
+	public AudioClip mLoop5;
+
+	public AudioClip mCredits;
+
+	public AudioSource mMusicLoop;
+
+	bool mHasBeenStarted = false;
+	int mCurrentTrackIndex = 0;
+	float mCurrentClipLength = 0;
+	float mCurrentTime = 0;
+
 	// ==================================================
 	// Methods
 	// ==================================================
@@ -27,7 +42,57 @@ public class SPSUAudioManager : MonoBehaviour
 	// =========================
 	// Music Methods
 	// =========================
-	
+
+	public void Update ()
+	{
+		if (!mHasBeenStarted) {
+			return;
+		}
+
+		mCurrentTime += Time.deltaTime;
+
+		if (mCurrentTime > mCurrentClipLength) {
+			mCurrentTime = 0;
+			play ();
+		}
+	}
+
+	public void play ()
+	{
+		switch (mCurrentTrackIndex) {
+		case 1:
+			mMusicLoop.clip = mLoop1;
+			break;
+
+		case 2:
+			mMusicLoop.clip = mLoop2;
+			break;
+
+		case 3:
+			mMusicLoop.clip = mLoop3;
+			break;
+		case 4:
+			mMusicLoop.clip = mLoop4;
+			break;
+		case 5:
+			mMusicLoop.clip = mLoop5;
+			break;
+		}
+
+		mCurrentClipLength = mMusicLoop.clip.length;
+		mMusicLoop.Play ();
+	}
+
+	public void incrementTrackIndex ()
+	{
+		mCurrentTrackIndex ++;
+
+		if (!mHasBeenStarted) {
+			mHasBeenStarted = true;
+			play ();
+		}
+	}
+
 	public void playRainLoop ()
 	{
 		AudioSource rainSource = gameObject.AddComponent<AudioSource> ();
@@ -96,6 +161,7 @@ public class SPSUAudioManager : MonoBehaviour
 
 	protected void Start ()
 	{
+		mMusicLoop = gameObject.AddComponent<AudioSource> ();
 		GameObject.DontDestroyOnLoad (gameObject);
 		playRainLoop ();
 	}

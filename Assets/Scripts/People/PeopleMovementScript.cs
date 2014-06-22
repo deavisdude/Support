@@ -33,7 +33,6 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 
 	public void jump ()
 	{
-		Debug.Log ("jump");
 		if (!jumping) {
 			Vector2 addedForce = new Vector2 (0f, 400f);
 			rigidbody2D.AddForce (addedForce);

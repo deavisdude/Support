@@ -124,7 +124,7 @@ Transform:
   m_LocalScale: {x: 2.90462923, y: 2.90460896, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!1001 &134598448
+--- !u!1001 &63486966
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -159,6 +159,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
+      propertyPath: mRainLoop
+      value: 
+      objectReference: {fileID: 8300000, guid: a16bbe267e0094befba026ec2e4273e2, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
   m_RootGameObject: {fileID: 1880710167}
@@ -1618,7 +1622,7 @@ Prefab:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
-  m_PrefabInternal: {fileID: 134598448}
+  m_PrefabInternal: {fileID: 63486966}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1880710169}
@@ -1635,7 +1639,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1,
     type: 2}
-  m_PrefabInternal: {fileID: 134598448}
+  m_PrefabInternal: {fileID: 63486966}
   m_GameObject: {fileID: 1880710167}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1654,13 +1658,20 @@ MonoBehaviour:
     type: 3}
   mPressurePlateDeactivated: {fileID: 8300000, guid: 03f51d46ce33e40daafe8c39480a2d50,
     type: 3}
-  mRainLoop: {fileID: 8300000, guid: 94fcf1ec5eb0f49a0acf698546c86504, type: 3}
+  mRainLoop: {fileID: 8300000, guid: a16bbe267e0094befba026ec2e4273e2, type: 3}
   mSigh: {fileID: 8300000, guid: 168e5cad7d8f349718b78c7978d9fc51, type: 3}
+  mLoop1: {fileID: 8300000, guid: 1272c47b07aeeb547b393327d582c1ff, type: 3}
+  mLoop2: {fileID: 8300000, guid: 3e5fb5b3e53fbd048a1f9906aa4263f5, type: 3}
+  mLoop3: {fileID: 8300000, guid: b6ca65f5825678148ae53da183fec812, type: 3}
+  mLoop4: {fileID: 8300000, guid: d76531ecc188cfe43887f334a6235cbc, type: 3}
+  mLoop5: {fileID: 8300000, guid: 4bc63d94b227e5449886464bfeba7196, type: 3}
+  mCredits: {fileID: 8300000, guid: af95f4ffe70e4e64fb17dde3b213d811, type: 3}
+  mMusicLoop: {fileID: 0}
 --- !u!4 &1880710169
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
-  m_PrefabInternal: {fileID: 134598448}
+  m_PrefabInternal: {fileID: 63486966}
   m_GameObject: {fileID: 1880710167}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.29763079, y: .759427965, z: 0}
