@@ -37,7 +37,7 @@ public class FollowerManager : SPSUGameJamScript
 			mFollowers.Add (followerObject);
 
 			if (triggerNextMusicLoop) {
-				audioManager.incrementTrackIndex ();
+				audioManager.onHitFollower ();
 				audioManager.playNewFriendSound ();
 			}
 		}

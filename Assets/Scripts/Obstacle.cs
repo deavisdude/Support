@@ -59,6 +59,7 @@ public class Obstacle : SPSUGameJamScript
 		
 		// grow the obstace back to normal size
 		HOTween.To (transform, 1, "localScale", startScale);
+		audioManager.playEvilLaughSound ();
 	}
 
 	private void GoToExit ()

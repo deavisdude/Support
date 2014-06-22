@@ -15,11 +15,7 @@ public class SPSUAudioManager : MonoBehaviour
 	public AudioClip doorOpen;
 	public AudioClip evilLaugh;
 
-	public AudioClip gameMusicLoop1;
-	public AudioClip gameMusicLoop2;
-	public AudioClip gameMusicLoop3;
-	public AudioClip gameMusicLoop4;
-	public AudioClip gameMusicLoop5;
+	public AudioClip gameMusic;
 
 	public AudioClip gateOpen;
 
@@ -42,16 +38,15 @@ public class SPSUAudioManager : MonoBehaviour
 	private AudioSource mBirdsAmbience;
 	private AudioSource mCreditsMusic;
 	private AudioSource mMenuMusic;
-	private AudioSource mMusicLoop;
+	private AudioSource mGameMusic;
 	private AudioSource mRainMusic;
 	private AudioSource mGateSource;
+	private AudioSource mLaughAudioSource;
 
 	private bool mGameMusicHasBeenStarted = false;
 	private bool mIsFadingCreditsOut = false;
 	private bool mIsFadingMenuOut = false;
 	private bool mIsFadingGameMusicOut = false;
-
-	private int mCurrentTrackIndex = 0;
 
 	// ==================================================
 	// Methods
@@ -93,17 +88,17 @@ public class SPSUAudioManager : MonoBehaviour
 
 	private void handleGameMusic ()
 	{
-		if (mMusicLoop.isPlaying) {
+		if (mGameMusic.isPlaying) {
 			if (mIsFadingGameMusicOut) {
-				if (mMusicLoop.volume > 0) {
-					mMusicLoop.volume -= 0.03f;
+				if (mGameMusic.volume > 0) {
+					mGameMusic.volume -= 0.03f;
 				}
 				
-				if (mMusicLoop.volume < 0.05) {
-					mMusicLoop.Stop ();
+				if (mGameMusic.volume < 0.05) {
+					mGameMusic.Stop ();
 				}
-			} else if (mMusicLoop.volume < 1) {
-				mMusicLoop.volume += 0.03f;
+			} else if (mGameMusic.volume < 1) {
+				mGameMusic.volume += 0.03f;
 			}
 		}
 	}
@@ -112,6 +107,13 @@ public class SPSUAudioManager : MonoBehaviour
 	// Music Methods
 	// =========================
 
+	public void onHitFollower ()
+	{
+		if (!mGameMusic.isPlaying) {
+			mGameMusic.Play ();
+		}
+	}
+
 	public void Update ()
 	{
 		handleMenuMusic ();
@@ -119,56 +121,9 @@ public class SPSUAudioManager : MonoBehaviour
 		handleGameMusic ();
 	}
 
-	public void play ()
+	public void playGameMusic ()
 	{
-		AudioClip newClip = null;
 
-		switch (mCurrentTrackIndex) {
-		case 1:
-			newClip = gameMusicLoop1;
-			mRainMusic.volume = 1;
-			break;
-
-		case 2:
-			newClip = gameMusicLoop2;
-			mRainMusic.volume = .8f;
-			break;
-
-		case 3:
-			newClip = gameMusicLoop3;
-			mRainMusic.volume = .6f;
-			break;
-
-		case 4:
-			newClip = gameMusicLoop4;
-			mRainMusic.volume = .4f;
-			break;
-
-		case 5:
-			newClip = gameMusicLoop5;
-			mRainMusic.volume = .2f;
-			break;
-		}
-
-		if (mMusicLoop.clip != newClip) {
-			mMusicLoop.clip = newClip;
-			Invoke ("play", mMusicLoop.clip.length);
-			mMusicLoop.Play ();
-		}
-	}
-
-	public void incrementTrackIndex ()
-	{
-		mCurrentTrackIndex ++;
-
-		if (mCurrentTrackIndex > 5) {
-			mCurrentTrackIndex = 5;
-		}
-
-		if (!mGameMusicHasBeenStarted) {
-			mGameMusicHasBeenStarted = true;
-			play ();
-		}
 	}
 
 	public void playRainLoop ()
@@ -189,7 +144,7 @@ public class SPSUAudioManager : MonoBehaviour
 	}
 
 	public void playMenuMusic ()
-	{
+	{ 
 		if (!mMenuMusic.isPlaying) {
 			mMenuMusic.Play ();
 			mIsFadingMenuOut = false;
@@ -234,7 +189,13 @@ public class SPSUAudioManager : MonoBehaviour
 	
 	public void playEvilLaughSound ()
 	{
-		AudioSource.PlayClipAtPoint (evilLaugh, transform.position);
+		if (Obstacle.enemyIsBoy) {
+			mLaughAudioSource.pitch = 1;
+		} else {
+			mLaughAudioSource.pitch = 1.75f;
+		}
+
+		mLaughAudioSource.Play ();
 	}
 	
 	public void playGateOpenSound ()
@@ -282,22 +243,33 @@ public class SPSUAudioManager : MonoBehaviour
 	{
 		GameObject.DontDestroyOnLoad (gameObject);
 		mBirdsAmbience = gameObject.AddComponent<AudioSource> ();
-		mCreditsMusic = gameObject.AddComponent<AudioSource> ();
-		mMusicLoop = gameObject.AddComponent<AudioSource> ();
-		mRainMusic = gameObject.AddComponent<AudioSource> ();
-		mMenuMusic = gameObject.AddComponent<AudioSource> ();
-		mGateSource = gameObject.AddComponent<AudioSource> ();
 		mBirdsAmbience.clip = birdsAndTheBees;
-		mCreditsMusic.clip = creditsClip;
-		mGateSource.clip = gateOpen;
-		mRainMusic.clip = rainLoop;
-		mMenuMusic.clip = menuMusic;
 		mBirdsAmbience.loop = true;
+
+		mCreditsMusic = gameObject.AddComponent<AudioSource> ();
+		mCreditsMusic.clip = creditsClip;
 		mCreditsMusic.loop = true;
-		mMusicLoop.loop = true;
-		mRainMusic.loop = true;
+
+		mGameMusic = gameObject.AddComponent<AudioSource> ();
+		mGameMusic.loop = true;
+		mGameMusic.clip = gameMusic;
+
+		mGateSource = gameObject.AddComponent<AudioSource> ();
+		mGateSource.clip = gateOpen;
 		mGateSource.loop = false;
+
+		mLaughAudioSource = gameObject.AddComponent<AudioSource> ();
+		mLaughAudioSource.clip = evilLaugh;
+		mLaughAudioSource.loop = false;
+
+		mMenuMusic = gameObject.AddComponent<AudioSource> ();
+		mMenuMusic.clip = menuMusic;
 		mMenuMusic.loop = true;
+
+		mRainMusic = gameObject.AddComponent<AudioSource> ();
+		mRainMusic.clip = rainLoop;
+		mRainMusic.loop = true;
+
 		playMenuMusic ();
 	}
 }
