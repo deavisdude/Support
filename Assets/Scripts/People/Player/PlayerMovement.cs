@@ -9,6 +9,7 @@ public class PlayerMovement : PeopleMovementScript
 	// ==================================================
 	
 	public static bool isBoy;
+
 	public Sprite boyClothes;
 	public Sprite girlClothes;
 
@@ -16,58 +17,45 @@ public class PlayerMovement : PeopleMovementScript
 	// Methods
 	// ==================================================
 
-	void Start ()
+	override public bool shouldJump ()
 	{
-		if (isBoy) {
-			GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = boyClothes;
-		} else {
-			GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = girlClothes;
-		}
-	}
-
-	override public void handleJump ()
-	{
-		if (Input.GetButton ("Jump") && (canJump || jumping)) {
-			if (canJump) {
-				jumpMultiplier = 5;
-				mAcceleration.x *= .5f;
-			}
-
-			rigidbody2D.velocity += new Vector2 (0f, JUMP_POWER * jumpMultiplier);
-			jumpMultiplier *= .75f;
-			canJump = false;
-			jumping = true;
-		}
+		return (Input.GetButton ("Jump") && (canJump || jumping));
 	}
 
 	override public void handleMovement ()
 	{
 		if (Input.GetAxisRaw ("Horizontal") != 0) {
-			mAcceleration.x = Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.deltaTime;
+			Vector2 addedForce = new Vector2 (Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.fixedDeltaTime, 0f);
 
-			if ((mAcceleration.x < 0 && mVelocity.x > 0) ||
-				(mAcceleration.x > 0 && mVelocity.x < 0)) {
-				mVelocity.x = 0;
+			if (!canJump) {
+				addedForce /= 2;
 			}
 
-			rigidbody2D.velocity += mAcceleration * Time.deltaTime;
+			rigidbody2D.AddForce (addedForce);
 		} else {
 			if (canJump) {
-				rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x * 0.8f, rigidbody2D.velocity.y);
+				rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x * 0.95f, rigidbody2D.velocity.y);
 			}
-		}
-		
-		if (rigidbody2D.velocity.x > MAX_SPEED.x) {
-			rigidbody2D.velocity = new Vector2 (MAX_SPEED.x, rigidbody2D.velocity.y);
-		} else if (rigidbody2D.velocity.x < -MAX_SPEED.x) {
-			rigidbody2D.velocity = new Vector2 (-MAX_SPEED.x, rigidbody2D.velocity.y);
 		}
 	}
 
-	protected void OnCollisionEnter2D (Collision2D other)
+	override public void onJump ()
 	{
-		if (other.gameObject.layer == LayerMask.NameToLayer ("platform")) {
-			canJump = true;
+		audioManager.playJumpSound ();
+	}
+	
+	// =========================
+	// Lifecycle Methods
+	// =========================
+
+	void Start ()
+	{
+		base.Start ();
+		
+		if (isBoy) {
+			GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = boyClothes;
+		} else {
+			GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = girlClothes;
 		}
 	}
 }
