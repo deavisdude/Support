@@ -42,6 +42,9 @@ public class InputManager : SPSUGameJamScript
 			audioManager.playMenuSound ();
 			audioManager.startGameMusic ();
 		}
+
+		if(Input.GetKeyDown(KeyCode.Escape))
+			Application.Quit();
 	}
 	
 	private void showRight ()
