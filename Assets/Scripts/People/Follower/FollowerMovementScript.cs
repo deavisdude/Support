@@ -57,6 +57,12 @@ public class FollowerMovementScript : PeopleMovementScript
 		audioManager.playJumpSound ();
 	}
 
+	protected void onLandOnFloor ()
+	{
+		base.onLandOnFloor ();
+		shouldJumpBool = false;
+	}
+
 	private bool isFarFromTargetPosition ()
 	{
 		return !isNearTargetPosition ();

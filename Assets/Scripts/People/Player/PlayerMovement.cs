@@ -10,6 +10,8 @@ public class PlayerMovement : PeopleMovementScript
 	
 	public static bool isBoy;
 
+	public FollowerManager followManager;
+
 	public Sprite boyClothes;
 	public Sprite girlClothes;
 
@@ -41,6 +43,7 @@ public class PlayerMovement : PeopleMovementScript
 
 	override public void onJump ()
 	{
+		followManager.triggerJumpSequence ();
 		audioManager.playJumpSound ();
 	}
 	
