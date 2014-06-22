@@ -10,6 +10,8 @@ public class PlayerMovement : PeopleMovementScript
 	
 	public static bool isBoy;
 
+	private bool hasJumpedInLastSecond = false;
+
 	public FollowerManager followManager;
 
 	public Sprite boyClothes;
@@ -44,8 +46,19 @@ public class PlayerMovement : PeopleMovementScript
 
 	override public void onJump ()
 	{
-		StartCoroutine (followManager.triggerJumpSequence ());
+		if (!hasJumpedInLastSecond) {
+			StartCoroutine (followManager.triggerJumpSequence ());
+			hasJumpedInLastSecond = true;
+			Invoke ("resetHasJumpedInLastSecond", 1);
+		}
+
 		audioManager.playJumpSound ();
+	}
+
+	private void resetHasJumpedInLastSecond ()
+	{
+		Debug.Log ("resetHasJumped()");
+		hasJumpedInLastSecond = false;
 	}
 	
 	// =========================
@@ -56,15 +69,15 @@ public class PlayerMovement : PeopleMovementScript
 	{
 		base.Start ();
 		GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = (isBoy) ? boyClothes : girlClothes;
-		baseSpriteRender = GetComponentInChildren<SpriteRenderer>();
+		baseSpriteRender = GetComponentInChildren<SpriteRenderer> ();
 
-		if(Exit.GetCurrentLevelColorIndex() < 4)
-			baseSpriteRender.color = Exit.playerColors[Exit.GetCurrentLevelColorIndex()];
+		if (Exit.GetCurrentLevelColorIndex () < 4)
+			baseSpriteRender.color = Exit.playerColors [Exit.GetCurrentLevelColorIndex ()];
 	}
 
 	void Update ()
 	{
-		if(Input.GetKeyDown(KeyCode.Escape))
-			Application.LoadLevel("menu");
+		if (Input.GetKeyDown (KeyCode.Escape))
+			Application.LoadLevel ("menu");
 	}
 }

@@ -90,9 +90,10 @@ public class FollowerMovementScript : PeopleMovementScript
 		return false;
 	}
 
-	public void clothesChange(){
-		if(gameObject.name == "Obstacle" && shouldFollow){
-			SpriteRenderer sr = gameObject.GetComponentInChildren<SpriteRenderer>();
+	public void clothesChange ()
+	{
+		if (gameObject.name == "Obstacle" && shouldFollow) {
+			SpriteRenderer sr = gameObject.GetComponentInChildren<SpriteRenderer> ();
 			sr.sprite = friendlyBase;
 		}
 	}
@@ -115,12 +116,13 @@ public class FollowerMovementScript : PeopleMovementScript
 			Color currentColor = new Color (1, randomGreen / 255f, randomBlue / 255);
 			GetComponentInChildren<SpriteRenderer> ().material.color = currentColor;
 		} else {
-			GetComponentInChildren<SpriteRenderer> ().material.color = Exit.enemyColors[3];
+			GetComponentInChildren<SpriteRenderer> ().material.color = Exit.enemyColors [3];
 		}
 	}
 
-	public void Update(){
-		clothesChange();
+	public void Update ()
+	{
+		clothesChange ();
 	}
 	// =========================
 	// Triggered Methods
@@ -132,7 +134,7 @@ public class FollowerMovementScript : PeopleMovementScript
 			mFollowerManagerScript.addFollower (gameObject);
 			gameObject.layer = LayerMask.NameToLayer ("followingPeople");
 			gameObject.rigidbody2D.isKinematic = false;
-			foreach	(Collider2D coll in gameObject.GetComponents<Collider2D>())
+			foreach (Collider2D coll in gameObject.GetComponents<Collider2D>())
 				coll.isTrigger = false;
 		}
 	}

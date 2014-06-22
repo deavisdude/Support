@@ -130,6 +130,8 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 				onLandOnFloor ();
 			}
 		} else {
+			Debug.Log ("COLLIDED WITH SOMETHING!");
+			Debug.Log ("not the platform! set collidingWithSomething to true");
 			collidingWithSomething = true;
 		}
 	}
@@ -141,6 +143,8 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 				isOnFloor = false;
 			}
 		} else {
+			Debug.Log ("COLLISION EXITED!");
+			Debug.Log ("not the platform! set collidingWithSomething to false");
 			collidingWithSomething = false;
 		}
 	}
