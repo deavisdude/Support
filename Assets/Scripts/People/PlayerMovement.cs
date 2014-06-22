@@ -10,13 +10,12 @@ public class PlayerMovement : PeopleMovementScript
 	
 	public static bool isBoy;
 
-	private bool hasJumpedInLastSecond = false;
-
 	public FollowerManager followManager;
 
 	public Sprite boyClothes;
 	public Sprite girlClothes;
 	public static SpriteRenderer baseSpriteRender;
+	public static SpriteRenderer clothesSpriteRenderer;
 
 	// ==================================================
 	// Methods
@@ -46,19 +45,8 @@ public class PlayerMovement : PeopleMovementScript
 
 	override public void onJump ()
 	{
-		if (!hasJumpedInLastSecond) {
-			StartCoroutine (followManager.triggerJumpSequence ());
-			hasJumpedInLastSecond = true;
-			Invoke ("resetHasJumpedInLastSecond", 1);
-		}
-
+		StartCoroutine (followManager.triggerJumpSequence ());
 		audioManager.playJumpSound ();
-	}
-
-	private void resetHasJumpedInLastSecond ()
-	{
-		Debug.Log ("resetHasJumped()");
-		hasJumpedInLastSecond = false;
 	}
 	
 	// =========================
@@ -68,16 +56,17 @@ public class PlayerMovement : PeopleMovementScript
 	new protected void Start ()
 	{
 		base.Start ();
-		GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = (isBoy) ? boyClothes : girlClothes;
-		baseSpriteRender = GetComponentInChildren<SpriteRenderer> ();
+		clothesSpriteRenderer = GameObject.Find ("clothes").GetComponent<SpriteRenderer> ();
+		clothesSpriteRenderer.sprite = (isBoy) ? boyClothes : girlClothes;
+		baseSpriteRender = GetComponentInChildren<SpriteRenderer>();
 
-		if (Exit.GetCurrentLevelColorIndex () < 4)
-			baseSpriteRender.color = Exit.playerColors [Exit.GetCurrentLevelColorIndex ()];
+		if(Exit.GetCurrentLevelColorIndex() < 4)
+			baseSpriteRender.color = Exit.playerColors[Exit.GetCurrentLevelColorIndex()];
 	}
 
 	void Update ()
 	{
-		if (Input.GetKeyDown (KeyCode.Escape))
-			Application.LoadLevel ("menu");
+		if(Input.GetKeyDown(KeyCode.Escape))
+			Application.LoadLevel("menu");
 	}
 }

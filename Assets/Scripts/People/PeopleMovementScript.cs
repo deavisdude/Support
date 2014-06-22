@@ -48,6 +48,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 	protected void onLandOnFloor ()
 	{
 		isOnFloor = true;
+		collidingWithSomething = false;
 	}
 
 	private void assignDirection ()
