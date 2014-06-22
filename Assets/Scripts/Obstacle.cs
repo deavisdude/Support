@@ -12,16 +12,29 @@ public class Obstacle : MonoBehaviour {
 	public Transform exitTransform;
 	public SpriteRenderer[] spriteRenderers;
 
+	public static bool enemyIsBoy;
+	public Sprite boyClothes;
+	public Sprite girlClothes;
+
 	void Awake()
 	{
 		startScale = transform.localScale;
 		startPosition = transform.position;
 	}
+
+	void Start ()
+	{
+		if (enemyIsBoy) {
+			spriteRenderers[1].sprite = boyClothes;
+		} else {
+			spriteRenderers[1].sprite = girlClothes;
+		}
+	}
 	
 	public void Shrink()
 	{
 		// shrink the obstacle
-		TweenParms tween = new TweenParms().Prop("localScale", new Vector3(startScale.x - 0.5f, startScale.y - 0.5f, startScale.z - 0.5f)).OnComplete(GoToExit);
+		TweenParms tween = new TweenParms().Prop("localScale", new Vector3(startScale.x - 1, startScale.y - 1, startScale.z - 1)).OnComplete(GoToExit);
 		HOTween.To(transform, 1, tween);
 
 		//animation.Play("Shrink");

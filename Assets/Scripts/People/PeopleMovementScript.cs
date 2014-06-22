@@ -28,6 +28,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 	protected float jumpMultiplier;
 
 	private bool collidingWithSomething = false;
+	public bool enemyNowFriendOnLastLevel = false;
 	
 	// ==================================================
 	// Methods
@@ -100,10 +101,13 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 
 	private void determineAnimation ()
 	{
-		if (Mathf.Abs (rigidbody2D.velocity.x) > 0.5f) {
-			walkingAnimation.SetBool ("walking", true);
-		} else {
-			walkingAnimation.SetBool ("walking", false);
+		if(!enemyNowFriendOnLastLevel)
+		{
+			if (Mathf.Abs (rigidbody2D.velocity.x) > 0.5f) {
+				walkingAnimation.SetBool ("walking", true);
+			} else {
+				walkingAnimation.SetBool ("walking", false);
+			}
 		}
 	}
 
