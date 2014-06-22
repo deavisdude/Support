@@ -54,7 +54,7 @@ public class PlayerMovement : PeopleMovementScript
 	// Lifecycle Methods
 	// =========================
 
-	protected void Start ()
+	new protected void Start ()
 	{
 		base.Start ();
 		GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = (isBoy) ? boyClothes : girlClothes;

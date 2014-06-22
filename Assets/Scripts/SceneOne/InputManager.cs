@@ -7,7 +7,7 @@ public class InputManager : SPSUGameJamScript
 	public GameObject rightSelector;
 	public GameObject leftRightArrows;
 
-	void Start ()
+	new void Start ()
 	{
 		base.Start ();
 		rightSelector.renderer.material.shader = Shader.Find ("Transparent/Diffuse");

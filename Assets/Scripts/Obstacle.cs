@@ -24,8 +24,6 @@ public class Obstacle : SPSUGameJamScript
 
 	public Transform exitTransform;
 
-	private float shrinkAmount = 0.5f;
-
 	private Vector3 startScale;
 	private Vector3 startPosition;
 
@@ -92,7 +90,7 @@ public class Obstacle : SPSUGameJamScript
 		}
 	}
 	
-	void Start ()
+	new void Start ()
 	{
 		base.Start ();
 		if (enemyIsBoy) {

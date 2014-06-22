@@ -58,7 +58,7 @@ public class FollowerMovementScript : PeopleMovementScript
 		audioManager.playJumpSound ();
 	}
 
-	protected void onLandOnFloor ()
+	new protected void onLandOnFloor ()
 	{
 		base.onLandOnFloor ();
 		shouldJumpBool = false;
@@ -93,7 +93,7 @@ public class FollowerMovementScript : PeopleMovementScript
 	// Lifecycle Methods
 	// =========================
 
-	protected void Start ()
+	new protected void Start ()
 	{
 		base.Start ();
 
