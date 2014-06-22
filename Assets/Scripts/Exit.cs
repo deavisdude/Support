@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Holoville.HOTween;
 
 public class Exit : SPSUGameJamScript
 {
@@ -25,28 +26,38 @@ public class Exit : SPSUGameJamScript
 	void OnTriggerEnter2D (Collider2D other)
 	{
 		if (other.gameObject.layer == LayerMask.NameToLayer ("player")) {
-			if (Application.loadedLevel + 1 < Application.levelCount) {
-				int newLevel = Application.loadedLevel + 1;
 
+			audioManager.playGateOpenSound();
+			TweenParms tween = new TweenParms().Prop("color", new Color(1,1,1,0)).OnComplete(LoadNextLevel);
+			HOTween.To(PlayerMovement.baseSpriteRender, 1, tween);
+			HOTween.To(PlayerMovement.clothesSpriteRenderer, 1, "color", new Color(1,1,1,0));
+		}
 
-				switch (newLevel) {
-				case 2:
-					audioManager.incrementTrackIndex ();
-					break;
-					
-				case 3:
-					audioManager.incrementTrackIndex ();
-					break;
-					
-				case 4:
-					audioManager.playBirdsAndBeesSound ();
-					break;
-				}
+	}
 
-				Application.LoadLevel (newLevel);
-			} else {
-				Application.LoadLevel (0);
+	private void LoadNextLevel()
+	{
+		if (Application.loadedLevel + 1 < Application.levelCount) {
+			int newLevel = Application.loadedLevel + 1;
+			
+			
+			switch (newLevel) {
+			case 2:
+				audioManager.incrementTrackIndex ();
+				break;
+				
+			case 3:
+				audioManager.incrementTrackIndex ();
+				break;
+				
+			case 4:
+				audioManager.playBirdsAndBeesSound ();
+				break;
 			}
+			
+			Application.LoadLevel (newLevel);
+		} else {
+			Application.LoadLevel (0);
 		}
 	}
 

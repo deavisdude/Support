@@ -15,6 +15,7 @@ public class PlayerMovement : PeopleMovementScript
 	public Sprite boyClothes;
 	public Sprite girlClothes;
 	public static SpriteRenderer baseSpriteRender;
+	public static SpriteRenderer clothesSpriteRenderer;
 
 	// ==================================================
 	// Methods
@@ -55,7 +56,8 @@ public class PlayerMovement : PeopleMovementScript
 	new protected void Start ()
 	{
 		base.Start ();
-		GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = (isBoy) ? boyClothes : girlClothes;
+		clothesSpriteRenderer = GameObject.Find ("clothes").GetComponent<SpriteRenderer> ();
+		clothesSpriteRenderer.sprite = (isBoy) ? boyClothes : girlClothes;
 		baseSpriteRender = GetComponentInChildren<SpriteRenderer>();
 
 		if(Exit.GetCurrentLevelColorIndex() < 4)
