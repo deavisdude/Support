@@ -120,7 +120,8 @@ public class FollowerMovementScript : PeopleMovementScript
 			mFollowerManagerScript.addFollower (gameObject);
 			gameObject.layer = LayerMask.NameToLayer ("followingPeople");
 			gameObject.rigidbody2D.isKinematic = false;
-			gameObject.collider2D.isTrigger = false;
+			foreach	(Collider2D coll in gameObject.GetComponents<Collider2D>())
+				coll.isTrigger = false;
 		}
 	}
 }

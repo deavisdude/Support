@@ -4,11 +4,8 @@ using Holoville.HOTween;
 
 public class PressurePlate : SPSUGameJamScript
 {
-
 	public bool activated = false;
 	public SpriteRenderer spriteRender;
-
-
 
 	void Awake ()
 	{
@@ -27,6 +24,18 @@ public class PressurePlate : SPSUGameJamScript
 				audioManager.playPressurePlateActivatedSound ();
 				spriteRender.color = Color.green;
 				StopAllCoroutines ();
+			}
+		}
+	}
+
+	void OnTriggerStay2D (Collider2D collider)
+	{
+		if (!PressurePlateManager.allPlatesActive) {
+			if ((collider.gameObject.layer == LayerMask.NameToLayer ("player") 
+			     || collider.gameObject.layer == LayerMask.NameToLayer ("followingPeople")))
+		    {
+				activated = true;
+				spriteRender.color = Color.green;
 			}
 		}
 	}

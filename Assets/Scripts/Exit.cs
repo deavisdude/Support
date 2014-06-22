@@ -32,19 +32,13 @@ public class Exit : SPSUGameJamScript
 				switch (newLevel) {
 				case 2:
 					audioManager.incrementTrackIndex ();
-					PlayerMovement.currentColor = playerColors[newLevel];
-					Obstacle.enemyColor = enemyColors[newLevel];
 					break;
 					
 				case 3:
 					audioManager.incrementTrackIndex ();
-					PlayerMovement.currentColor = playerColors[newLevel];
-					Obstacle.enemyColor = enemyColors[newLevel];
 					break;
 					
 				case 4:
-					PlayerMovement.currentColor = playerColors[newLevel];
-					Obstacle.enemyColor = enemyColors[newLevel];
 					audioManager.playBirdsAndBeesSound ();
 					break;
 				}
@@ -54,5 +48,15 @@ public class Exit : SPSUGameJamScript
 				Application.LoadLevel (0);
 			}
 		}
+	}
+
+	public static int GetCurrentLevelColorIndex()
+	{
+		return Application.loadedLevel - 1;
+	}
+
+	public static int GetNextLevelColorIndex()
+	{
+		return Application.loadedLevel;
 	}
 }

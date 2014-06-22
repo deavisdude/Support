@@ -10,8 +10,6 @@ public class PlayerMovement : PeopleMovementScript
 	
 	public static bool isBoy;
 
-	public static Color currentColor = new Color (120f / 255f, 120f / 255f, 240f / 255f);
-
 	public FollowerManager followManager;
 
 	public Sprite boyClothes;
@@ -59,7 +57,9 @@ public class PlayerMovement : PeopleMovementScript
 		base.Start ();
 		GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = (isBoy) ? boyClothes : girlClothes;
 		baseSpriteRender = GetComponentInChildren<SpriteRenderer>();
-		baseSpriteRender.color = currentColor;
+
+		if(Exit.GetCurrentLevelColorIndex() < 4)
+			baseSpriteRender.color = Exit.playerColors[Exit.GetCurrentLevelColorIndex()];
 	}
 
 	void Update ()

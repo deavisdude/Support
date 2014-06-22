@@ -20,6 +20,10 @@ public class FollowerManager : SPSUGameJamScript
 
 	public void addFollower (GameObject followerObject)
 	{
+		int nextLevel = Exit.GetNextLevelColorIndex();
+		if(nextLevel < 4)
+			HOTween.To(PlayerMovement.baseSpriteRender, 5, "color", Exit.playerColors[nextLevel]);
+
 		this.addFollower (followerObject, true);
 	}
 
@@ -35,10 +39,6 @@ public class FollowerManager : SPSUGameJamScript
 				audioManager.incrementTrackIndex ();
 				audioManager.playNewFriendSound ();
 			}
-
-			int nextLevel = Application.loadedLevel;
-			if(nextLevel < 4)
-				HOTween.To(PlayerMovement.baseSpriteRender, 5, "color", Exit.playerColors[nextLevel]);
 		}
 	}
 
