@@ -11,6 +11,11 @@ public class PressurePlateManager : MonoBehaviour {
 	}
 	public Obstacle obstacle;
 
+	void OnLevelWasLoaded (int level)
+	{
+		_allPlatesActive = false;
+	}
+
 	// Update is called once per frame
 	void Update () {
 
