@@ -7,6 +7,8 @@ public class PressurePlate : SPSUGameJamScript {
 	public bool activated = false;
 	public SpriteRenderer spriteRender;
 
+
+
 	void Awake ()
 	{
 		if(spriteRender == null)
