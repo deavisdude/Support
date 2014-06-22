@@ -32,7 +32,7 @@ public class FollowerManager : MonoBehaviour
 		for (int i = 0; i < mFollowers.Count; i ++) {
 			GameObject follower = (GameObject)mFollowers [i];
 			FollowerMovementScript movementScript = follower.GetComponent<FollowerMovementScript> ();
-			movementScript.shouldJumpBool = false;
+			movementScript.jump ();
 		}
 	}
 
