@@ -2,7 +2,7 @@
 using System.Collections;
 using Holoville.HOTween;
 
-public class Obstacle : MonoBehaviour
+public class Obstacle : SPSUGameJamScript
 {
 	// ==================================================
 	// Variables
@@ -37,7 +37,8 @@ public class Obstacle : MonoBehaviour
 	{
 		TweenParms tween = new TweenParms ().Prop ("localScale", new Vector3 (startScale.x - 1, startScale.y - 1, startScale.z - 1)).OnComplete (GoToExit);
 		HOTween.To (transform, 1, tween);
-		
+		audioManager.playEvilLaughSound ();
+
 		if (timed) {
 			StartCoroutine (GrowBack ()); 
 		}
@@ -93,6 +94,7 @@ public class Obstacle : MonoBehaviour
 	
 	void Start ()
 	{
+		base.Start ();
 		if (enemyIsBoy) {
 			spriteRenderers [1].sprite = boyClothes;
 		} else {

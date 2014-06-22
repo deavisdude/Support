@@ -101,35 +101,40 @@ public class SPSUAudioManager : MonoBehaviour
 
 	public void play ()
 	{
+		AudioClip newClip = null;
+
 		switch (mCurrentTrackIndex) {
 		case 1:
-			mMusicLoop.clip = gameMusicLoop1;
+			newClip = gameMusicLoop1;
 			mRainMusic.volume = 1;
 			break;
 
 		case 2:
-			mMusicLoop.clip = gameMusicLoop2;
+			newClip = gameMusicLoop2;
 			mRainMusic.volume = .8f;
 			break;
 
 		case 3:
-			mMusicLoop.clip = gameMusicLoop3;
+			newClip = gameMusicLoop3;
 			mRainMusic.volume = .6f;
 			break;
 
 		case 4:
-			mMusicLoop.clip = gameMusicLoop4;
+			newClip = gameMusicLoop4;
 			mRainMusic.volume = .4f;
 			break;
 
 		case 5:
-			mMusicLoop.clip = gameMusicLoop5;
+			newClip = gameMusicLoop5;
 			mRainMusic.volume = .2f;
 			break;
 		}
 
-		Invoke ("play", mMusicLoop.clip.length);
-		mMusicLoop.Play ();
+		if (mMusicLoop.clip != newClip) {
+			mMusicLoop.clip = newClip;
+			Invoke ("play", mMusicLoop.clip.length);
+			mMusicLoop.Play ();
+		}
 	}
 
 	public void incrementTrackIndex ()
