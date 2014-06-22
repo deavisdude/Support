@@ -14,29 +14,39 @@ public class PressurePlateManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		_allPlatesActive = true;
-		foreach(PressurePlate plate in pressurePlates)
+		if(!allPlatesActive)
 		{
-			if(!plate.activated)
+			_allPlatesActive = true;
+			foreach(PressurePlate plate in pressurePlates)
 			{
-				_allPlatesActive = false;
-				break;
-			}
-		}
-
-		if(_allPlatesActive)
-		{
-			// tell obstacle to shrink and start timer
-			obstacle.Shrink();
-
-			if(obstacle.timed)
-			{
-				for (int i = (pressurePlates.Length - 1); i >= 0; i--)
+				if(!plate.activated)
 				{
-					float plateDeactivationTime = obstacle.growBackWaitTime / pressurePlates.Length;
-					pressurePlates[i].DeactivateTimed(plateDeactivationTime * (pressurePlates.Length - i), plateDeactivationTime);
+					_allPlatesActive = false;
+					break;
+				}
+			}
+
+			if(_allPlatesActive)
+			{
+				// tell obstacle to shrink and start timer
+				obstacle.Shrink();
+
+				if(obstacle.timed)
+				{
+					for (int i = (pressurePlates.Length - 1); i >= 0; i--)
+					{
+						float plateDeactivationTime = obstacle.growBackWaitTime / pressurePlates.Length;
+						pressurePlates[i].DeactivateTimed(plateDeactivationTime * (pressurePlates.Length - i), plateDeactivationTime);
+						StartCoroutine(WaitAndDeactivate(obstacle.growBackWaitTime));
+					}
 				}
 			}
 		}
+	}
+
+	private IEnumerator WaitAndDeactivate(float wait)
+	{
+		yield return new WaitForSeconds(wait);
+		_allPlatesActive = false;
 	}
 }
