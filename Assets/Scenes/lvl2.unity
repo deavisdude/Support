@@ -315,6 +315,18 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8fab009ec8ea4214f904fec38703c0a7, type: 2}
+      propertyPath: mFollowerManager
+      value: 
+      objectReference: {fileID: 1079357555}
+    - target: {fileID: 11400000, guid: 8fab009ec8ea4214f904fec38703c0a7, type: 2}
+      propertyPath: mFollowerManagerScript
+      value: 
+      objectReference: {fileID: 1079357556}
+    - target: {fileID: 11400000, guid: 8fab009ec8ea4214f904fec38703c0a7, type: 2}
+      propertyPath: shouldFollow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fab009ec8ea4214f904fec38703c0a7, type: 2}
   m_RootGameObject: {fileID: 1727521124}
@@ -755,7 +767,7 @@ SpriteRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 92ca52b7b2a20fb48b97db6fd375b510, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -887,7 +899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingAnimation: {fileID: 1806377181}
   currentDirection: 0
-  followManager: {fileID: 0}
+  followManager: {fileID: 1079357556}
   boyClothes: {fileID: 21300000, guid: c71774ec235ed09439f324cc9af6df0e, type: 3}
   girlClothes: {fileID: 21300000, guid: 19ca6e87c8c29a042ae84a19ff678fc8, type: 3}
 --- !u!50 &626414284
@@ -1776,6 +1788,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 19ca6e87c8c29a042ae84a19ff678fc8,
         type: 3}
+    - target: {fileID: 11400000, guid: ac056f851aae9431388678a2b3769657, type: 2}
+      propertyPath: followManager
+      value: 
+      objectReference: {fileID: 1079357556}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac056f851aae9431388678a2b3769657, type: 2}
   m_RootGameObject: {fileID: 626414282}
@@ -1828,8 +1844,8 @@ MonoBehaviour:
   currentDirection: 0
   shouldFollow: 0
   shouldJumpBool: 0
-  mFollowerManager: {fileID: 0}
-  mFollowerManagerScript: {fileID: 0}
+  mFollowerManager: {fileID: 1079357555}
+  mFollowerManagerScript: {fileID: 1079357556}
   mTargetPosition: {x: 0, y: 0, z: 0}
 --- !u!50 &1119416390
 Rigidbody2D:
@@ -2511,7 +2527,7 @@ SpriteRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 92ca52b7b2a20fb48b97db6fd375b510, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -2739,10 +2755,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingAnimation: {fileID: 540742598}
   currentDirection: 0
-  shouldFollow: 0
+  shouldFollow: 1
   shouldJumpBool: 0
-  mFollowerManager: {fileID: 0}
-  mFollowerManagerScript: {fileID: 0}
+  mFollowerManager: {fileID: 1079357555}
+  mFollowerManagerScript: {fileID: 1079357556}
   mTargetPosition: {x: 0, y: 0, z: 0}
 --- !u!50 &1727521126
 Rigidbody2D:
@@ -2784,6 +2800,59 @@ Transform:
   m_Children:
   - {fileID: 540742599}
   - {fileID: 280718690}
+  m_Father: {fileID: 0}
+--- !u!1 &1740641843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
+  m_PrefabInternal: {fileID: 1914722185}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1740641845}
+  - 114: {fileID: 1740641844}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: audioManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1740641844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1914722185}
+  m_GameObject: {fileID: 1740641843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701e60d0e91a943e0aa0a49c281fbf7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mBirdsAndTheBees: {fileID: 8300000, guid: 5c8239a9f39134097ba65ddc76f75c46, type: 3}
+  mBodyHit: {fileID: 8300000, guid: 7a64db00c89d34368be77b9456b53be2, type: 3}
+  mDoorOpen: {fileID: 8300000, guid: b8ce87b8ce4ed4d38897aa218a4028bb, type: 3}
+  mEvilLaugh: {fileID: 8300000, guid: 7c0cc3c1c3d2a448aa0003224058d492, type: 3}
+  mGateOpen: {fileID: 8300000, guid: 8910e76465ffb4e6199fd9637dac97c5, type: 3}
+  mJump: {fileID: 8300000, guid: d0866f6e2155e42f89cb0d704963ee13, type: 3}
+  mLevelUp: {fileID: 8300000, guid: c991cabd1b37a4047b6d8bf0c0635303, type: 3}
+  mMenuSound: {fileID: 8300000, guid: 96f122a8b92d84430ad0c845fb58f0de, type: 3}
+  mPressurePlateActivated: {fileID: 8300000, guid: 0161ee19509a0424ebd6a91bf8c90c9f,
+    type: 3}
+  mPressurePlateDeactivated: {fileID: 8300000, guid: 03f51d46ce33e40daafe8c39480a2d50,
+    type: 3}
+  mRainLoop: {fileID: 8300000, guid: 94fcf1ec5eb0f49a0acf698546c86504, type: 3}
+  mSigh: {fileID: 8300000, guid: 168e5cad7d8f349718b78c7978d9fc51, type: 3}
+--- !u!4 &1740641845
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
+  m_PrefabInternal: {fileID: 1914722185}
+  m_GameObject: {fileID: 1740641843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.29763079, y: .759427965, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &1806377179
 GameObject:
@@ -2841,7 +2910,7 @@ SpriteRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 02c436ea1af56ea4386e6e5ccf3e53f0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -2909,6 +2978,46 @@ EdgeCollider2D:
   m_Points:
   - {x: -.5, y: 0}
   - {x: .5, y: 0}
+--- !u!1001 &1914722185
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.29763079
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .759427965
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2105fd20fc6e44df2bc39b4bba459cd1, type: 2}
+  m_RootGameObject: {fileID: 1740641843}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1001 &1938289198
 Prefab:
   m_ObjectHideFlags: 0
@@ -2992,6 +3101,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b052c574bd3ab6947a4b5acdcd31d7e0, type: 2}
+      propertyPath: mFollowerManager
+      value: 
+      objectReference: {fileID: 1079357555}
+    - target: {fileID: 11400000, guid: b052c574bd3ab6947a4b5acdcd31d7e0, type: 2}
+      propertyPath: mFollowerManagerScript
+      value: 
+      objectReference: {fileID: 1079357556}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b052c574bd3ab6947a4b5acdcd31d7e0, type: 2}
   m_RootGameObject: {fileID: 1119416387}
