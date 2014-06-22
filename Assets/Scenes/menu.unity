@@ -113,7 +113,6 @@ Transform:
   m_LocalScale: {x: 2.08940673, y: 3.14455795, z: 2.08940673}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
 --- !u!114 &139738077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +163,6 @@ Transform:
   m_LocalScale: {x: 1.95881867, y: 3.14455795, z: 2.08940673}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
 --- !u!114 &596236620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,8 +208,9 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 3986060259
+  m_SortingLayer: -1
   m_SortingOrder: 0
+  m_SortingLayerID: 3986060259
   m_Sprite: {fileID: 21300000, guid: 0596a05920adca443881bc8bcb2051ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1016279007
@@ -225,7 +224,6 @@ Transform:
   m_LocalScale: {x: 1.3948257, y: 1.39482415, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
 --- !u!1 &1108138863
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,8 +254,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mBirdsAndTheBees: {fileID: 8300000, guid: 5c8239a9f39134097ba65ddc76f75c46, type: 3}
   mBodyHit: {fileID: 8300000, guid: 7a64db00c89d34368be77b9456b53be2, type: 3}
+  mCreditsClip: {fileID: 8300000, guid: af95f4ffe70e4e64fb17dde3b213d811, type: 3}
   mDoorOpen: {fileID: 8300000, guid: b8ce87b8ce4ed4d38897aa218a4028bb, type: 3}
   mEvilLaugh: {fileID: 8300000, guid: 7c0cc3c1c3d2a448aa0003224058d492, type: 3}
+  mGameMusicLoop1: {fileID: 8300000, guid: 1272c47b07aeeb547b393327d582c1ff, type: 3}
+  mGameMusicLoop2: {fileID: 8300000, guid: 1272c47b07aeeb547b393327d582c1ff, type: 3}
+  mGameMusicLoop3: {fileID: 8300000, guid: b6ca65f5825678148ae53da183fec812, type: 3}
+  mGameMusicLoop4: {fileID: 8300000, guid: d76531ecc188cfe43887f334a6235cbc, type: 3}
+  mGameMusicLoop5: {fileID: 8300000, guid: 4bc63d94b227e5449886464bfeba7196, type: 3}
   mGateOpen: {fileID: 8300000, guid: 8910e76465ffb4e6199fd9637dac97c5, type: 3}
   mJump: {fileID: 8300000, guid: d0866f6e2155e42f89cb0d704963ee13, type: 3}
   mLevelUp: {fileID: 8300000, guid: c991cabd1b37a4047b6d8bf0c0635303, type: 3}
@@ -266,14 +270,8 @@ MonoBehaviour:
     type: 3}
   mPressurePlateDeactivated: {fileID: 8300000, guid: 03f51d46ce33e40daafe8c39480a2d50,
     type: 3}
-  mRainLoop: {fileID: 8300000, guid: 94fcf1ec5eb0f49a0acf698546c86504, type: 3}
+  mRainLoop: {fileID: 8300000, guid: a16bbe267e0094befba026ec2e4273e2, type: 3}
   mSigh: {fileID: 8300000, guid: 168e5cad7d8f349718b78c7978d9fc51, type: 3}
-  mLoop1: {fileID: 8300000, guid: 1272c47b07aeeb547b393327d582c1ff, type: 3}
-  mLoop2: {fileID: 8300000, guid: 3e5fb5b3e53fbd048a1f9906aa4263f5, type: 3}
-  mLoop3: {fileID: 8300000, guid: b6ca65f5825678148ae53da183fec812, type: 3}
-  mLoop4: {fileID: 8300000, guid: d76531ecc188cfe43887f334a6235cbc, type: 3}
-  mLoop5: {fileID: 8300000, guid: 4bc63d94b227e5449886464bfeba7196, type: 3}
-  mCreditsClip: {fileID: 8300000, guid: af95f4ffe70e4e64fb17dde3b213d811, type: 3}
 --- !u!4 &1108138865
 Transform:
   m_ObjectHideFlags: 0
@@ -285,7 +283,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!1 &1354008947
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,11 +351,8 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
   m_HDR: 0
   m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: .0219999999
 --- !u!4 &1354008952
 Transform:
   m_ObjectHideFlags: 0
@@ -370,7 +364,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
 --- !u!82 &1354008953
 AudioSource:
   m_ObjectHideFlags: 0
