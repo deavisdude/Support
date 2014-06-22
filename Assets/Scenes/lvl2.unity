@@ -694,7 +694,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 513614084}
   - 114: {fileID: 513614083}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pressure Plate Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
