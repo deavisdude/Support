@@ -28,7 +28,7 @@ public class InputManager : SPSUGameJamScript
 			showRight ();
 		} else if (Input.GetAxis ("Horizontal") < 0) {
 			showLeft ();
-		} else if (Input.GetButtonUp("Fire1") || Input.GetKeyUp(KeyCode.Return)) {
+		} else if (Input.GetButton ("Jump")) {
 			if (leftSelector.renderer.material.color.a == 1f) {
 				PlayerMovement.isBoy = true;
 			} else if (rightSelector.renderer.material.color.a == 1f) {
@@ -42,6 +42,9 @@ public class InputManager : SPSUGameJamScript
 			audioManager.playMenuSound ();
 			audioManager.startGameMusic ();
 		}
+
+		if(Input.GetKeyDown(KeyCode.Escape))
+			Application.Quit();
 	}
 	
 	private void showRight ()

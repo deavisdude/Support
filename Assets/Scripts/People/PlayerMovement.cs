@@ -59,4 +59,10 @@ public class PlayerMovement : PeopleMovementScript
 		GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = (isBoy) ? boyClothes : girlClothes;
 		GetComponentInChildren<SpriteRenderer> ().material.color = currentColor;
 	}
+
+	void Update ()
+	{
+		if(Input.GetKeyDown(KeyCode.Escape))
+			Application.LoadLevel("menu");
+	}
 }
