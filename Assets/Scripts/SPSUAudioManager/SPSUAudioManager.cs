@@ -9,34 +9,44 @@ public class SPSUAudioManager : MonoBehaviour
 
 	public AudioClip mBirdsAndTheBees;
 	public AudioClip mBodyHit;
-	public AudioClip mDoorOpen;
-	public AudioClip mEvilLaugh;
-	public AudioClip mGateOpen;
-	public AudioClip mJump;
-	public AudioClip mLevelUp;
-	public AudioClip mMenuSound;
-	public AudioClip mPressurePlateActivated;
-	public AudioClip mPressurePlateDeactivated;
-	public AudioClip mRainLoop;
-	public AudioClip mSigh;
-
-	public AudioClip mLoop1;
-	public AudioClip mLoop2;
-	public AudioClip mLoop3;
-	public AudioClip mLoop4;
-	public AudioClip mLoop5;
 
 	public AudioClip mCreditsClip;
+
+	public AudioClip mDoorOpen;
+	public AudioClip mEvilLaugh;
+
+	public AudioClip mGameMusicLoop1;
+	public AudioClip mGameMusicLoop2;
+	public AudioClip mGameMusicLoop3;
+	public AudioClip mGameMusicLoop4;
+	public AudioClip mGameMusicLoop5;
+
+	public AudioClip mGateOpen;
+
+	public AudioClip mJump;
+
+	public AudioClip mLevelUp;
+
+	public AudioClip mMenuSound;
+
+	public AudioClip mPressurePlateActivated;
+	public AudioClip mPressurePlateDeactivated;
+
+	public AudioClip mRainLoop;
+
+	public AudioClip mSigh;
 
 	private AudioSource mMusicLoop;
 	private AudioSource mRainMusic;
 	private AudioSource mCreditsMusic;
 
-	bool mGameMusicHasBeenStarted = false;
-	bool mIsFadingCreditsOut = false;
-	int mCurrentTrackIndex = 0;
-	float mCurrentClipLength = 0;
-	float mCurrentTime = 0;
+	private bool mGameMusicHasBeenStarted = false;
+	private bool mIsFadingCreditsOut = false;
+
+	private float mCurrentClipLength = 0;
+	private float mCurrentTime = 0;
+
+	private int mCurrentTrackIndex = 0;
 
 	// ==================================================
 	// Methods
@@ -78,25 +88,25 @@ public class SPSUAudioManager : MonoBehaviour
 	{
 		switch (mCurrentTrackIndex) {
 		case 1:
-			mMusicLoop.clip = mLoop1;
+			mMusicLoop.clip = mGameMusicLoop1;
 			mRainMusic.volume = 1;
 			break;
 
 		case 2:
-			mMusicLoop.clip = mLoop2;
+			mMusicLoop.clip = mGameMusicLoop2;
 			mRainMusic.volume = .8f;
 			break;
 
 		case 3:
-			mMusicLoop.clip = mLoop3;
+			mMusicLoop.clip = mGameMusicLoop3;
 			mRainMusic.volume = .6f;
 			break;
 		case 4:
-			mMusicLoop.clip = mLoop4;
+			mMusicLoop.clip = mGameMusicLoop4;
 			mRainMusic.volume = .4f;
 			break;
 		case 5:
-			mMusicLoop.clip = mLoop5;
+			mMusicLoop.clip = mGameMusicLoop5;
 			mRainMusic.volume = .2f;
 			break;
 		}
