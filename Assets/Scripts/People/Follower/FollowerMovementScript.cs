@@ -15,6 +15,8 @@ public class FollowerMovementScript : PeopleMovementScript
 	// ==================================================
 
 	public bool shouldFollow = false;
+	public bool shouldJumpBool = false;
+
 	public GameObject mFollowerManager;
 	public FollowerManager mFollowerManagerScript;
 	public Vector3 mTargetPosition;
@@ -25,7 +27,7 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	override public bool shouldJump ()
 	{
-		return false;
+		return (canJump && shouldJumpBool);
 	}
 
 	override public void handleMovement ()

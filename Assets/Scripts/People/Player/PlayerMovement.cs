@@ -19,7 +19,7 @@ public class PlayerMovement : PeopleMovementScript
 
 	override public bool shouldJump ()
 	{
-		return (Input.GetButton ("Jump") && (canJump || jumping));
+		return (Input.GetButton ("Jump") && (isOnFloor || jumping));
 	}
 
 	override public void handleMovement ()
@@ -27,13 +27,13 @@ public class PlayerMovement : PeopleMovementScript
 		if (Input.GetAxisRaw ("Horizontal") != 0) {
 			Vector2 addedForce = new Vector2 (Input.GetAxis ("Horizontal") * ACCELERATION_FACTOR * Time.fixedDeltaTime, 0f);
 
-			if (!canJump) {
+			if (!isOnFloor) {
 				addedForce /= 2;
 			}
 
 			rigidbody2D.AddForce (addedForce);
 		} else {
-			if (canJump) {
+			if (isOnFloor) {
 				rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x * 0.95f, rigidbody2D.velocity.y);
 			}
 		}
