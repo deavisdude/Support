@@ -16,6 +16,7 @@ public class PlayerMovement : PeopleMovementScript
 
 	public Sprite boyClothes;
 	public Sprite girlClothes;
+	public static SpriteRenderer baseSpriteRender;
 
 	// ==================================================
 	// Methods
@@ -53,11 +54,12 @@ public class PlayerMovement : PeopleMovementScript
 	// Lifecycle Methods
 	// =========================
 
-	protected void Start ()
+	new protected void Start ()
 	{
 		base.Start ();
 		GameObject.Find ("clothes").GetComponent<SpriteRenderer> ().sprite = (isBoy) ? boyClothes : girlClothes;
-		GetComponentInChildren<SpriteRenderer> ().material.color = currentColor;
+		baseSpriteRender = GetComponentInChildren<SpriteRenderer>();
+		baseSpriteRender.color = currentColor;
 	}
 
 	void Update ()

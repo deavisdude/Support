@@ -7,7 +7,7 @@ public class InputManager : SPSUGameJamScript
 	public GameObject rightSelector;
 	public GameObject leftRightArrows;
 
-	void Start ()
+	new void Start ()
 	{
 		base.Start ();
 		rightSelector.renderer.material.shader = Shader.Find ("Transparent/Diffuse");
@@ -28,7 +28,7 @@ public class InputManager : SPSUGameJamScript
 			showRight ();
 		} else if (Input.GetAxis ("Horizontal") < 0) {
 			showLeft ();
-		} else if (Input.GetButton ("Jump")) {
+		} else if (Input.GetButton ("Jump") || Input.GetKey(KeyCode.Return)) {
 			if (leftSelector.renderer.material.color.a == 1f) {
 				PlayerMovement.isBoy = true;
 			} else if (rightSelector.renderer.material.color.a == 1f) {

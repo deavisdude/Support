@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using SPSUGameJam;
+using Holoville.HOTween;
 
 public class FollowerManager : SPSUGameJamScript
 {
@@ -34,6 +35,10 @@ public class FollowerManager : SPSUGameJamScript
 				audioManager.incrementTrackIndex ();
 				audioManager.playNewFriendSound ();
 			}
+
+			int nextLevel = Application.loadedLevel;
+			if(nextLevel < 4)
+				HOTween.To(PlayerMovement.baseSpriteRender, 5, "color", Exit.playerColors[nextLevel]);
 		}
 	}
 

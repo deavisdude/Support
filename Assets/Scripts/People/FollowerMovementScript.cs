@@ -59,7 +59,7 @@ public class FollowerMovementScript : PeopleMovementScript
 		audioManager.playJumpSound ();
 	}
 
-	protected void onLandOnFloor ()
+	new protected void onLandOnFloor ()
 	{
 		base.onLandOnFloor ();
 		shouldJumpBool = false;
@@ -101,7 +101,7 @@ public class FollowerMovementScript : PeopleMovementScript
 	// Lifecycle Methods
 	// =========================
 
-	protected void Start ()
+	new protected void Start ()
 	{
 		base.Start ();
 
@@ -115,7 +115,7 @@ public class FollowerMovementScript : PeopleMovementScript
 			Color currentColor = new Color (1, randomGreen / 255f, randomBlue / 255);
 			GetComponentInChildren<SpriteRenderer> ().material.color = currentColor;
 		} else {
-			GetComponentInChildren<SpriteRenderer> ().material.color = Exit.enemyLevelFour;
+			GetComponentInChildren<SpriteRenderer> ().material.color = Exit.enemyColors[3];
 		}
 	}
 

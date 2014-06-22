@@ -558,9 +558,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 230876467}
-  - 61: {fileID: 230876466}
   - 50: {fileID: 230876465}
   - 114: {fileID: 230876464}
+  - 58: {fileID: 230876469}
+  - 58: {fileID: 230876468}
+  - 58: {fileID: 230876466}
   m_Layer: 14
   m_Name: BoyFollow
   m_TagString: follower
@@ -604,18 +606,18 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &230876466
-BoxCollider2D:
+--- !u!58 &230876466
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 8fab009ec8ea4214f904fec38703c0a7,
+  m_PrefabParentObject: {fileID: 5800000, guid: 8fab009ec8ea4214f904fec38703c0a7,
     type: 2}
   m_PrefabInternal: {fileID: 176040272}
   m_GameObject: {fileID: 230876463}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 1.01999998, y: 2.3900001}
-  m_Center: {x: 0, y: -.100000001}
+  m_IsTrigger: 0
+  m_Radius: .409999996
+  m_Center: {x: -.00999999978, y: -.330000013}
 --- !u!4 &230876467
 Transform:
   m_ObjectHideFlags: 0
@@ -629,6 +631,30 @@ Transform:
   - {fileID: 2113663104}
   - {fileID: 399417458}
   m_Father: {fileID: 0}
+--- !u!58 &230876468
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5800002, guid: 8fab009ec8ea4214f904fec38703c0a7,
+    type: 2}
+  m_PrefabInternal: {fileID: 176040272}
+  m_GameObject: {fileID: 230876463}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .25999999
+  m_Center: {x: -.0299999993, y: -1.01999998}
+--- !u!58 &230876469
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5800004, guid: 8fab009ec8ea4214f904fec38703c0a7,
+    type: 2}
+  m_PrefabInternal: {fileID: 176040272}
+  m_GameObject: {fileID: 230876463}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Radius: .469999999
+  m_Center: {x: 0, y: .569999993}
 --- !u!1001 &265380295
 Prefab:
   m_ObjectHideFlags: 0
@@ -716,6 +742,10 @@ Prefab:
       propertyPath: mFollowerManagerScript
       value: 
       objectReference: {fileID: 674522017}
+    - target: {fileID: 5800004, guid: b052c574bd3ab6947a4b5acdcd31d7e0, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b052c574bd3ab6947a4b5acdcd31d7e0, type: 2}
   m_RootGameObject: {fileID: 1823112518}
@@ -1506,9 +1536,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 496327827}
-  - 61: {fileID: 496327830}
   - 50: {fileID: 496327829}
   - 114: {fileID: 496327828}
+  - 58: {fileID: 496327832}
+  - 58: {fileID: 496327831}
+  - 58: {fileID: 496327830}
   m_Layer: 14
   m_Name: GirlFollow
   m_TagString: follower
@@ -1565,18 +1597,42 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &496327830
-BoxCollider2D:
+--- !u!58 &496327830
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: b052c574bd3ab6947a4b5acdcd31d7e0,
+  m_PrefabParentObject: {fileID: 5800000, guid: b052c574bd3ab6947a4b5acdcd31d7e0,
+    type: 2}
+  m_PrefabInternal: {fileID: 918933705}
+  m_GameObject: {fileID: 496327826}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .409999996
+  m_Center: {x: -.00999999978, y: -.330000013}
+--- !u!58 &496327831
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5800002, guid: b052c574bd3ab6947a4b5acdcd31d7e0,
+    type: 2}
+  m_PrefabInternal: {fileID: 918933705}
+  m_GameObject: {fileID: 496327826}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .25999999
+  m_Center: {x: -.0299999993, y: -1.01999998}
+--- !u!58 &496327832
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5800004, guid: b052c574bd3ab6947a4b5acdcd31d7e0,
     type: 2}
   m_PrefabInternal: {fileID: 918933705}
   m_GameObject: {fileID: 496327826}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1.01999998, y: 2.3900001}
-  m_Center: {x: 0, y: -.100000001}
+  m_Radius: .469999999
+  m_Center: {x: 0, y: .569999993}
 --- !u!1001 &558517988
 Prefab:
   m_ObjectHideFlags: 0
@@ -1703,6 +1759,10 @@ Prefab:
     - target: {fileID: 100000, guid: 8fab009ec8ea4214f904fec38703c0a7, type: 2}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800004, guid: 8fab009ec8ea4214f904fec38703c0a7, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fab009ec8ea4214f904fec38703c0a7, type: 2}
@@ -2759,9 +2819,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1256541551}
-  - 61: {fileID: 1256541554}
   - 50: {fileID: 1256541553}
   - 114: {fileID: 1256541552}
+  - 58: {fileID: 1256541556}
+  - 58: {fileID: 1256541555}
+  - 58: {fileID: 1256541554}
   m_Layer: 13
   m_Name: BoyFollow
   m_TagString: follower
@@ -2818,18 +2880,42 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &1256541554
-BoxCollider2D:
+--- !u!58 &1256541554
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 8fab009ec8ea4214f904fec38703c0a7,
+  m_PrefabParentObject: {fileID: 5800000, guid: 8fab009ec8ea4214f904fec38703c0a7,
     type: 2}
   m_PrefabInternal: {fileID: 639287855}
   m_GameObject: {fileID: 1256541550}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1.01999998, y: 2.3900001}
-  m_Center: {x: 0, y: -.100000001}
+  m_Radius: .409999996
+  m_Center: {x: -.00999999978, y: -.330000013}
+--- !u!58 &1256541555
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5800002, guid: 8fab009ec8ea4214f904fec38703c0a7,
+    type: 2}
+  m_PrefabInternal: {fileID: 639287855}
+  m_GameObject: {fileID: 1256541550}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .25999999
+  m_Center: {x: -.0299999993, y: -1.01999998}
+--- !u!58 &1256541556
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5800004, guid: 8fab009ec8ea4214f904fec38703c0a7,
+    type: 2}
+  m_PrefabInternal: {fileID: 639287855}
+  m_GameObject: {fileID: 1256541550}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .469999999
+  m_Center: {x: 0, y: .569999993}
 --- !u!1 &1260076074
 GameObject:
   m_ObjectHideFlags: 0
@@ -3457,6 +3543,7 @@ GameObject:
   - 4: {fileID: 1495051482}
   - 198: {fileID: 1495051481}
   - 199: {fileID: 1495051480}
+  - 114: {fileID: 1495051483}
   m_Layer: 0
   m_Name: Rain
   m_TagString: Untagged
@@ -3510,7 +3597,7 @@ ParticleSystem:
   speed: 1
   randomSeed: 0
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   moveWithTransform: 0
   InitialModule:
@@ -4559,9 +4646,21 @@ Transform:
   m_GameObject: {fileID: 1495051479}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
   m_LocalPosition: {x: .198964834, y: 12.4850626, z: 0}
-  m_LocalScale: {x: 100, y: 1, z: 1}
+  m_LocalScale: {x: 40, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1495051483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 414562321d57b48ad8b7a0518a007dd7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1369758119}
+  m_GameObject: {fileID: 1495051479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f18f4c4730d84160abae18d8cc6ea4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1657050103
 GameObject:
   m_ObjectHideFlags: 0
@@ -5024,9 +5123,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1823112519}
-  - 61: {fileID: 1823112522}
   - 50: {fileID: 1823112521}
   - 114: {fileID: 1823112520}
+  - 58: {fileID: 1823112524}
+  - 58: {fileID: 1823112523}
+  - 58: {fileID: 1823112522}
   m_Layer: 13
   m_Name: GirlFollow
   m_TagString: follower
@@ -5083,18 +5184,42 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &1823112522
-BoxCollider2D:
+--- !u!58 &1823112522
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: b052c574bd3ab6947a4b5acdcd31d7e0,
+  m_PrefabParentObject: {fileID: 5800000, guid: b052c574bd3ab6947a4b5acdcd31d7e0,
     type: 2}
   m_PrefabInternal: {fileID: 265380295}
   m_GameObject: {fileID: 1823112518}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1.01999998, y: 2.3900001}
-  m_Center: {x: 0, y: -.100000001}
+  m_Radius: .409999996
+  m_Center: {x: -.00999999978, y: -.330000013}
+--- !u!58 &1823112523
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5800002, guid: b052c574bd3ab6947a4b5acdcd31d7e0,
+    type: 2}
+  m_PrefabInternal: {fileID: 265380295}
+  m_GameObject: {fileID: 1823112518}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .25999999
+  m_Center: {x: -.0299999993, y: -1.01999998}
+--- !u!58 &1823112524
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5800004, guid: b052c574bd3ab6947a4b5acdcd31d7e0,
+    type: 2}
+  m_PrefabInternal: {fileID: 265380295}
+  m_GameObject: {fileID: 1823112518}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .469999999
+  m_Center: {x: 0, y: .569999993}
 --- !u!1 &1862409637
 GameObject:
   m_ObjectHideFlags: 0

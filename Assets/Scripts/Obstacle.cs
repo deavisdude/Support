@@ -2,14 +2,14 @@
 using System.Collections;
 using Holoville.HOTween;
 
-public class Obstacle : MonoBehaviour
+public class Obstacle : SPSUGameJamScript
 {
 	// ==================================================
 	// Variables
 	// ==================================================
 
 	public static bool enemyIsBoy;
-	public static Color enemyColor = Exit.enemyLevelOne;
+	public static Color enemyColor = Exit.enemyColors[0];
 
 	public bool timed = false;
 
@@ -24,8 +24,6 @@ public class Obstacle : MonoBehaviour
 
 	public Transform exitTransform;
 
-	private float shrinkAmount = 0.5f;
-
 	private Vector3 startScale;
 	private Vector3 startPosition;
 
@@ -37,7 +35,8 @@ public class Obstacle : MonoBehaviour
 	{
 		TweenParms tween = new TweenParms ().Prop ("localScale", new Vector3 (startScale.x - 1, startScale.y - 1, startScale.z - 1)).OnComplete (GoToExit);
 		HOTween.To (transform, 1, tween);
-		
+		audioManager.playEvilLaughSound ();
+
 		if (timed) {
 			StartCoroutine (GrowBack ()); 
 		}
@@ -91,8 +90,9 @@ public class Obstacle : MonoBehaviour
 		}
 	}
 	
-	void Start ()
+	new void Start ()
 	{
+		base.Start ();
 		if (enemyIsBoy) {
 			spriteRenderers [1].sprite = boyClothes;
 		} else {
