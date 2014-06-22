@@ -18,20 +18,25 @@ public class PressurePlate : SPSUGameJamScript {
 
 	void OnTriggerEnter2D (Collider2D collider)
 	{
-		if(collider.gameObject.layer == LayerMask.NameToLayer("player") || collider.gameObject.layer == LayerMask.NameToLayer("followingPeople"))
-		{
-			activated = true;
-			audioManager.playPressurePlateActivatedSound();
-			spriteRender.color = Color.green;
-			StopAllCoroutines();
+		if(!PressurePlateManager.allPlatesActive)
+		{	
+			if(collider.gameObject.layer == LayerMask.NameToLayer("player") || collider.gameObject.layer == LayerMask.NameToLayer("followingPeople"))
+			{
+				activated = true;
+				audioManager.playPressurePlateActivatedSound();
+				spriteRender.color = Color.green;
+				StopAllCoroutines();
+			}
 		}
 	}
 
 	void OnTriggerExit2D (Collider2D collider)
 	{
 		if(!PressurePlateManager.allPlatesActive)
+		{	
 			DeactivateNow();
 			audioManager.playPressurePlateDeactivedSound();
+		}
 	}
 
 	public void DeactivateTimed(float waitTime, float deactivateTimeLength)
