@@ -20,7 +20,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 
 	public Animator walkingAnimation;
 
-	protected bool isOnFloor;
+	protected bool isOnFloor = true;
 	protected bool jumping = false;
 
 	public Direction currentDirection;
@@ -34,6 +34,11 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 	public void jump ()
 	{
 
+	}
+
+	protected void onLandOnFloor ()
+	{
+		isOnFloor = true;
 	}
 
 	private void assignDirection ()
@@ -112,7 +117,9 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 	protected void OnCollisionEnter2D (Collision2D other)
 	{
 		if (other.gameObject.layer == LayerMask.NameToLayer ("platform")) {
-			isOnFloor = true;
+			if (!isOnFloor) {
+				onLandOnFloor ();
+			}
 		}
 	}
 

@@ -27,6 +27,15 @@ public class FollowerManager : MonoBehaviour
 		}
 	}
 
+	public void triggerJumpSequence ()
+	{
+		for (int i = 0; i < mFollowers.Count; i ++) {
+			GameObject follower = (GameObject)mFollowers [i];
+			FollowerMovementScript movementScript = follower.GetComponent<FollowerMovementScript> ();
+			movementScript.shouldJumpBool = false;
+		}
+	}
+
 	private Vector3 getTargetPositionForIndexFollower (int i)
 	{
 		PlayerMovement movementScript = mPlayer.GetComponent<PlayerMovement> ();
