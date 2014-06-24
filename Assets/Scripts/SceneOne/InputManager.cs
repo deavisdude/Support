@@ -37,10 +37,11 @@ public class InputManager : SPSUGameJamScript
 				return;
 			}
 
-			Application.LoadLevel ("lvl1");
 			Obstacle.enemyIsBoy = Random.Range (0, 2) == 0;
-			audioManager.playMenuSound ();
+			audioManager.playLevelUpSound();
 			audioManager.startGameMusic ();
+
+			Application.LoadLevel ("lvl1");
 		}
 
 		if (Input.GetKeyDown (KeyCode.Escape)) {
@@ -51,6 +52,10 @@ public class InputManager : SPSUGameJamScript
 	private void showRight ()
 	{
 		Color rightColor = rightSelector.renderer.material.color;
+
+		if(rightColor.a == 0)
+			audioManager.playMenuSound();
+
 		rightColor.a = 1.0f;
 		rightSelector.renderer.material.color = rightColor;
 
@@ -62,11 +67,15 @@ public class InputManager : SPSUGameJamScript
 	
 	private void showLeft ()
 	{
-		Color color = rightSelector.renderer.material.color;
-		color.a = 0.0f;
-		rightSelector.renderer.material.color = color;
+		Color rightColor = rightSelector.renderer.material.color;
+		rightColor.a = 0.0f;
+		rightSelector.renderer.material.color = rightColor;
 		
 		Color leftColor = leftSelector.renderer.material.color;
+
+		if(leftColor.a == 0)
+			audioManager.playMenuSound();
+
 		leftColor.a = 1.0f;
 		leftSelector.renderer.material.color = leftColor;
 		hideArrows ();

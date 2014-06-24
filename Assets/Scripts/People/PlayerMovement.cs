@@ -72,6 +72,11 @@ public class PlayerMovement : PeopleMovementScript
 	void Update ()
 	{
 		if (Input.GetKeyDown (KeyCode.Escape))
+		{
 			Application.LoadLevel ("menu");
+			audioManager.StopRainLoop();
+			audioManager.StopGameMusic();
+			audioManager.StopBirds();
+		}
 	}
 }

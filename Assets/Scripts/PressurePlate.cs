@@ -21,7 +21,12 @@ public class PressurePlate : SPSUGameJamScript
 				|| collider.gameObject.layer == LayerMask.NameToLayer ("followingPeople"))
 				&& !activated) {
 				activated = true;
-				audioManager.playPressurePlateActivatedSound ();
+
+				if(collider.gameObject.layer == LayerMask.NameToLayer ("followingPeople"))
+					audioManager.playPressurePlateActivatedSound (0.5f);
+				else
+					audioManager.playPressurePlateActivatedSound ();
+
 				spriteRender.color = Color.green;
 				StopAllCoroutines ();
 			}
@@ -44,7 +49,11 @@ public class PressurePlate : SPSUGameJamScript
 	{
 		if (!PressurePlateManager.allPlatesActive && activated) {	
 			DeactivateNow ();
-			audioManager.playPressurePlateDeactivedSound ();
+
+			if(collider.gameObject.layer == LayerMask.NameToLayer ("followingPeople"))
+				audioManager.playPressurePlateDeactivedSound (0.5f);
+			else
+				audioManager.playPressurePlateDeactivedSound ();
 		}
 	}
 

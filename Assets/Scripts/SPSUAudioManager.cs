@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Holoville.HOTween;
 
 public class SPSUAudioManager : MonoBehaviour
 {
@@ -42,65 +43,11 @@ public class SPSUAudioManager : MonoBehaviour
 	private AudioSource mRainMusic;
 	private AudioSource mGateSource;
 	private AudioSource mLaughAudioSource;
-	
-	private bool mIsFadingCreditsOut = false;
-	private bool mIsFadingMenuOut = false;
-	private bool mIsFadingGameMusicOut = false;
+	private AudioSource mLevelUpAudioSource;
 
 	// ==================================================
 	// Methods
 	// ==================================================
-
-	private void handleCredits ()
-	{
-		if (mCreditsMusic.isPlaying) {
-			if (mIsFadingCreditsOut) {
-				if (mCreditsMusic.volume > 0) {
-					mCreditsMusic.volume -= 0.03f;
-				}
-				
-				if (mCreditsMusic.volume < 0.05) {
-					mCreditsMusic.Stop ();
-				}
-			} else if (mCreditsMusic.volume < 1) {
-				mCreditsMusic.volume += 0.01f;
-			}
-		}
-	}
-
-	private void handleMenuMusic ()
-	{
-		if (mMenuMusic.isPlaying) {
-			if (mIsFadingMenuOut) {
-				if (mMenuMusic.volume > 0) {
-					mMenuMusic.volume -= 0.03f;
-				}
-				
-				if (mMenuMusic.volume < 0.05) {
-					mMenuMusic.Stop ();
-				}
-			} else if (mMenuMusic.volume < 1) {
-				mMenuMusic.volume += 0.03f;
-			}
-		}
-	}
-
-	private void handleGameMusic ()
-	{
-		if (mGameMusic.isPlaying) {
-			if (mIsFadingGameMusicOut) {
-				if (mGameMusic.volume > 0) {
-					mGameMusic.volume -= 0.03f;
-				}
-				
-				if (mGameMusic.volume < 0.05) {
-					mGameMusic.Stop ();
-				}
-			} else if (mGameMusic.volume < 1) {
-				mGameMusic.volume += 0.03f;
-			}
-		}
-	}
 
 	// =========================
 	// Music Methods
@@ -113,18 +60,6 @@ public class SPSUAudioManager : MonoBehaviour
 		}
 	}
 
-	public void Update ()
-	{
-		handleMenuMusic ();
-		handleCredits ();
-		handleGameMusic ();
-	}
-
-	public void playGameMusic ()
-	{
-
-	}
-
 	public void playRainLoop ()
 	{
 		if (!mRainMusic.isPlaying) {
@@ -132,38 +67,84 @@ public class SPSUAudioManager : MonoBehaviour
 		}
 	}
 
+	public void StopRainLoop()
+	{
+		mRainMusic.Stop();
+	}
+
+	public void StopGameMusic()
+	{
+		mGameMusic.Stop();
+	}
+
+	public void StopBirds()
+	{
+		mBirdsAmbience.Stop();
+	}
+
 	public void playCreditsMusic ()
 	{
 		if (!mCreditsMusic.isPlaying) {
 			mCreditsMusic.Play ();
-			mIsFadingCreditsOut = false;
-			mCreditsMusic.volume = 0;
-			mIsFadingGameMusicOut = true;
+			FadeGameMusicOut();
+			mBirdsAmbience.Stop();
+			StopRainLoop();
 		}
 	}
 
+	public void FadeGameMusicIn()
+	{
+		if(!mGameMusic.isPlaying)
+			mGameMusic.Play();
+		HOTween.Kill(mGameMusic);
+		HOTween.To(mGameMusic, 1, "volume", 1);
+	}
+
+	public void FadeGameMusicOut()
+	{
+		HOTween.Kill(mGameMusic);
+		HOTween.To(mGameMusic, 1, "volume", 0);
+	}
+
+	public void FadeMenuMusicIn()
+	{
+		if(!mMenuMusic.isPlaying)
+			mMenuMusic.Play();
+		HOTween.Kill(mMenuMusic);
+		HOTween.To(mMenuMusic, 1, "volume", 1);
+	}
+	
+	public void FadeMenuMusicOut()
+	{
+		HOTween.To(mMenuMusic, 1, "volume", 0);
+	}
+
+	public void FadeCreditsMusicIn()
+	{
+		if(!mCreditsMusic.isPlaying)
+			mCreditsMusic.Play();
+		HOTween.Kill(mCreditsMusic);
+		HOTween.To(mCreditsMusic, 1, "volume", 1);
+	}
+	
+	public void FadeCreditsMusicOut()
+	{
+		HOTween.Kill(mCreditsMusic);
+		HOTween.To(mCreditsMusic, 1, "volume", 0);
+	}
+	
 	public void playMenuMusic ()
 	{ 
-		if (!mMenuMusic.isPlaying) {
-			mMenuMusic.Play ();
-			mIsFadingMenuOut = false;
-			mMenuMusic.volume = 0;
-		}
-	}
+		if(mMenuMusic.isPlaying)
+			mMenuMusic.Stop();
 
-	public void fadeCreditsMusicOut ()
-	{
-		mIsFadingCreditsOut = true;
-	}
-
-	public void fadeMenuMusicOut ()
-	{
-		mIsFadingMenuOut = true;
+		mMenuMusic.volume = 1;
+		mMenuMusic.Play ();
 	}
 
 	public void startGameMusic ()
 	{
-		fadeMenuMusicOut ();
+		FadeMenuMusicOut();
 		playRainLoop ();
 	}
 
@@ -173,12 +154,13 @@ public class SPSUAudioManager : MonoBehaviour
 
 	public void playBirdsAndBeesSound ()
 	{
+		StopRainLoop();
 		mBirdsAmbience.Play ();
 	}
 	
-	public void playBodyHitSound ()
+	public void playBodyHitSound (float volume = 1)
 	{
-		AudioSource.PlayClipAtPoint (bodyHit, transform.position);
+		AudioSource.PlayClipAtPoint (bodyHit, transform.position, volume);
 	}
 	
 	public void playDoorOpenSound ()
@@ -204,14 +186,19 @@ public class SPSUAudioManager : MonoBehaviour
 		}
 	}
 	
-	public void playJumpSound ()
+	public void playJumpSound (float volume = 1)
 	{
-		AudioSource.PlayClipAtPoint (jumpNoise, transform.position, .5f);
+		AudioSource.PlayClipAtPoint (jumpNoise, transform.position, .5f * volume);
 	}
 	
 	public void playMenuSound ()
 	{
 		AudioSource.PlayClipAtPoint (menuSound, transform.position);
+	}
+
+	public void playLevelUpSound()
+	{
+		mLevelUpAudioSource.Play();
 	}
 	
 	public void playNewFriendSound ()
@@ -219,14 +206,14 @@ public class SPSUAudioManager : MonoBehaviour
 		AudioSource.PlayClipAtPoint (newFriendSound, transform.position);
 	}
 	
-	public void playPressurePlateActivatedSound ()
+	public void playPressurePlateActivatedSound (float volume = 1)
 	{
-		AudioSource.PlayClipAtPoint (pressurePlateActivated, transform.position);
+		AudioSource.PlayClipAtPoint (pressurePlateActivated, transform.position, 0.5f * volume);
 	}
 	
-	public void playPressurePlateDeactivedSound ()
+	public void playPressurePlateDeactivedSound (float volume = 1)
 	{
-		AudioSource.PlayClipAtPoint (pressurePlateDeactivated, transform.position);
+		AudioSource.PlayClipAtPoint (pressurePlateDeactivated, transform.position, 0.5f * volume);
 	}
 	
 	public void playSigh ()
@@ -240,6 +227,14 @@ public class SPSUAudioManager : MonoBehaviour
 
 	protected void Start ()
 	{
+		GameObject audioManager = GameObject.Find("Audio Manager");
+		if(audioManager != null && audioManager != gameObject)
+		{
+			Debug.Log("Found a second audio manager");
+			audioManager.GetComponent<SPSUAudioManager>().playMenuMusic();
+			Destroy(gameObject); // commit suicide
+		}
+
 		GameObject.DontDestroyOnLoad (gameObject);
 		mBirdsAmbience = gameObject.AddComponent<AudioSource> ();
 		mBirdsAmbience.clip = birdsAndTheBees;
@@ -261,6 +256,10 @@ public class SPSUAudioManager : MonoBehaviour
 		mLaughAudioSource.clip = evilLaugh;
 		mLaughAudioSource.loop = false;
 
+		mLevelUpAudioSource = gameObject.AddComponent<AudioSource> ();
+		mLevelUpAudioSource.clip = levelUp;
+		mLevelUpAudioSource.loop = false;
+		
 		mMenuMusic = gameObject.AddComponent<AudioSource> ();
 		mMenuMusic.clip = menuMusic;
 		mMenuMusic.loop = true;

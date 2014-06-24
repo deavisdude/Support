@@ -27,6 +27,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40,14 +41,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   birdsAndTheBees: {fileID: 8300000, guid: 5c8239a9f39134097ba65ddc76f75c46, type: 3}
   bodyHit: {fileID: 8300000, guid: 7a64db00c89d34368be77b9456b53be2, type: 3}
-  creditsClip: {fileID: 8300000, guid: af95f4ffe70e4e64fb17dde3b213d811, type: 3}
+  creditsClip: {fileID: 8300000, guid: 42592924f6b914c4f960907f45e4747d, type: 3}
   doorOpen: {fileID: 8300000, guid: b8ce87b8ce4ed4d38897aa218a4028bb, type: 3}
   evilLaugh: {fileID: 8300000, guid: 7c0cc3c1c3d2a448aa0003224058d492, type: 3}
-  gameMusic: {fileID: 8300000, guid: 0f8a3afd807b14f8a869d3cb8b41f8bb, type: 3}
+  gameMusic: {fileID: 8300000, guid: d7f15c32e300d4c829e3ef0c0dcdb460, type: 3}
   gateOpen: {fileID: 8300000, guid: 617bf97d958354325ac04cd2d1b35e0b, type: 3}
   jumpNoise: {fileID: 8300000, guid: d0866f6e2155e42f89cb0d704963ee13, type: 3}
   levelUp: {fileID: 8300000, guid: c991cabd1b37a4047b6d8bf0c0635303, type: 3}
-  menuMusic: {fileID: 8300000, guid: 648a7fe9b95dd4094bca0839e6bed70a, type: 3}
+  menuMusic: {fileID: 8300000, guid: 903e855d7fd104f9380c3675bdd2df9a, type: 3}
   menuSound: {fileID: 8300000, guid: 96f122a8b92d84430ad0c845fb58f0de, type: 3}
   newFriendSound: {fileID: 8300000, guid: cbf2a3e02f20d8741bad4b7f6098e225, type: 3}
   pressurePlateActivated: {fileID: 8300000, guid: 0161ee19509a0424ebd6a91bf8c90c9f,

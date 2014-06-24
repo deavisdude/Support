@@ -39,6 +39,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 			Vector2 addedForce = new Vector2 (0f, 400f);
 
 			if (!collidingWithSomething) {
+				onJump();
 				rigidbody2D.AddForce (addedForce);
 				jumping = true;
 			}

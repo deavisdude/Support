@@ -61,7 +61,7 @@ public class FollowerMovementScript : PeopleMovementScript
 
 	override public void onJump ()
 	{
-		audioManager.playJumpSound ();
+		audioManager.playJumpSound (0.5f);
 	}
 
 	new protected void onLandOnFloor ()

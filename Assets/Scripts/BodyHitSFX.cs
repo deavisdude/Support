@@ -10,7 +10,11 @@ public class BodyHitSFX : SPSUGameJamScript
 	void OnCollisionEnter2D (Collision2D collision)
 	{
 		if (!collidedGameObjects.Contains (collision.gameObject)) {
-			audioManager.playBodyHitSound ();
+
+			if(collision.gameObject.layer == LayerMask.NameToLayer ("followingPeople"))
+				audioManager.playBodyHitSound (0.5f);
+			else
+				audioManager.playBodyHitSound ();
 			collidedGameObjects.Add (collision.gameObject);
 		}
 	}

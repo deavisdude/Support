@@ -40,7 +40,7 @@ public class CreditsScript : SPSUGameJamScript
 
 		if (mInputAllowed) {
 			if (Input.anyKey) {
-				audioManager.fadeCreditsMusicOut ();
+				audioManager.FadeCreditsMusicOut();
 				GameObject.DestroyObject (audioManager.gameObject);
 				Application.LoadLevel (0);
 			}

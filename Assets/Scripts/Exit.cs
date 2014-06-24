@@ -26,10 +26,11 @@ public class Exit : SPSUGameJamScript
 	void OnTriggerEnter2D (Collider2D other)
 	{
 		if (other.gameObject.layer == LayerMask.NameToLayer ("player")) {
-			Debug.Log ("onTriggerEnter");
-			collider2D.isTrigger = false;
+//			Debug.Log ("onTriggerEnter");
 			audioManager.playGateOpenSound ();
-			TweenParms tween = new TweenParms ().Prop ("color", new Color (1, 1, 1, 0)).OnComplete (LoadNextLevel);
+			Color tweenColor = PlayerMovement.baseSpriteRender.color;
+			tweenColor.a = 0;
+			TweenParms tween = new TweenParms ().Prop ("color", tweenColor).OnComplete (LoadNextLevel);
 			HOTween.To (PlayerMovement.baseSpriteRender, 1, tween);
 			HOTween.To (PlayerMovement.clothesSpriteRenderer, 1, "color", new Color (1, 1, 1, 0));
 		}
