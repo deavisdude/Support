@@ -12,6 +12,7 @@ public class CreditsScript : SPSUGameJamScript
 
 	public void startFadingIn ()
 	{
+		gameObject.SetActive(true);
 		mIsFadingIn = true;
 		audioManager.playCreditsMusic ();
 	}

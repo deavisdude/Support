@@ -202,8 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5775b73fe3346dbb49eb5fe96d64f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftSelector: {fileID: 576744617}
-  rightSelector: {fileID: 856731693}
+  leftSelector: {fileID: 576744618}
+  rightSelector: {fileID: 856731694}
   leftRightArrows: {fileID: 2004225905}
 --- !u!4 &683758385
 Transform:

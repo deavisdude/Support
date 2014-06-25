@@ -7,7 +7,21 @@ public class SPSUGameJamScript : MonoBehaviour
 	// Variables
 	// ==================================================
 
-	protected SPSUAudioManager audioManager;
+	private GameObject audioManagerGameObject;
+	private SPSUAudioManager _audioManager;
+	protected SPSUAudioManager audioManager
+	{
+		get{
+			if(audioManagerGameObject == null)
+				audioManagerGameObject = GameObject.FindGameObjectWithTag ("audioManager");
+
+			if (_audioManager == null) {
+				_audioManager = audioManagerGameObject.GetComponent<SPSUAudioManager> ();
+			}
+
+			return _audioManager;
+		}
+	}
 
 	// ==================================================
 	// Methods
@@ -19,15 +33,10 @@ public class SPSUGameJamScript : MonoBehaviour
 
 	public void Start ()
 	{
-		GameObject audioManagerGameObject = GameObject.FindGameObjectWithTag ("audioManager");
+		audioManagerGameObject = GameObject.FindGameObjectWithTag ("audioManager");
 
 		if (audioManagerGameObject != null) {
-			audioManager = audioManagerGameObject.GetComponent<SPSUAudioManager> ();
+			_audioManager = audioManagerGameObject.GetComponent<SPSUAudioManager> ();
 		}
-	}
-	
-	void Update ()
-	{
-	
 	}
 }

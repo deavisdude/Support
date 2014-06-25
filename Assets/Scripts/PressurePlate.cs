@@ -48,7 +48,7 @@ public class PressurePlate : SPSUGameJamScript
 	void OnTriggerExit2D (Collider2D collider)
 	{
 		if (!PressurePlateManager.allPlatesActive && activated) {	
-			DeactivateNow ();
+			DeactivateNow (false);
 
 			if(collider.gameObject.layer == LayerMask.NameToLayer ("followingPeople"))
 				audioManager.playPressurePlateDeactivedSound (0.5f);
@@ -70,9 +70,17 @@ public class PressurePlate : SPSUGameJamScript
 		HOTween.To (spriteRender, deactivateTimeLength, tween);
 	}
 
-	private void DeactivateNow ()
+	private void DeactivateNow()
+	{
+		DeactivateNow(true);
+	}
+
+	private void DeactivateNow (bool playSound)
 	{
 		activated = false;
 		spriteRender.color = Color.white;
+
+		if(playSound)
+			audioManager.playPressurePlateDeactivedSound(2);
 	}
 }

@@ -3,23 +3,21 @@ using System.Collections;
 
 public class InputManager : SPSUGameJamScript
 {
-	public GameObject leftSelector;
-	public GameObject rightSelector;
+	public SpriteRenderer leftSelector;
+	public SpriteRenderer rightSelector;
 	public GameObject leftRightArrows;
 
 	new void Start ()
 	{
 		base.Start ();
-		rightSelector.renderer.material.shader = Shader.Find ("Transparent/Diffuse");
-		leftSelector.renderer.material.shader = Shader.Find ("Transparent/Diffuse");
 
-		Color leftColor = leftSelector.renderer.material.color;
+		Color leftColor = leftSelector.color;
 		leftColor.a = 0.0f;
-		leftSelector.renderer.material.color = leftColor;
+		leftSelector.color = leftColor;
 
-		Color rightColor = rightSelector.renderer.material.color;
+		Color rightColor = rightSelector.color;
 		rightColor.a = 0.0f;
-		rightSelector.renderer.material.color = rightColor;
+		rightSelector.color = rightColor;
 	}
 
 	void Update ()
@@ -29,9 +27,9 @@ public class InputManager : SPSUGameJamScript
 		} else if (Input.GetAxis ("Horizontal") < 0) {
 			showLeft ();
 		} else if (Input.GetButton ("Jump") || Input.GetKey (KeyCode.Return)) {
-			if (leftSelector.renderer.material.color.a == 1f) {
+			if (leftSelector.color.a == 1f) {
 				PlayerMovement.isBoy = true;
-			} else if (rightSelector.renderer.material.color.a == 1f) {
+			} else if (rightSelector.color.a == 1f) {
 				PlayerMovement.isBoy = false;
 			} else {
 				return;
@@ -51,40 +49,36 @@ public class InputManager : SPSUGameJamScript
 	
 	private void showRight ()
 	{
-		Color rightColor = rightSelector.renderer.material.color;
+		Color rightColor = rightSelector.color;
 
 		if(rightColor.a == 0)
 			audioManager.playMenuSound();
 
-		rightColor.a = 1.0f;
-		rightSelector.renderer.material.color = rightColor;
+		rightSelector.color = Color.black;
 
-		Color leftColor = leftSelector.renderer.material.color;
+		Color leftColor = leftSelector.color;
 		leftColor.a = 0.0f;
-		leftSelector.renderer.material.color = leftColor;
+		leftSelector.color = leftColor;
 		hideArrows ();
 	}
 	
 	private void showLeft ()
 	{
-		Color rightColor = rightSelector.renderer.material.color;
+		Color rightColor = rightSelector.color;
 		rightColor.a = 0.0f;
-		rightSelector.renderer.material.color = rightColor;
+		rightSelector.color = rightColor;
 		
-		Color leftColor = leftSelector.renderer.material.color;
+		Color leftColor = leftSelector.color;
 
 		if(leftColor.a == 0)
 			audioManager.playMenuSound();
 
-		leftColor.a = 1.0f;
-		leftSelector.renderer.material.color = leftColor;
+		leftSelector.color = Color.black;
 		hideArrows ();
 	}
 
 	private void hideArrows ()
 	{
-		Color arrowColor = leftRightArrows.renderer.material.color;
-		arrowColor.a = 0.0f;
-		leftRightArrows.renderer.material.color = arrowColor;
+		leftRightArrows.SetActive(false);
 	}
 }
