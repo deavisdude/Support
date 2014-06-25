@@ -198,6 +198,7 @@ GameObject:
   - 23: {fileID: 158891493}
   - 61: {fileID: 158891492}
   - 50: {fileID: 158891491}
+  - 114: {fileID: 158891496}
   m_Layer: 0
   m_Name: platform2
   m_TagString: Untagged
@@ -275,6 +276,18 @@ Transform:
   - {fileID: 410682248}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &158891496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 617117e1d38f24144b2bfe50b2fa6a8d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1938284817}
+  m_GameObject: {fileID: 158891490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052c0995f903744008cfafc4d0d7c0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &176040272
 Prefab:
   m_ObjectHideFlags: 0
@@ -592,9 +605,12 @@ MonoBehaviour:
   isEnemy: 0
   shouldFollow: 0
   shouldJumpBool: 0
+  boyClothes: {fileID: 0}
+  girlClothes: {fileID: 0}
   mFollowerManager: {fileID: 674522016}
   mFollowerManagerScript: {fileID: 674522017}
   mTargetPosition: {x: 0, y: 0, z: 0}
+  spriteRenderers: []
 --- !u!50 &230876465
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -844,7 +860,7 @@ Transform:
   m_LocalScale: {x: 1, y: .187499031, z: 1}
   m_Children: []
   m_Father: {fileID: 427352482}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1001 &362851513
 Prefab:
   m_ObjectHideFlags: 0
@@ -988,7 +1004,7 @@ Transform:
   m_LocalScale: {x: 1, y: .187499017, z: 1}
   m_Children: []
   m_Father: {fileID: 427352482}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1001 &386902838
 Prefab:
   m_ObjectHideFlags: 0
@@ -1162,6 +1178,7 @@ GameObject:
   - 23: {fileID: 422124528}
   - 61: {fileID: 422124527}
   - 50: {fileID: 422124526}
+  - 114: {fileID: 422124531}
   m_Layer: 0
   m_Name: platform4
   m_TagString: Untagged
@@ -1239,6 +1256,18 @@ Transform:
   - {fileID: 182359929}
   m_Father: {fileID: 0}
   m_RootOrder: 10
+--- !u!114 &422124531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 617117e1d38f24144b2bfe50b2fa6a8d,
+    type: 2}
+  m_PrefabInternal: {fileID: 830716019}
+  m_GameObject: {fileID: 422124525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052c0995f903744008cfafc4d0d7c0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &427352481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,13 +1294,13 @@ Transform:
   m_LocalPosition: {x: 0, y: -.862143517, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1313356870}
   - {fileID: 379184466}
   - {fileID: 876938624}
   - {fileID: 305730140}
   - {fileID: 1222142082}
+  - {fileID: 1313356870}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 18
 --- !u!114 &427352483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,7 +1404,7 @@ Transform:
   - {fileID: 180639122}
   - {fileID: 1658253932}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
 --- !u!114 &486276379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1646,9 +1675,12 @@ MonoBehaviour:
   isEnemy: 0
   shouldFollow: 0
   shouldJumpBool: 0
+  boyClothes: {fileID: 0}
+  girlClothes: {fileID: 0}
   mFollowerManager: {fileID: 674522016}
   mFollowerManagerScript: {fileID: 674522017}
   mTargetPosition: {x: 0, y: 0, z: 0}
+  spriteRenderers: []
 --- !u!50 &496327829
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -2181,7 +2213,7 @@ Transform:
   m_LocalScale: {x: 1, y: .187499031, z: 1}
   m_Children: []
   m_Father: {fileID: 427352482}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &889194342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,6 +2464,7 @@ GameObject:
   - 4: {fileID: 1038263857}
   - 61: {fileID: 1038263854}
   - 50: {fileID: 1038263853}
+  - 114: {fileID: 1038263855}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -2467,6 +2500,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 1, y: .899999976}
   m_Center: {x: 0, y: -.0500000007}
+--- !u!114 &1038263855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 617117e1d38f24144b2bfe50b2fa6a8d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1340440921}
+  m_GameObject: {fileID: 1038263852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052c0995f903744008cfafc4d0d7c0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1038263857
 Transform:
   m_ObjectHideFlags: 0
@@ -2573,7 +2618,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1151891407
 GameObject:
   m_ObjectHideFlags: 0
@@ -2653,6 +2698,7 @@ GameObject:
   - 23: {fileID: 1195274755}
   - 61: {fileID: 1195274754}
   - 50: {fileID: 1195274753}
+  - 114: {fileID: 1195274758}
   m_Layer: 0
   m_Name: platform5
   m_TagString: Untagged
@@ -2729,7 +2775,19 @@ Transform:
   m_Children:
   - {fileID: 1279520301}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
+--- !u!114 &1195274758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 617117e1d38f24144b2bfe50b2fa6a8d,
+    type: 2}
+  m_PrefabInternal: {fileID: 558517988}
+  m_GameObject: {fileID: 1195274752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052c0995f903744008cfafc4d0d7c0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1222142077
 GameObject:
   m_ObjectHideFlags: 0
@@ -2825,7 +2883,7 @@ Transform:
   m_LocalScale: {x: 1, y: .187499031, z: 1}
   m_Children: []
   m_Father: {fileID: 427352482}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1001 &1232653714
 Prefab:
   m_ObjectHideFlags: 0
@@ -2929,9 +2987,12 @@ MonoBehaviour:
   isEnemy: 0
   shouldFollow: 1
   shouldJumpBool: 0
+  boyClothes: {fileID: 0}
+  girlClothes: {fileID: 0}
   mFollowerManager: {fileID: 674522016}
   mFollowerManagerScript: {fileID: 674522017}
   mTargetPosition: {x: 0, y: 0, z: 0}
+  spriteRenderers: []
 --- !u!50 &1256541553
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -3100,6 +3161,7 @@ GameObject:
   - 23: {fileID: 1281948992}
   - 61: {fileID: 1281948991}
   - 50: {fileID: 1281948990}
+  - 114: {fileID: 1281948995}
   m_Layer: 0
   m_Name: platform6
   m_TagString: Untagged
@@ -3176,7 +3238,19 @@ Transform:
   m_Children:
   - {fileID: 1672643070}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
+--- !u!114 &1281948995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 617117e1d38f24144b2bfe50b2fa6a8d,
+    type: 2}
+  m_PrefabInternal: {fileID: 494116192}
+  m_GameObject: {fileID: 1281948989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052c0995f903744008cfafc4d0d7c0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1313356865
 GameObject:
   m_ObjectHideFlags: 0
@@ -3272,7 +3346,7 @@ Transform:
   m_LocalScale: {x: 1, y: .187499017, z: 1}
   m_Children: []
   m_Father: {fileID: 427352482}
-  m_RootOrder: 0
+  m_RootOrder: 4
 --- !u!1001 &1325174139
 Prefab:
   m_ObjectHideFlags: 0
@@ -3514,6 +3588,7 @@ GameObject:
   - 23: {fileID: 1457778436}
   - 61: {fileID: 1457778435}
   - 50: {fileID: 1457778434}
+  - 114: {fileID: 1457778439}
   m_Layer: 0
   m_Name: platform3
   m_TagString: Untagged
@@ -3591,6 +3666,18 @@ Transform:
   - {fileID: 1657050106}
   m_Father: {fileID: 0}
   m_RootOrder: 14
+--- !u!114 &1457778439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 617117e1d38f24144b2bfe50b2fa6a8d,
+    type: 2}
+  m_PrefabInternal: {fileID: 712273612}
+  m_GameObject: {fileID: 1457778433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052c0995f903744008cfafc4d0d7c0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1495051479
 GameObject:
   m_ObjectHideFlags: 0
@@ -4966,6 +5053,7 @@ GameObject:
   - 124: {fileID: 1703775971}
   - 81: {fileID: 1703775970}
   - 114: {fileID: 1703775975}
+  - 114: {fileID: 1703775976}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5037,7 +5125,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &1703775975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5051,6 +5139,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   borderCubePrefab: {fileID: 100000, guid: 92b72330025924cb8851bef4a9acc05b, type: 2}
   cam: {fileID: 1703775973}
+--- !u!114 &1703775976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1703775969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38aa467fb121b4c8f9da0fb9cb58ef00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resWidth: 1280
+  resHeight: 720
 --- !u!1 &1709564924
 GameObject:
   m_ObjectHideFlags: 0
@@ -5231,9 +5332,12 @@ MonoBehaviour:
   isEnemy: 0
   shouldFollow: 1
   shouldJumpBool: 0
+  boyClothes: {fileID: 0}
+  girlClothes: {fileID: 0}
   mFollowerManager: {fileID: 674522016}
   mFollowerManagerScript: {fileID: 674522017}
   mTargetPosition: {x: 0, y: 0, z: 0}
+  spriteRenderers: []
 --- !u!50 &1823112521
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -5409,6 +5513,7 @@ GameObject:
   - 23: {fileID: 1986569824}
   - 61: {fileID: 1986569823}
   - 50: {fileID: 1986569822}
+  - 114: {fileID: 1986569827}
   m_Layer: 0
   m_Name: platform1
   m_TagString: Untagged
@@ -5486,6 +5591,18 @@ Transform:
   - {fileID: 2106876546}
   m_Father: {fileID: 0}
   m_RootOrder: 19
+--- !u!114 &1986569827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 617117e1d38f24144b2bfe50b2fa6a8d,
+    type: 2}
+  m_PrefabInternal: {fileID: 4832491}
+  m_GameObject: {fileID: 1986569821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052c0995f903744008cfafc4d0d7c0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2087430668
 GameObject:
   m_ObjectHideFlags: 0
@@ -5690,6 +5807,7 @@ GameObject:
   - 23: {fileID: 2115559482}
   - 61: {fileID: 2115559481}
   - 50: {fileID: 2115559480}
+  - 114: {fileID: 2115559485}
   m_Layer: 0
   m_Name: levelMaterial
   m_TagString: Untagged
@@ -5767,3 +5885,15 @@ Transform:
   - {fileID: 889194343}
   m_Father: {fileID: 0}
   m_RootOrder: 11
+--- !u!114 &2115559485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 617117e1d38f24144b2bfe50b2fa6a8d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1232653714}
+  m_GameObject: {fileID: 2115559479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052c0995f903744008cfafc4d0d7c0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
