@@ -36,7 +36,10 @@ public class Obstacle : SPSUGameJamScript
 		HOTween.To (transform, 1, tween);
 		HOTween.To (spriteRenderers [0], 1, "color", Exit.enemyColors [Exit.GetNextLevelColorIndex ()]);
 		audioManager.playEvilLaughSound ();
+	}
 
+	public void StartGrowBackTimer()
+	{
 		if (timed) {
 			StartCoroutine (GrowBack ()); 
 		}

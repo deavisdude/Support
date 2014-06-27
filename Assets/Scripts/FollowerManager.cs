@@ -23,7 +23,7 @@ public class FollowerManager : SPSUGameJamScript
 		int nextLevel = Exit.GetNextLevelColorIndex ();
 
 		if (nextLevel < 4) {
-			HOTween.To (PlayerMovement.baseSpriteRender, 5, "color", Exit.playerColors [nextLevel]);
+			HOTween.To (PlayerMovement.baseSpriteRender, 1, "color", Exit.playerColors [nextLevel]);
 		}
 
 		addFollower (followerObject, true);
