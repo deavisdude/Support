@@ -13,7 +13,7 @@ TagManager:
   Builtin Layer 2: Ignore Raycast
   Builtin Layer 3: 
   Builtin Layer 4: Water
-  Builtin Layer 5: 
+  Builtin Layer 5: UI
   Builtin Layer 6: 
   Builtin Layer 7: 
   User Layer 8: plate
@@ -52,4 +52,12 @@ TagManager:
   - name: rain
     userID: 2
     uniqueID: 3252112963
+    locked: 0
+  - name: pause background
+    userID: 3
+    uniqueID: 4144062679
+    locked: 1
+  - name: pause buttons
+    userID: 4
+    uniqueID: 360513975
     locked: 0

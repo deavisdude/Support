@@ -68,15 +68,4 @@ public class PlayerMovement : PeopleMovementScript
 		if (Exit.GetCurrentLevelColorIndex () < 4)
 			baseSpriteRender.color = Exit.playerColors [Exit.GetCurrentLevelColorIndex ()];
 	}
-
-	void Update ()
-	{
-		if (Input.GetKeyDown (KeyCode.Escape))
-		{
-			Application.LoadLevel ("menu");
-			audioManager.StopRainLoop();
-			audioManager.StopGameMusic();
-			audioManager.StopBirds();
-		}
-	}
 }

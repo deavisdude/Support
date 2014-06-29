@@ -45,6 +45,11 @@ public class SPSUAudioManager : MonoBehaviour
 	private AudioSource mLaughAudioSource;
 	private AudioSource mLevelUpAudioSource;
 
+	private bool playBirdsOnUnpause = false;
+	private bool playGameMusicOnUnpause = false;
+	private bool playRainOnUnpause = false;
+	private bool playMenuMusicOnUnpause = false;
+
 	// ==================================================
 	// Methods
 	// ==================================================
@@ -52,6 +57,36 @@ public class SPSUAudioManager : MonoBehaviour
 	// =========================
 	// Music Methods
 	// =========================
+
+	public void Pause(bool pause)
+	{
+		if(pause)
+		{
+			playBirdsOnUnpause = mBirdsAmbience.isPlaying;
+			playGameMusicOnUnpause = mGameMusic.isPlaying;
+			playRainOnUnpause = mRainMusic.isPlaying;
+			playMenuMusicOnUnpause = mMenuMusic.isPlaying;
+
+			mBirdsAmbience.Pause();
+			mGameMusic.Pause();
+			mRainMusic.Pause();
+			mMenuMusic.Pause();
+		}
+		else // unpause
+		{
+			if(playBirdsOnUnpause)
+				mBirdsAmbience.Play();
+
+			if(playGameMusicOnUnpause)
+				mGameMusic.Play();
+
+			if(playRainOnUnpause)
+				mRainMusic.Play();
+
+			if(playMenuMusicOnUnpause)
+				mMenuMusic.Play();
+		}
+	}
 
 	public void onHitFollower ()
 	{
@@ -193,7 +228,10 @@ public class SPSUAudioManager : MonoBehaviour
 	
 	public void playMenuSound ()
 	{
+		Time.timeScale = 1;
 		AudioSource.PlayClipAtPoint (menuSound, transform.position);
+		if(PauseMenu.paused)
+			Time.timeScale = 0;
 	}
 
 	public void playLevelUpSound()
