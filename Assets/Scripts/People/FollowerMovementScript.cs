@@ -58,10 +58,20 @@ public class FollowerMovementScript : PeopleMovementScript
 						rigidbody2D.velocity = newVelocity;
 				}
 		}
-
+	
 		override public void onJump ()
 		{
+				hasJumpedRecently = true;
 				audioManager.playJumpSound (0.5f);
+
+				if (!IsInvoking ("resetHasJumpedRecently")) {
+						Invoke ("resetHasJumpedRecently", .5f);
+				}
+		}
+
+		private void resetHasJumpedRecently ()
+		{
+				hasJumpedRecently = false;
 		}
 
 		new protected void onLandOnFloor ()

@@ -13,6 +13,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 		protected const float JUMP_POWER = .5f;
 		protected const float MAX_JUMP = 7.25f;
 		protected const float MAX_SPEED = 5f;
+		protected bool hasJumpedRecently = false;
 
 		// ==================================================
 		// Variables
@@ -35,7 +36,7 @@ public abstract class PeopleMovementScript : SPSUGameJamScript
 
 		public void jump ()
 		{
-				if (!jumping && isOnFloor) {
+				if (!jumping && isOnFloor && !hasJumpedRecently) {
 						Vector2 addedForce = new Vector2 (0f, 400f);
 
 						if (!collidingWithSomething) {

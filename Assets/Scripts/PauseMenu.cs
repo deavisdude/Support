@@ -8,8 +8,10 @@ public class PauseMenu : SPSUGameJamScript
 		{
 				menu,
 				unpause,
-				quit}
+				quit
+	}
 		;
+
 		private Buttons currentButton;
 
 		public static bool paused = false;
@@ -81,24 +83,26 @@ public class PauseMenu : SPSUGameJamScript
 		{
 				selectionTime = Time.realtimeSinceStartup;
 				audioManager.playMenuSound ();
+				setButtonActive (menuButtonSelector, menuButton, button == Buttons.menu);
+				setButtonActive (unpauseButtonSelector, unpauseButton, button == Buttons.unpause);
+				setButtonActive (quitButtonSelector, quitButton, button == Buttons.quit);
+		}
 
-				menuButtonSelector.SetActive (button == Buttons.menu);
-				menuButton.renderer.material.color = new Color (menuButton.renderer.material.color.r,
-		                                                menuButton.renderer.material.color.r,
-		                                                menuButton.renderer.material.color.r,
-		                                                (button != Buttons.menu) ? 1f : 0f);
+		void resetPauseMenu ()
+		{
+				setButtonActive (menuButtonSelector, menuButton, false);
+				setButtonActive (unpauseButtonSelector, unpauseButton, true);
+				setButtonActive (quitButtonSelector, quitButton, false);
+				currentButton = Buttons.unpause;
+		}
 
-				unpauseButtonSelector.SetActive (button == Buttons.unpause);
-				unpauseButton.renderer.material.color = new Color (unpauseButton.renderer.material.color.r,
-		                                                   unpauseButton.renderer.material.color.r,
-		                                                   unpauseButton.renderer.material.color.r,
-		                                                (button != Buttons.unpause) ? 1f : 0f);
-
-				quitButtonSelector.SetActive (button == Buttons.quit);
-				quitButton.renderer.material.color = new Color (quitButton.renderer.material.color.r,
-		                                                quitButton.renderer.material.color.r,
-		                                                quitButton.renderer.material.color.r,
-		                                                (button != Buttons.quit) ? 1f : 0f);
+		void setButtonActive (GameObject selector, GameObject button, bool active)
+		{
+				selector.SetActive (active);
+				button.renderer.material.color = new Color (button.renderer.material.color.r,
+		                                            button.renderer.material.color.r,
+		                                            button.renderer.material.color.r,
+		                                                   !active ? 1f : 0f);
 		}
 	
 		private void Pause (bool pause)
@@ -108,6 +112,7 @@ public class PauseMenu : SPSUGameJamScript
 						Time.timeScale = 0;
 						audioManager.Pause (true);
 						background.SetActive (true);
+						resetPauseMenu ();
 				} else {
 						paused = false;
 						Time.timeScale = 1;
