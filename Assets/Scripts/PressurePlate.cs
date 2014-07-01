@@ -9,13 +9,14 @@ public class PressurePlate : SPSUGameJamScript
 	private Vector3 defaultScale;
 	private Vector3 activatedScale;
 	public int collisionCount = 0;
+	public Transform sprite;
 
 	void Awake ()
 	{
 		if (spriteRender == null)
 			spriteRender = GetComponent<SpriteRenderer> ();
 
-		defaultScale = transform.localScale;
+		defaultScale = sprite.localScale;
 		activatedScale = new Vector3(defaultScale.x, defaultScale.y * 0.75f, defaultScale.z);
 	}
 
@@ -31,7 +32,7 @@ public class PressurePlate : SPSUGameJamScript
 			if (!PressurePlateManager.DontChangePlateState() && !activated && collisionCount == 1) 
 			{
 				activated = true;
-				transform.localScale = activatedScale;
+				sprite.localScale = activatedScale;
 
 				if(collider.gameObject.layer == LayerMask.NameToLayer ("followingPeople"))
 					audioManager.playPressurePlateActivatedSound (0.5f);
@@ -78,7 +79,7 @@ public class PressurePlate : SPSUGameJamScript
 
 		TweenParms tween = new TweenParms ().Prop ("color", Color.white).OnComplete (DeactivateNow);
 		HOTween.To (spriteRender, deactivateTimeLength, tween);
-		HOTween.To(transform, deactivateTimeLength, "localScale", defaultScale);
+		HOTween.To(sprite, deactivateTimeLength, "localScale", defaultScale);
 	}
 
 	// with sound called by the timer tween OnComplete
@@ -92,7 +93,7 @@ public class PressurePlate : SPSUGameJamScript
 	{
 		activated = false;
 		spriteRender.color = Color.white;
-		transform.localScale = defaultScale;
+		sprite.localScale = defaultScale;
 
 		if(playSound)
 			audioManager.playPressurePlateDeactivedSound(2);

@@ -10,8 +10,11 @@ public class CreditsScript : SPSUGameJamScript
 	public bool mIsFadingIn = false;
 	private bool mInputAllowed = false;
 
+	public static bool creditsShowing = false;
+
 	public void startFadingIn ()
 	{
+		creditsShowing = true;
 		gameObject.SetActive(true);
 		mIsFadingIn = true;
 		audioManager.playCreditsMusic ();

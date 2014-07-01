@@ -35,7 +35,7 @@ public class PressurePlateManager : MonoBehaviour
 		_allPlatesActive = true;
 		foreach (PressurePlate plate in pressurePlates) 
 		{
-			if (plate.collisionCount == 0) {
+			if (!plate.activated || plate.collisionCount == 0) {
 				_allPlatesActive = false;
 				break;
 			}
