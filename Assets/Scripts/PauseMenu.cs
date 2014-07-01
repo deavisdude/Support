@@ -27,8 +27,7 @@ public class PauseMenu : SPSUGameJamScript
 
 		private float selectionTime;
 		private float buttonTimeOut = .25f;
-
-		// Use this for initialization
+	
 		new void Start ()
 		{
 				background.SetActive (false);
@@ -42,8 +41,7 @@ public class PauseMenu : SPSUGameJamScript
 				unpauseButtonSelector.SetActive (true);
 				quitButtonSelector.SetActive (false);
 		}
-	
-		// Update is called once per frame
+
 		void Update ()
 		{
 				if (Input.GetKeyDown (KeyCode.Escape)) {
