@@ -31,7 +31,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &100004
 GameObject:
   m_ObjectHideFlags: 1
@@ -176,7 +176,7 @@ Transform:
   m_LocalPosition: {x: -.000199999995, y: 0, z: 0}
   m_LocalScale: {x: 9.99999975e-05, y: 9.99999975e-05, z: 9.99999975e-05}
   m_Children:
-  - {fileID: 400014}
+  - {fileID: 400012}
   m_Father: {fileID: 400000}
 --- !u!4 &400008
 Transform:
@@ -188,7 +188,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 9.99999975e-05, y: 9.99999975e-05, z: 9.99999975e-05}
   m_Children:
-  - {fileID: 400012}
+  - {fileID: 400014}
   m_Father: {fileID: 400000}
 --- !u!4 &400010
 Transform:
@@ -196,9 +196,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -.140901253, w: .990023673}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25000012, y: 1.25000012, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400004}
 --- !u!4 &400012
@@ -207,22 +207,22 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100012}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -.0980171487, w: .99518472}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 400008}
+  m_Father: {fileID: 400006}
 --- !u!4 &400014
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100014}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: .0913278237, w: .99582088}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 400006}
+  m_Father: {fileID: 400008}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,8 +235,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 100000}
-  menuButtonSelector: {fileID: 100014}
-  unpauseButtonSelector: {fileID: 100012}
+  menuButton: {fileID: 100006}
+  unpauseButton: {fileID: 100008}
+  quitButton: {fileID: 100004}
+  menuButtonSelector: {fileID: 100012}
+  unpauseButtonSelector: {fileID: 100014}
   quitButtonSelector: {fileID: 100010}
 --- !u!212 &21200000
 SpriteRenderer:
@@ -282,7 +285,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 1
   m_SortingLayerID: 360513975
-  m_Sprite: {fileID: 21300000, guid: a6c14fd3a6759443e9e753b5aef2c18d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2cda023fca705473cb7e82f988e7005e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21200004
 SpriteRenderer:
@@ -305,7 +308,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 1
   m_SortingLayerID: 360513975
-  m_Sprite: {fileID: 21300000, guid: f6dbfe6dd7eaa4a1491092a3737c3478, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27eae240a1ad24a6ba600809005cb9f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21200006
 SpriteRenderer:
@@ -328,7 +331,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 1
   m_SortingLayerID: 360513975
-  m_Sprite: {fileID: 21300000, guid: f779df57ab5404ba8839dc8e3a60f3f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e1db48abfdad4aed8febe108703ccee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21200008
 SpriteRenderer:
@@ -351,7 +354,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortingLayerID: 360513975
-  m_Sprite: {fileID: 21300000, guid: 26787667c98b04795bba4457307f86de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ee24f0aaae5a40d8be15e9a3624b122, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21200010
 SpriteRenderer:
@@ -374,7 +377,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortingLayerID: 360513975
-  m_Sprite: {fileID: 21300000, guid: 26787667c98b04795bba4457307f86de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 749bcc7ff7aee45d183f184c5b6a2082, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21200012
 SpriteRenderer:
@@ -397,7 +400,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortingLayerID: 360513975
-  m_Sprite: {fileID: 21300000, guid: 26787667c98b04795bba4457307f86de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bbdd1639f2d16456985e40634a824700, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
