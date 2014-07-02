@@ -8,15 +8,17 @@ public class InputManager : SPSUGameJamScript
 
 		new void Start ()
 		{
-				base.Start ();
+			base.Start ();
 
-				Color leftColor = leftSelector.color;
-				leftColor.a = 0.0f;
-				leftSelector.color = leftColor;
+			Color leftColor = leftSelector.color;
+			leftColor.a = 0.0f;
+			leftSelector.color = leftColor;
 
-				Color rightColor = rightSelector.color;
-				rightColor.a = 0.0f;
-				rightSelector.color = rightColor;
+			Color rightColor = rightSelector.color;
+			rightColor.a = 0.0f;
+			rightSelector.color = rightColor;
+
+			CreditsScript.creditsShowing = false;
 		}
 
 		void Update ()

@@ -43,7 +43,7 @@ public class CreditsScript : SPSUGameJamScript
 		}
 
 		if (mInputAllowed) {
-			if (Input.anyKey) {
+			if (Input.GetButton ("Jump") || Input.GetKey (KeyCode.Return) || Input.GetKey(KeyCode.Escape)) {
 				audioManager.FadeCreditsMusicOut();
 				GameObject.DestroyObject (audioManager.gameObject);
 				Application.LoadLevel (0);

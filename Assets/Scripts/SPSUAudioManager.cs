@@ -98,8 +98,14 @@ public class SPSUAudioManager : MonoBehaviour
 	public void playRainLoop ()
 	{
 		if (!mRainMusic.isPlaying) {
+			mRainMusic.volume = 1;
 			mRainMusic.Play ();
 		}
+	}
+
+	public void MakeRainQuieter(float volume)
+	{
+		HOTween.To(mRainMusic, 1, "volume", volume);
 	}
 
 	public void StopRainLoop()
@@ -246,12 +252,14 @@ public class SPSUAudioManager : MonoBehaviour
 	
 	public void playPressurePlateActivatedSound (float volume = 1)
 	{
-		AudioSource.PlayClipAtPoint (pressurePlateActivated, transform.position, 0.5f * volume);
+		if(!CreditsScript.creditsShowing)
+			AudioSource.PlayClipAtPoint (pressurePlateActivated, transform.position, 0.5f * volume);
 	}
 	
 	public void playPressurePlateDeactivedSound (float volume = 1)
 	{
-		AudioSource.PlayClipAtPoint (pressurePlateDeactivated, transform.position, 0.5f * volume);
+		if(!CreditsScript.creditsShowing)
+			AudioSource.PlayClipAtPoint (pressurePlateDeactivated, transform.position, 0.5f * volume);
 	}
 	
 	public void playSigh ()

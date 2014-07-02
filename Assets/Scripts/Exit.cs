@@ -43,6 +43,12 @@ public class Exit : SPSUGameJamScript
 			int newLevel = Application.loadedLevel + 1;
 
 			switch (newLevel) {
+			case 2:
+				audioManager.MakeRainQuieter(.85f);
+				break;
+			case 3:
+				audioManager.MakeRainQuieter(.75f);
+				break;
 			case 4:
 				audioManager.playBirdsAndBeesSound ();
 				break;
