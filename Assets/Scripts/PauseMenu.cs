@@ -72,7 +72,13 @@ public class PauseMenu : SPSUGameJamScript
 								else if (unpauseButtonSelector.activeInHierarchy)
 										Pause (false);
 								else if (quitButtonSelector.activeInHierarchy)
-										Application.Quit ();
+								{
+#if UNITY_WEBPLAYER
+									Application.ExternalEval("window.parent.location.href='http://support-game.com'");
+#else
+									Application.Quit ();
+#endif
+								}
 						}
 				}
 		}

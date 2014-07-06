@@ -229,7 +229,8 @@ public class SPSUAudioManager : MonoBehaviour
 	
 	public void playJumpSound (float volume = 1)
 	{
-		AudioSource.PlayClipAtPoint (jumpNoise, transform.position, .5f * volume);
+		if(!CreditsScript.creditsShowing)
+			AudioSource.PlayClipAtPoint (jumpNoise, transform.position, .5f * volume);
 	}
 	
 	public void playMenuSound ()
